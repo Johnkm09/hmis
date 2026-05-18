@@ -18,7 +18,7 @@ Modern hotel management REST API built with Laravel.
 ## ⚙️ Tech Stack
 
 - Laravel
-- MySQL
+- SQLITE
 - Sanctum
 - Spatie Permission
 - Safaricom Daraja API
@@ -29,8 +29,6 @@ Modern hotel management REST API built with Laravel.
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/yourusername/hotelhub-api.git
-
 cd hotelhub-api
 
 composer install
