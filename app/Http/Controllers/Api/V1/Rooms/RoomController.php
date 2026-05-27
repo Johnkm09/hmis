@@ -12,7 +12,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return "Hallo world";
+        return ["Message" => 'Success'];
     }
 
     /**
@@ -20,7 +20,9 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json([
+            'message'=>'Saved Successfully'
+        ])->setStatusCode(201);
     }
 
     /**
