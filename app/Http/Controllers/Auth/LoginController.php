@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Database\Eloquent\Attributes\UseResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\api\v1\UserResource; 
+use App\Support\ApiResponse;
 
 class LoginController extends Controller
 {
@@ -22,23 +22,20 @@ class LoginController extends Controller
         $user = $request->user();
         $token = $user->createToken($user->name)->plainTextToken;
 
-        return [
-            'user' => new UseResource($user),
+        return ApiResponse::success([
+            'user' => new UserResource($user),
             'token' => $token,
-        ];
+            'token_type' => 'Bearer',
+        ],'Login Successful');
     }
 
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): Response
+    public function destroy(Request $request)
     {
-        /*Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();*/
-        $user = $request->user();
-        $user->currentAccessToken()->delete();
+         $request->user()?->currentAccessToken()?->delete();
 
-        return response()->noContent();
+        return ApiResponse::success([], 'Logout Successful');
     }
 }

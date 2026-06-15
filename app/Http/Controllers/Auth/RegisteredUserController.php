@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\api\v1\UserResource;
 use App\Models\User;
+use App\Support\ApiResponse;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -19,7 +20,7 @@ class RegisteredUserController extends Controller
      *
      * @throws ValidationException
      */
-    public function store(Request $request): Response
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -35,8 +36,12 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        //Auth::login($user);
+        $token = $user->createToken('auth_token_register')->plainTextToken;
 
-        return response()->noContent();
+        return ApiResponse::success([
+            'user' => new UserResource($user),
+            'token' => $token,
+            'token_type' => 'Bearer'
+        ], 'User Registered Successfully.');
     }
 }
