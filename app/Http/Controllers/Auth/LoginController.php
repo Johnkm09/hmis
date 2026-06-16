@@ -24,9 +24,10 @@ class LoginController extends Controller
 
         return ApiResponse::success([
             'user' => new UserResource($user),
+            'message' => 'Login Successful',
             'token' => $token,
             'token_type' => 'Bearer',
-        ],'Login Successful');
+        ]);
     }
 
     /**

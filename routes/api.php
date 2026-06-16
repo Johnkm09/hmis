@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\RoomType\RoomTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,6 +10,9 @@ Route::middleware('auth:sanctum')->group(function(){
         return $request->user();
     });
 
+    Route::prefix('v1')->group(function(){
+        Route::resource('room-types', RoomTypeController::class);
+    });
 });
 
 require __DIR__.'/auth.php';
