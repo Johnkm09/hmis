@@ -3,11 +3,13 @@
 namespace App\Models\RoomType;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RoomType extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
+    
     protected $table = 'room_types';
 
     

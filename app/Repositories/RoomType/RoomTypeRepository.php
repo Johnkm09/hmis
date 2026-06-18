@@ -9,7 +9,7 @@ class RoomTypeRepository implements RoomTypeInterface
     //Returning all room types
     public function getAll()
     {
-        return RoomType::query()->latest()->paginate(10);
+        return RoomType::query()->latest()->paginate(1);
     }
 
     //Creating room types

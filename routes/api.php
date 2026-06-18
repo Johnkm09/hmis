@@ -11,7 +11,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 
     Route::prefix('v1')->group(function(){
-        Route::resource('room-types', RoomTypeController::class);
+        Route::apiResource('room-types', RoomTypeController::class);
     });
 });
 
