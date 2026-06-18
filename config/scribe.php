@@ -26,7 +26,7 @@ return [
 
     // The base URL displayed in the docs.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
-    'base_url' => config('app.url'),
+    'base_url' =>  env('APP_URL').'/api/v1',
 
     // Routes to include in the docs
     'routes' => [
@@ -172,14 +172,8 @@ return [
     ],
 
     'groups' => [
-        // Endpoints which don't have a @group will be placed in this default group.
         'default' => 'Endpoints',
-
-        // By default, Scribe will sort groups alphabetically, and endpoints in the order their routes are defined.
-        // You can override this by listing the groups, subgroups and endpoints here in the order you want them.
-        // See https://scribe.knuckles.wtf/blog/laravel-v4#easier-sorting and https://scribe.knuckles.wtf/laravel/reference/config#order for details
-        // Note: does not work for `external` docs types
-        'order' => [],
+        'v1' => 'Version 1 (v1 API)',
     ],
 
     // Custom logo path. This will be used as the value of the src attribute for the <img> tag,

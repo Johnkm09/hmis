@@ -22,11 +22,8 @@ class RoomTypeController extends Controller
     }
 
     /**
-     * Get all room types
-    *
-    * This endpoint returns a paginated list of room types.
-    *
-    * @group Room Types
+    * @group Room Types(v1)
+    * Get all room types list
     */
     public function index()
     {
@@ -43,8 +40,8 @@ class RoomTypeController extends Controller
     /**
      * Create a room type
         *
-        * @group Room Types
-        *
+        * @group Room Types(v1)
+        * @authenticated
         * @bodyParam name string required Example: Deluxe Room
         * @bodyParam description string optional Example: Nice room
     */
@@ -66,8 +63,7 @@ class RoomTypeController extends Controller
     /**
      * Get single room type
     *
-    * @group Room Types
-    *
+    * @group Room Types(v1)
     * @urlParam id integer required The ID of the room type
     */
     public function show(string $id)
@@ -85,8 +81,8 @@ class RoomTypeController extends Controller
     /**
          * Update room type
         *
-        * @group Room Types
-        *
+        * @group Room Types(v1)
+        * @authenticated
         * @urlParam id integer required The ID of the room type
         * @bodyParam name string Example: Updated Room
         * @bodyParam description string Example: Updated description
@@ -111,8 +107,8 @@ class RoomTypeController extends Controller
     /**
          * Delete room type
         *
-        * @group Room Types
-        *
+        * @group Room Types(v1)
+        * @authenticated
         * @urlParam id integer required The ID of the room type
     */
     public function destroy(string $id)

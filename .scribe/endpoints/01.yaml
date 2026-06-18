@@ -1,4 +1,4 @@
-name: 'Room Types'
+name: 'Room Types(v1)'
 description: ''
 endpoints:
   -
@@ -8,12 +8,12 @@ endpoints:
     uri: api/v1/room-types
     metadata:
       custom: []
-      groupName: 'Room Types'
+      groupName: 'Room Types(v1)'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Get all room types'
-      description: 'This endpoint returns a paginated list of room types.'
+      title: 'Get all room types list'
+      description: ''
       authenticated: false
       deprecated: false
     headers:
@@ -49,13 +49,13 @@ endpoints:
     uri: api/v1/room-types
     metadata:
       custom: []
-      groupName: 'Room Types'
+      groupName: 'Room Types(v1)'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Create a room type'
       description: ''
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
       Content-Type: multipart/form-data
@@ -128,7 +128,7 @@ endpoints:
     uri: 'api/v1/room-types/{id}'
     metadata:
       custom: []
-      groupName: 'Room Types'
+      groupName: 'Room Types(v1)'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -182,13 +182,13 @@ endpoints:
     uri: 'api/v1/room-types/{id}'
     metadata:
       custom: []
-      groupName: 'Room Types'
+      groupName: 'Room Types(v1)'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Update room type'
       description: ''
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
       Content-Type: multipart/form-data
@@ -273,13 +273,13 @@ endpoints:
     uri: 'api/v1/room-types/{id}'
     metadata:
       custom: []
-      groupName: 'Room Types'
+      groupName: 'Room Types(v1)'
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
       title: 'Delete room type'
       description: ''
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
       Content-Type: application/json

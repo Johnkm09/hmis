@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost:8000";
+        var tryItOutBaseUrl = "http://localhost:8000/api/v1";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -97,25 +97,25 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-room-types" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="room-types">
-                    <a href="#room-types">Room Types</a>
+                    <ul id="tocify-header-room-typesv1" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="room-typesv1">
+                    <a href="#room-typesv1">Room Types(v1)</a>
                 </li>
-                                    <ul id="tocify-subheader-room-types" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="room-types-GETapi-v1-room-types">
-                                <a href="#room-types-GETapi-v1-room-types">Get all room types</a>
+                                    <ul id="tocify-subheader-room-typesv1" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="room-typesv1-GETapi-v1-room-types">
+                                <a href="#room-typesv1-GETapi-v1-room-types">Get all room types list</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="room-types-POSTapi-v1-room-types">
-                                <a href="#room-types-POSTapi-v1-room-types">Create a room type</a>
+                                                                                <li class="tocify-item level-2" data-unique="room-typesv1-POSTapi-v1-room-types">
+                                <a href="#room-typesv1-POSTapi-v1-room-types">Create a room type</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="room-types-GETapi-v1-room-types--id-">
-                                <a href="#room-types-GETapi-v1-room-types--id-">Get single room type</a>
+                                                                                <li class="tocify-item level-2" data-unique="room-typesv1-GETapi-v1-room-types--id-">
+                                <a href="#room-typesv1-GETapi-v1-room-types--id-">Get single room type</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="room-types-PUTapi-v1-room-types--id-">
-                                <a href="#room-types-PUTapi-v1-room-types--id-">Update room type</a>
+                                                                                <li class="tocify-item level-2" data-unique="room-typesv1-PUTapi-v1-room-types--id-">
+                                <a href="#room-typesv1-PUTapi-v1-room-types--id-">Update room type</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="room-types-DELETEapi-v1-room-types--id-">
-                                <a href="#room-types-DELETEapi-v1-room-types--id-">Delete room type</a>
+                                                                                <li class="tocify-item level-2" data-unique="room-typesv1-DELETEapi-v1-room-types--id-">
+                                <a href="#room-typesv1-DELETEapi-v1-room-types--id-">Delete room type</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -137,7 +137,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+    <strong>Base URL</strong>: <code>http://localhost:8000/api/v1</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -164,14 +164,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/user" \
+    --get "http://localhost:8000/api/v1/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/user"
+    "http://localhost:8000/api/v1/api/user"
 );
 
 const headers = {
@@ -292,7 +292,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/register" \
+    "http://localhost:8000/api/v1/api/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -306,7 +306,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/register"
+    "http://localhost:8000/api/v1/api/register"
 );
 
 const headers = {
@@ -468,7 +468,7 @@ Must be one of:
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/login" \
+    "http://localhost:8000/api/v1/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -480,7 +480,7 @@ Must be one of:
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/login"
+    "http://localhost:8000/api/v1/api/login"
 );
 
 const headers = {
@@ -614,7 +614,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/forgot-password" \
+    "http://localhost:8000/api/v1/api/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -625,7 +625,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/forgot-password"
+    "http://localhost:8000/api/v1/api/forgot-password"
 );
 
 const headers = {
@@ -746,7 +746,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/reset-password" \
+    "http://localhost:8000/api/v1/api/reset-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -759,7 +759,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/reset-password"
+    "http://localhost:8000/api/v1/api/reset-password"
 );
 
 const headers = {
@@ -906,14 +906,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/verify-email/consequatur/consequatur" \
+    --get "http://localhost:8000/api/v1/api/verify-email/consequatur/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/verify-email/consequatur/consequatur"
+    "http://localhost:8000/api/v1/api/verify-email/consequatur/consequatur"
 );
 
 const headers = {
@@ -1059,14 +1059,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/email/verification-notification" \
+    "http://localhost:8000/api/v1/api/email/verification-notification" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/email/verification-notification"
+    "http://localhost:8000/api/v1/api/email/verification-notification"
 );
 
 const headers = {
@@ -1170,14 +1170,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/logout" \
+    "http://localhost:8000/api/v1/api/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/logout"
+    "http://localhost:8000/api/v1/api/logout"
 );
 
 const headers = {
@@ -1268,16 +1268,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="room-types">Room Types</h1>
+                <h1 id="room-typesv1">Room Types(v1)</h1>
 
     
 
-                                <h2 id="room-types-GETapi-v1-room-types">Get all room types</h2>
+                                <h2 id="room-typesv1-GETapi-v1-room-types">Get all room types list</h2>
 
 <p>
 </p>
 
-<p>This endpoint returns a paginated list of room types.</p>
+
 
 <span id="example-requests-GETapi-v1-room-types">
 <blockquote>Example request:</blockquote>
@@ -1285,14 +1285,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/room-types" \
+    --get "http://localhost:8000/api/v1/api/v1/room-types" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/room-types"
+    "http://localhost:8000/api/v1/api/v1/room-types"
 );
 
 const headers = {
@@ -1400,9 +1400,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="room-types-POSTapi-v1-room-types">Create a room type</h2>
+                    <h2 id="room-typesv1-POSTapi-v1-room-types">Create a room type</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -1413,18 +1414,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/v1/room-types" \
+    "http://localhost:8000/api/v1/api/v1/room-types" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=Deluxe Room"\
     --form "description=Nice room"\
     --form "is_active="\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php9A5A.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php3893.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/room-types"
+    "http://localhost:8000/api/v1/api/v1/room-types"
 );
 
 const headers = {
@@ -1465,7 +1466,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-room-types" data-method="POST"
       data-path="api/v1/room-types"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
@@ -1554,7 +1555,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php9A5A.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php3893.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -1580,7 +1581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="room-types-GETapi-v1-room-types--id-">Get single room type</h2>
+                    <h2 id="room-typesv1-GETapi-v1-room-types--id-">Get single room type</h2>
 
 <p>
 </p>
@@ -1593,14 +1594,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/room-types/17" \
+    --get "http://localhost:8000/api/v1/api/v1/room-types/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/room-types/17"
+    "http://localhost:8000/api/v1/api/v1/room-types/17"
 );
 
 const headers = {
@@ -1721,9 +1722,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="room-types-PUTapi-v1-room-types--id-">Update room type</h2>
+                    <h2 id="room-typesv1-PUTapi-v1-room-types--id-">Update room type</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -1734,18 +1736,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/v1/room-types/17" \
+    "http://localhost:8000/api/v1/api/v1/room-types/17" \
     --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
     --form "name=Updated Room"\
     --form "description=Updated description"\
     --form "is_active=1"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php9A99.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php38C2.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/room-types/17"
+    "http://localhost:8000/api/v1/api/v1/room-types/17"
 );
 
 const headers = {
@@ -1786,7 +1788,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-PUTapi-v1-room-types--id-" data-method="PUT"
       data-path="api/v1/room-types/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
@@ -1892,7 +1894,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php9A99.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php38C2.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -1918,9 +1920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="room-types-DELETEapi-v1-room-types--id-">Delete room type</h2>
+                    <h2 id="room-typesv1-DELETEapi-v1-room-types--id-">Delete room type</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -1931,14 +1934,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/v1/room-types/17" \
+    "http://localhost:8000/api/v1/api/v1/room-types/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/room-types/17"
+    "http://localhost:8000/api/v1/api/v1/room-types/17"
 );
 
 const headers = {
@@ -1973,7 +1976,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-DELETEapi-v1-room-types--id-" data-method="DELETE"
       data-path="api/v1/room-types/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
