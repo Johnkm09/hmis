@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\RoomType;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\RoomType\RoomTypeRequest;
+use App\Http\Requests\Api\V1\RoomType\RoomTypeIndexRequest;
 use App\Http\Requests\Api\V1\RoomType\UpdateRoomTypeRequest;
 use App\Http\Resources\Api\V1\RoomType\RoomTypeResource;
 use App\Models\RoomType\RoomType;
@@ -25,7 +26,7 @@ class RoomTypeController extends Controller
     * @group Room Types(v1)
     * Get all room types list
     */
-    public function index()
+    public function index(RoomTypeIndexRequest $request)
     {
         $this->authorize('viewAny', RoomType::class);
 
@@ -33,7 +34,9 @@ class RoomTypeController extends Controller
 
         return ApiResponse::success(
             RoomTypeResource::collection($roomTypes),
-            'Room types retrieved successfully.'
+            'Room types retrieved successfully.', 
+            200,
+            $roomTypes
         );
     }
 

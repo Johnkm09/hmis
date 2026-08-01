@@ -2,6 +2,8 @@
 
 namespace App\Repositories\RoomType;
 use App\Models\RoomType\RoomType;
+use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 use Override;
 
 class RoomTypeRepository implements RoomTypeInterface
@@ -9,7 +11,18 @@ class RoomTypeRepository implements RoomTypeInterface
     //Returning all room types
     public function getAll()
     {
-        return RoomType::query()->latest()->paginate(1);
+        return QueryBuilder::for(RoomType::class)
+            ->allowedFilters([
+                AllowedFilter::partial('name'),
+            ])
+            ->allowedSorts([
+                'name',
+                'created_at',
+            ])
+            ->latest()
+            ->paginate(
+                request('per_page', 10)
+            );
     }
 
     //Creating room types
