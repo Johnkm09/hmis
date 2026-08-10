@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\RoomType\RoomTypeInterface;
 use App\Repositories\RoomType\RoomTypeRepository;
+use App\Repositories\Room\RoomRepositoryInterface;
+use App\Repositories\Room\RoomRepository;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,9 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(
-            RoomTypeInterface::class,RoomTypeRepository::class,
-        );
+        $this->app->bind(RoomTypeInterface::class,RoomTypeRepository::class);
+        $this->app->bind(RoomRepositoryInterface::class, RoomRepository::class);
     }
 
     /**

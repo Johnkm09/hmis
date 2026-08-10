@@ -8,34 +8,32 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\api\v1\UserResource; 
 use App\Support\ApiResponse;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request)
+     public function store(LoginRequest $request)
     {
         $request->authenticate();
 
-        //$request->session()->regenerate();
         $user = $request->user();
+
         $token = $user->createToken($user->name)->plainTextToken;
 
         return ApiResponse::success([
             'user' => new UserResource($user),
             'token' => $token,
             'token_type' => 'Bearer',
-        ],'Login successful.');
+        ], 'Login successful.');
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
     public function destroy(Request $request)
     {
-         $request->user()?->currentAccessToken()?->delete();
+        $request->user()?->currentAccessToken()?->delete();
 
-        return ApiResponse::success([], 'Logout Successful');
+        return ApiResponse::success([], 'Logout successful.');
     }
 }

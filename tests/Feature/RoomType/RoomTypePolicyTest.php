@@ -2,14 +2,20 @@
 
 use App\Models\User;
 use App\Models\RoomType\RoomType;
+use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 uses(RefreshDatabase::class);
+
+beforeEach(function () {
+    $this->seed(RolesAndPermissionsSeeder::class);
+});
 
 function actingAsUser(string $role)
 {
-    $user = User::factory()->create([
-        'role' => $role,
-    ]);
+    $user = User::factory()->create();
+
+    $user->assignRole($role);
 
     test()->actingAs($user, 'sanctum');
 
@@ -36,18 +42,24 @@ test('user cannot create room type', function () {
     $response->assertStatus(403);
 });
 
-test('user cannot delete room type', function(){
+test('user cannot delete room type', function () {
+
     actingAsUser('user');
+
     $roomType = RoomType::factory()->create();
+
     $response = $this->deleteJson("/api/v1/room-types/{$roomType->id}");
-    
+
     $response->assertStatus(403);
 });
 
-test('admin can delete room type', function(){
+test('admin can delete room type', function () {
+
     actingAsUser('super_admin');
+
     $roomType = RoomType::factory()->create();
+
     $response = $this->deleteJson("/api/v1/room-types/{$roomType->id}");
-    
+
     $response->assertStatus(200);
 });

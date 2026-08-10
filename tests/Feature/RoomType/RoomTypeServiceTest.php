@@ -48,8 +48,8 @@ test('it deletes a room type correctly', function () {
 
     $service->delete($roomType->id);
 
-    $this->assertDatabaseMissing('room_types', [
-        'id' => $roomType->id
+    $this->assertSoftDeleted('room_types', [
+        'id' => $roomType->id,
     ]);
 });
 

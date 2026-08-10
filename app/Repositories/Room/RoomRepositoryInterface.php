@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\RoomType;
+namespace App\Repositories\Room;
 
-interface RoomTypeInterface
+interface RoomRepositoryInterface
 {
     public function getAll();
 
@@ -12,5 +12,5 @@ interface RoomTypeInterface
 
     public function update(int $id, array $data);
     
-    public function delete(int $id): void;
+    public function delete(int $id):void;
 }
