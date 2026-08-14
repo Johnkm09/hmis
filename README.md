@@ -18,7 +18,7 @@ Modern hotel management REST API built with Laravel.
 ## ⚙️ Tech Stack
 
 - Laravel
-- SQLITE
+- MYSQL
 - Sanctum
 - Spatie Permission
 - Safaricom Daraja API
