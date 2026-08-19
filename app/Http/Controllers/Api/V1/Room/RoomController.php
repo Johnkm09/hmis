@@ -23,12 +23,25 @@ class RoomController extends Controller
         $this->roomService = $roomService;
     }
 
+    /**
+     * Get all rooms list
+     *
+     * @group Rooms(v1)
+     * @authenticated
+     * @queryParam filter[room_number] string Filter by room number. Example: 101
+     * @queryParam filter[room_type_id] integer Filter by room type ID. Example: 1
+     * @queryParam filter[status] string Filter by room status. Example: available
+     * @queryParam filter[floor_no] integer Filter by floor number. Example: 2
+     * @queryParam filter[is_active] boolean Filter by active status. Example: 1
+     * @queryParam sort string Sort rooms. Prefix with - for descending order. Example: -price
+     * @queryParam per_page integer Number of rooms per page. Example: 10
+     */
     public function index(RoomIndexRequest $request)
     {
         $this->authorize('viewAny', Room::class);
 
         $rooms = $this->roomService->getAll();
-        
+
         return ApiResponse::success(
             RoomResource::collection($rooms),
             'Rooms retrieved successfully',
@@ -37,11 +50,25 @@ class RoomController extends Controller
         );
     }
 
+    /**
+     * Create a room
+     *
+     * @group Rooms(v1)
+     * @authenticated
+     * @bodyParam room_type_id integer required The ID of the room type. Example: 1
+     * @bodyParam room_number string required The room number. Example: 101
+     * @bodyParam floor_no integer optional The floor number. Example: 1
+     * @bodyParam status string required Room status. Example: available
+     * @bodyParam price number required Room price. Example: 150.00
+     * @bodyParam is_active boolean optional Whether the room is active. Example: true
+     */
     public function store(RoomRequest $request)
     {
         $this->authorize('create', Room::class);
 
-        $room = $this->roomService->create($request->validated());
+        $room = $this->roomService->create(
+            $request->validated()
+        );
 
         return ApiResponse::success(
             new RoomResource($room),
@@ -50,6 +77,13 @@ class RoomController extends Controller
         );
     }
 
+    /**
+     * Get a single room
+     *
+     * @group Rooms(v1)
+     * @authenticated
+     * @urlParam id integer required The ID of the room. Example: 1
+     */
     public function show(string $id)
     {
         $room = $this->roomService->findById((int) $id);
@@ -62,6 +96,19 @@ class RoomController extends Controller
         );
     }
 
+    /**
+     * Update a room
+     *
+     * @group Rooms(v1)
+     * @authenticated
+     * @urlParam id integer required The ID of the room. Example: 1
+     * @bodyParam room_type_id integer The ID of the room type. Example: 2
+     * @bodyParam room_number string The room number. Example: 201
+     * @bodyParam floor_no integer The floor number. Example: 2
+     * @bodyParam status string Room status. Example: maintenance
+     * @bodyParam price number Room price. Example: 250.00
+     * @bodyParam is_active boolean Whether the room is active. Example: true
+     */
     public function update(UpdateRoomRequest $request, string $id)
     {
         $room = $this->roomService->findById((int) $id);
@@ -69,7 +116,7 @@ class RoomController extends Controller
         $this->authorize('update', $room);
 
         $room = $this->roomService->update(
-            (int) $id, 
+            (int) $id,
             $request->validated()
         );
 
@@ -79,6 +126,13 @@ class RoomController extends Controller
         );
     }
 
+    /**
+     * Delete a room
+     *
+     * @group Rooms(v1)
+     * @authenticated
+     * @urlParam id integer required The ID of the room. Example: 1
+     */
     public function destroy(string $id)
     {
         $room = $this->roomService->findById((int) $id);

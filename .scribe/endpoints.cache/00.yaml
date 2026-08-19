@@ -7,7 +7,7 @@ endpoints:
     custom: []
     httpMethods:
       - GET
-    uri: api/user
+    uri: api/v1/user
     metadata:
       custom: []
       groupName: Endpoints
@@ -105,7 +105,7 @@ endpoints:
         name: role
         description: ''
         required: false
-        example: manager
+        example: receptionist
         type: string
         enumValues:
           - super_admin
@@ -118,7 +118,7 @@ endpoints:
       name: vmqeopfuudtdsufvyvddq
       email: kunde.eloisa@example.com
       password: consequatur
-      role: manager
+      role: receptionist
     fileParameters: []
     responses: []
     responseFields: []
@@ -398,7 +398,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Destroy an authenticated session.'
+      title: ''
       description: ''
       authenticated: false
       deprecated: false

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\api\v1\UserResource;
+use App\Http\Resources\Api\V1\UserResource;
 use App\Models\User;
 use App\Support\ApiResponse;
 use Illuminate\Auth\Events\Registered;
