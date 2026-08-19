@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Resources\api\v1\UserResource; 
+use App\Http\Resources\Api\V1\UserResource;
 use App\Support\ApiResponse;
 use Illuminate\Support\Facades\Auth;
 

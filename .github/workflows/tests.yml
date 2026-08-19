@@ -46,12 +46,10 @@ jobs:
         run: |
           cp .env.testing .env
           php artisan key:generate
-
-      - name: Clear Laravel configuration cache
-        run: php artisan config:clear
+          php artisan config:clear
 
       - name: Run migrations
-        run: php artisan migrate --env=testing --force
+        run: php artisan migrate --force
 
       - name: Run tests
-        run: php artisan test --env=testing
+        run: php artisan test
