@@ -1,4 +1,4 @@
-name: Laravel Tests
+name: HMIS Tests
 
 on:
   push:
