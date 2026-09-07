@@ -493,7 +493,7 @@ test('room creation rejects invalid active status', function () {
 
 test('user cannot delete room', function () {
 
-     actingAsRoomUser('user');
+    actingAsRoomUser('user');
 
     $room = Room::factory()->create();
 

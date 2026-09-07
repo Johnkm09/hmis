@@ -24,6 +24,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'create rooms',
             'update rooms',
             'delete rooms',
+
+            // Guests
+            'view guests',
+            'create guests',
+            'update guests',
+            'delete guests',
         ];
 
         foreach ($permissions as $permission) {
@@ -61,6 +67,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'create rooms',
             'update rooms',
             'delete rooms',
+
+            // Guests
+            'view guests',
+            'create guests',
+            'update guests',
+            'delete guests',
         ]);
 
         $receptionist->givePermissionTo([
@@ -68,6 +80,8 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Rooms
             'view rooms',
+            // Guests
+            'view guests'
         ]);
 
         $user->givePermissionTo([
@@ -75,6 +89,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Rooms
             'view rooms',
+
+            // Guests
+            'view guests',
         ]);
     }
 }

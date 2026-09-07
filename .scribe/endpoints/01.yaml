@@ -155,7 +155,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -164,7 +164,7 @@ endpoints:
     cleanBodyParameters:
       name: 'Deluxe Room'
       description: 'Nice room'
-      is_active: false
+      is_active: true
     fileParameters:
       image: null
     responses: []
