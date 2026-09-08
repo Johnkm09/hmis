@@ -28,6 +28,11 @@ class GuestService
         return $this->guestRepository->findById($id);
     }
 
+    public function findByIdNumber(string $idNumber)
+    {
+        return $this->guestRepository->findByIdNumber($idNumber);
+    }
+
     public function update(int $id, array $data)
     {
         return $this->guestRepository->update($id, $data);

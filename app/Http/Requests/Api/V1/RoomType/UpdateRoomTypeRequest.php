@@ -33,6 +33,7 @@ class UpdateRoomTypeRequest extends FormRequest
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'is_active' => 'nullable|boolean',
+            'max_occupancy' => 'sometimes|integer|min:1'
         ];
     }
 }

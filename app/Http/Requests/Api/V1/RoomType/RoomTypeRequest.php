@@ -27,6 +27,7 @@ class RoomTypeRequest extends FormRequest
             'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'is_active' => 'nullable|boolean',
+            'max_occupancy' => 'required|integer|min:1'
         ];
     }
 }

@@ -10,7 +10,7 @@ use App\Models\Room\Room;
 class RoomType extends Model
 {
     use SoftDeletes, HasFactory;
-    
+
     protected $table = 'room_types';
 
     protected $fillable = [
@@ -18,6 +18,7 @@ class RoomType extends Model
         'slug',
         'description',
         'image',
+        'max_occupancy',
         'is_active'
     ];
 
@@ -25,8 +26,9 @@ class RoomType extends Model
         'is_active' => 'boolean',
     ];
 
-    public function scopeActive($query){
-        return $query->where('is_active',true);
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
     }
 
     public function rooms()

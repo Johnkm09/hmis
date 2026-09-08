@@ -51,6 +51,7 @@ test('authenticated user can view a specific guest', function () {
     $response->assertJsonPath('data.id', $guest->id);
     $response->assertJsonPath('data.first_name', $guest->first_name);
     $response->assertJsonPath('data.last_name', $guest->last_name);
+    $response->assertJsonPath('data.id_number', $guest->id_number);
 });
 
 test('unauthenticated user cannot view guests list', function () {
@@ -76,6 +77,7 @@ test('unauthenticated user cannot create guest', function () {
     $response = $this->postJson('/api/v1/guests', [
         'first_name'   => $guest->first_name,
         'last_name'    => $guest->last_name,
+        'id_number'    => $guest->id_number,
         'phone_number' => $guest->phone_number,
         'email'        => $guest->email,
         'country'      => $guest->country,
@@ -95,6 +97,7 @@ test('user cannot create guest', function () {
     $response = $this->postJson('/api/v1/guests', [
         'first_name'   => $guest->first_name,
         'last_name'    => $guest->last_name,
+        'id_number'    => $guest->id_number,
         'phone_number' => $guest->phone_number,
         'email'        => $guest->email,
         'country'      => $guest->country,
@@ -119,6 +122,7 @@ test('manager can create guest', function () {
     $response = $this->postJson('/api/v1/guests', [
         'first_name'   => $guest->first_name,
         'last_name'    => $guest->last_name,
+        'id_number'    => $guest->id_number,
         'phone_number' => $guest->phone_number,
         'email'        => $guest->email,
         'country'      => $guest->country,
@@ -130,10 +134,12 @@ test('manager can create guest', function () {
 
     $response->assertJsonPath('data.first_name', $guest->first_name);
     $response->assertJsonPath('data.last_name', $guest->last_name);
+    $response->assertJsonPath('data.id_number', $guest->id_number);
 
     $this->assertDatabaseHas('guests', [
         'first_name'   => $guest->first_name,
         'last_name'    => $guest->last_name,
+        'id_number'    => $guest->id_number,
         'phone_number' => $guest->phone_number,
     ]);
 });
@@ -149,9 +155,32 @@ test('guest creation rejects missing required fields', function () {
     $response->assertJsonValidationErrors([
         'first_name',
         'last_name',
+        'id_number',
         'phone_number',
         'country',
         'city',
+    ]);
+});
+
+test('guest creation rejects duplicate id number', function () {
+
+    actingAsGuestUser('manager');
+
+    $guest = Guest::factory()->create();
+
+    $response = $this->postJson('/api/v1/guests', [
+        'first_name'   => 'Jane',
+        'last_name'    => 'Doe',
+        'id_number'    => $guest->id_number,
+        'phone_number' => '0712345678',
+        'country'      => 'Kenya',
+        'city'         => 'Nairobi',
+    ]);
+
+    $response->assertStatus(422);
+
+    $response->assertJsonValidationErrors([
+        'id_number',
     ]);
 });
 
@@ -162,6 +191,7 @@ test('guest creation rejects invalid email', function () {
     $response = $this->postJson('/api/v1/guests', [
         'first_name'   => 'John',
         'last_name'    => 'Doe',
+        'id_number'    => 'A1234567',
         'phone_number' => '0712345678',
         'email'        => 'invalid-email',
         'country'      => 'Kenya',
@@ -182,6 +212,7 @@ test('guest creation rejects invalid field types', function () {
     $response = $this->postJson('/api/v1/guests', [
         'first_name'   => 123,
         'last_name'    => 456,
+        'id_number'    => 789,
         'phone_number' => 789,
         'email'        => 'john@example.com',
         'country'      => 123,
@@ -194,6 +225,7 @@ test('guest creation rejects invalid field types', function () {
     $response->assertJsonValidationErrors([
         'first_name',
         'last_name',
+        'id_number',
         'phone_number',
         'country',
         'city',
@@ -234,11 +266,50 @@ test('manager can update guest', function () {
 
     $response->assertJsonPath('data.first_name', 'Updated');
     $response->assertJsonPath('data.city', 'Nairobi');
+    $response->assertJsonPath('data.id_number', $guest->id_number);
 
     $this->assertDatabaseHas('guests', [
         'id'         => $guest->id,
         'first_name' => 'Updated',
         'city'       => 'Nairobi',
+    ]);
+});
+
+test('manager can update guest id number while keeping it unique', function () {
+
+    actingAsGuestUser('manager');
+
+    $guest = Guest::factory()->create();
+
+    $response = $this->patchJson("/api/v1/guests/{$guest->id}", [
+        'id_number' => 'P9876543',
+    ]);
+
+    $response->assertStatus(200);
+
+    $response->assertJsonPath('data.id_number', 'P9876543');
+
+    $this->assertDatabaseHas('guests', [
+        'id'        => $guest->id,
+        'id_number' => 'P9876543',
+    ]);
+});
+
+test('guest cannot be updated with another guests id number', function () {
+
+    actingAsGuestUser('manager');
+
+    $guest = Guest::factory()->create();
+    $anotherGuest = Guest::factory()->create();
+
+    $response = $this->patchJson("/api/v1/guests/{$guest->id}", [
+        'id_number' => $anotherGuest->id_number,
+    ]);
+
+    $response->assertStatus(422);
+
+    $response->assertJsonValidationErrors([
+        'id_number',
     ]);
 });
 

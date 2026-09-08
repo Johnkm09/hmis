@@ -22,6 +22,7 @@ class RoomTypeFactory extends Factory
             'name' => $name,
             'slug' => \Illuminate\Support\Str::slug($name),
             'description' => fake()->sentence(),
+            'max_occupancy' => fake()->numberBetween(1, 4),
         ];
     }
 }

@@ -1,7 +1,9 @@
 <?php
+
 use App\Services\RoomTypeService;
 use App\Models\RoomType\RoomType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 uses(RefreshDatabase::class);
 
 test('it creates a room type correctly', function () {
@@ -9,7 +11,8 @@ test('it creates a room type correctly', function () {
 
     $data = [
         'name' => 'Deluxe Room',
-        'description' => 'Nice room'
+        'description' => 'Nice room',
+        'max_occupancy' => 2,
     ];
 
     $roomType = $service->create($data);
@@ -18,7 +21,7 @@ test('it creates a room type correctly', function () {
 
     $this->assertDatabaseHas('room_types', [
         'name' => 'Deluxe Room',
-        'slug' => 'deluxe-room'
+        'slug' => 'deluxe-room',
     ]);
 });
 

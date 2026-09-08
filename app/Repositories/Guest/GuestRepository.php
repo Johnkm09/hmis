@@ -7,24 +7,24 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class GuestRepository implements GuestRepositoryInterface
-{    
+{
     public function getAll()
     {
         return QueryBuilder::for(Guest::class)
-        ->allowedFilters([
-            AllowedFilter::partial('first_name'),
-            AllowedFilter::partial('last_name'),
-            AllowedFilter::partial('email'),
-            AllowedFilter::exact('country'),
-            AllowedFilter::exact('city'),
-        ])->allowedSorts([
-            'first_name',
-            'last_name',
-            'created_at'
-        ])->latest()
-        ->paginate(
-            request('per_page', 10)
-        );
+            ->allowedFilters([
+                AllowedFilter::partial('first_name'),
+                AllowedFilter::partial('last_name'),
+                AllowedFilter::partial('email'),
+                AllowedFilter::exact('country'),
+                AllowedFilter::exact('city'),
+            ])->allowedSorts([
+                'first_name',
+                'last_name',
+                'created_at'
+            ])->latest()
+            ->paginate(
+                request('per_page', 10)
+            );
     }
 
     public function create(array $data)
@@ -37,6 +37,11 @@ class GuestRepository implements GuestRepositoryInterface
         return Guest::findOrFail($id);
     }
 
+    public function findByIdNumber(string $idNumber)
+    {
+        return Guest::where('id_number', $idNumber)->first();
+    }
+
     public function update(int $id, array $data)
     {
         $guest = Guest::findOrFail($id);
@@ -46,10 +51,10 @@ class GuestRepository implements GuestRepositoryInterface
         return $guest;
     }
 
-     public function delete(int $id): void
-     {
+    public function delete(int $id): void
+    {
         $guest = Guest::findOrFail($id);
 
         $guest->delete();
-     }
+    }
 }

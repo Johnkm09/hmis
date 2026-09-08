@@ -25,6 +25,7 @@ class GuestRequest extends FormRequest
         return [
             'first_name'   => ['required', 'string', 'max:100'],
             'last_name'    => ['required', 'string', 'max:100'],
+            'id_number'    => ['required', 'string', 'max:150', 'unique:guests,id_number'],
             'phone_number' => ['required', 'string', 'max:20'],
             'email'        => ['nullable', 'email', 'max:255'],
             'country'      => ['required', 'string', 'max:100'],
