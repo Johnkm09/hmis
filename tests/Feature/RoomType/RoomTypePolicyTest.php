@@ -36,7 +36,8 @@ test('user cannot create room type', function () {
     actingAsUser('user');
 
     $response = $this->postJson('/api/v1/room-types', [
-        'name' => 'Deluxe Room'
+        'name' => 'Deluxe Room',
+        'max_occupancy' => 2
     ]);
 
     $response->assertStatus(403);

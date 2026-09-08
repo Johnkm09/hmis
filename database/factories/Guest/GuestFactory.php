@@ -20,6 +20,7 @@ class GuestFactory extends Factory
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
+            'id_number'    => $this->faker->unique()->bothify('########'),
             'phone_number' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'country' => $this->faker->country(),
