@@ -86,7 +86,12 @@ test('service can create a reservation', function () {
 
     $guest = Guest::factory()->create();
 
+    $roomType = RoomType::factory()->create([
+        'max_occupancy' => 2,
+    ]);
+
     $room = Room::factory()->create([
+        'room_type_id' => $roomType->id,
         'price' => '150.00',
         'is_active' => true,
     ]);
@@ -346,7 +351,12 @@ test('service can update a reservation', function () {
 
     $guest = Guest::factory()->create();
 
+    $roomType = RoomType::factory()->create([
+        'max_occupancy' => 2,
+    ]);
+
     $room = Room::factory()->create([
+        'room_type_id' => $roomType->id,
         'price' => '150.00',
         'is_active' => true,
     ]);
