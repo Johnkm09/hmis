@@ -14,6 +14,7 @@ class RolesAndPermissionsSeeder extends Seeder
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 
         $permissions = [
+            // Room Types
             'view room types',
             'create room types',
             'update room types',
@@ -30,6 +31,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'create guests',
             'update guests',
             'delete guests',
+
+            // Reservations
+            'view reservations',
+            'create reservations',
+            'update reservations',
+            'delete reservations',
         ];
 
         foreach ($permissions as $permission) {
@@ -57,6 +64,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $superAdmin->givePermissionTo($permissions);
 
         $manager->givePermissionTo([
+            // Room Types
             'view room types',
             'create room types',
             'update room types',
@@ -73,18 +81,16 @@ class RolesAndPermissionsSeeder extends Seeder
             'create guests',
             'update guests',
             'delete guests',
+
+            // Reservations
+            'view reservations',
+            'create reservations',
+            'update reservations',
+            'delete reservations',
         ]);
 
         $receptionist->givePermissionTo([
-            'view room types',
-
-            // Rooms
-            'view rooms',
-            // Guests
-            'view guests'
-        ]);
-
-        $user->givePermissionTo([
+            // Room Types
             'view room types',
 
             // Rooms
@@ -92,6 +98,25 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Guests
             'view guests',
+
+            // Reservations
+            'view reservations',
+            'create reservations',
+            'update reservations',
+        ]);
+
+        $user->givePermissionTo([
+            // Room Types
+            'view room types',
+
+            // Rooms
+            'view rooms',
+
+            // Guests
+            'view guests',
+
+            // Reservations
+            'view reservations',
         ]);
     }
 }

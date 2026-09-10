@@ -119,6 +119,28 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-reservationsv1" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="reservationsv1">
+                    <a href="#reservationsv1">Reservations(v1)</a>
+                </li>
+                                    <ul id="tocify-subheader-reservationsv1" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="reservationsv1-GETapi-v1-reservations">
+                                <a href="#reservationsv1-GETapi-v1-reservations">Get all reservations</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="reservationsv1-POSTapi-v1-reservations">
+                                <a href="#reservationsv1-POSTapi-v1-reservations">Create a reservation</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="reservationsv1-GETapi-v1-reservations--id-">
+                                <a href="#reservationsv1-GETapi-v1-reservations--id-">Get a single reservation</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="reservationsv1-PUTapi-v1-reservations--id-">
+                                <a href="#reservationsv1-PUTapi-v1-reservations--id-">Update a reservation</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="reservationsv1-DELETEapi-v1-reservations--id-">
+                                <a href="#reservationsv1-DELETEapi-v1-reservations--id-">Delete a reservation</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-room-typesv1" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="room-typesv1">
                     <a href="#room-typesv1">Room Types(v1)</a>
@@ -172,7 +194,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 7, 2026</li>
+        <li>Last updated: September 10, 2026</li>
     </ul>
 </div>
 
@@ -1562,6 +1584,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
+    \"id_number\": \"qxbajwbpilpmufinllwlo\",
     \"phone_number\": \"0712345678\",
     \"email\": \"john@example.com\",
     \"country\": \"Kenya\",
@@ -1584,6 +1607,7 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
+    "id_number": "qxbajwbpilpmufinllwlo",
     "phone_number": "0712345678",
     "email": "john@example.com",
     "country": "Kenya",
@@ -1696,6 +1720,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The guest's last name. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id_number"                data-endpoint="POSTapi-v1-guests"
+               value="qxbajwbpilpmufinllwlo"
+               data-component="body">
+    <br>
+<p>Must not be greater than 150 characters. Example: <code>qxbajwbpilpmufinllwlo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -1921,6 +1957,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"first_name\": \"John\",
     \"last_name\": \"Doe\",
+    \"id_number\": \"qxbajwbpilpmufinllwlo\",
     \"phone_number\": \"0712345678\",
     \"email\": \"john@example.com\",
     \"country\": \"Kenya\",
@@ -1943,6 +1980,7 @@ const headers = {
 let body = {
     "first_name": "John",
     "last_name": "Doe",
+    "id_number": "qxbajwbpilpmufinllwlo",
     "phone_number": "0712345678",
     "email": "john@example.com",
     "country": "Kenya",
@@ -2072,6 +2110,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The guest's last name. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id_number"                data-endpoint="PUTapi-v1-guests--id-"
+               value="qxbajwbpilpmufinllwlo"
+               data-component="body">
+    <br>
+<p>Must not be greater than 150 characters. Example: <code>qxbajwbpilpmufinllwlo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -2260,6 +2310,937 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="reservationsv1">Reservations(v1)</h1>
+
+    
+
+                                <h2 id="reservationsv1-GETapi-v1-reservations">Get all reservations</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-reservations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/reservations?filter%5Bguest_id%5D=1&amp;filter%5Broom_id%5D=1&amp;filter%5Bstatus%5D=pending&amp;filter%5Bcheck_in_from%5D=2026-09-10&amp;filter%5Bcheck_in_to%5D=2026-09-30&amp;filter%5Bcheck_out_from%5D=2026-09-10&amp;filter%5Bcheck_out_to%5D=2026-09-30&amp;filter%5Bnumber_of_guests%5D=2&amp;sort=-check_in&amp;per_page=10" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/reservations"
+);
+
+const params = {
+    "filter[guest_id]": "1",
+    "filter[room_id]": "1",
+    "filter[status]": "pending",
+    "filter[check_in_from]": "2026-09-10",
+    "filter[check_in_to]": "2026-09-30",
+    "filter[check_out_from]": "2026-09-10",
+    "filter[check_out_to]": "2026-09-30",
+    "filter[number_of_guests]": "2",
+    "sort": "-check_in",
+    "per_page": "10",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-reservations">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: http://localhost:3000
+access-control-allow-credentials: true
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-reservations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-reservations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-reservations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-reservations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-reservations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-reservations" data-method="GET"
+      data-path="api/v1/reservations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-reservations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-reservations"
+                    onclick="tryItOut('GETapi-v1-reservations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-reservations"
+                    onclick="cancelTryOut('GETapi-v1-reservations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-reservations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/reservations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-reservations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-reservations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[guest_id]</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="filter[guest_id]"                data-endpoint="GETapi-v1-reservations"
+               value="1"
+               data-component="query">
+    <br>
+<p>Filter by guest ID. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[room_id]</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="filter[room_id]"                data-endpoint="GETapi-v1-reservations"
+               value="1"
+               data-component="query">
+    <br>
+<p>Filter by room ID. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[status]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[status]"                data-endpoint="GETapi-v1-reservations"
+               value="pending"
+               data-component="query">
+    <br>
+<p>Filter by reservation status. Example: <code>pending</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[check_in_from]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[check_in_from]"                data-endpoint="GETapi-v1-reservations"
+               value="2026-09-10"
+               data-component="query">
+    <br>
+<p>date Filter reservations from this check-in date. Example: <code>2026-09-10</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[check_in_to]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[check_in_to]"                data-endpoint="GETapi-v1-reservations"
+               value="2026-09-30"
+               data-component="query">
+    <br>
+<p>date Filter reservations up to this check-in date. Example: <code>2026-09-30</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[check_out_from]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[check_out_from]"                data-endpoint="GETapi-v1-reservations"
+               value="2026-09-10"
+               data-component="query">
+    <br>
+<p>date Filter reservations from this check-out date. Example: <code>2026-09-10</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[check_out_to]</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="filter[check_out_to]"                data-endpoint="GETapi-v1-reservations"
+               value="2026-09-30"
+               data-component="query">
+    <br>
+<p>date Filter reservations up to this check-out date. Example: <code>2026-09-30</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>filter[number_of_guests]</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="filter[number_of_guests]"                data-endpoint="GETapi-v1-reservations"
+               value="2"
+               data-component="query">
+    <br>
+<p>Filter by number of guests. Example: <code>2</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sort</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="sort"                data-endpoint="GETapi-v1-reservations"
+               value="-check_in"
+               data-component="query">
+    <br>
+<p>Sort reservations. Prefix with - for descending order. Example: <code>-check_in</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-v1-reservations"
+               value="10"
+               data-component="query">
+    <br>
+<p>Number of reservations per page. Example: <code>10</code></p>
+            </div>
+                </form>
+
+                    <h2 id="reservationsv1-POSTapi-v1-reservations">Create a reservation</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-reservations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/reservations" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"guest_id\": 1,
+    \"room_id\": 1,
+    \"check_in\": \"2026-09-10\",
+    \"check_out\": \"2026-09-13\",
+    \"number_of_guests\": 2
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/reservations"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "guest_id": 1,
+    "room_id": 1,
+    "check_in": "2026-09-10",
+    "check_out": "2026-09-13",
+    "number_of_guests": 2
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-reservations">
+</span>
+<span id="execution-results-POSTapi-v1-reservations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-reservations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-reservations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-reservations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-reservations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-reservations" data-method="POST"
+      data-path="api/v1/reservations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-reservations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-reservations"
+                    onclick="tryItOut('POSTapi-v1-reservations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-reservations"
+                    onclick="cancelTryOut('POSTapi-v1-reservations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-reservations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/reservations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-reservations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-reservations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>guest_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="guest_id"                data-endpoint="POSTapi-v1-reservations"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the guest. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>room_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="room_id"                data-endpoint="POSTapi-v1-reservations"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the room. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_in</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_in"                data-endpoint="POSTapi-v1-reservations"
+               value="2026-09-10"
+               data-component="body">
+    <br>
+<p>The check-in date. Example: <code>2026-09-10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_out</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_out"                data-endpoint="POSTapi-v1-reservations"
+               value="2026-09-13"
+               data-component="body">
+    <br>
+<p>The check-out date. Example: <code>2026-09-13</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>number_of_guests</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="number_of_guests"                data-endpoint="POSTapi-v1-reservations"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of guests staying. Example: <code>2</code></p>
+        </div>
+        </form>
+
+                    <h2 id="reservationsv1-GETapi-v1-reservations--id-">Get a single reservation</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-reservations--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/reservations/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/reservations/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-reservations--id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: http://localhost:3000
+access-control-allow-credentials: true
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-reservations--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-reservations--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-reservations--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-reservations--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-reservations--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-reservations--id-" data-method="GET"
+      data-path="api/v1/reservations/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-reservations--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-reservations--id-"
+                    onclick="tryItOut('GETapi-v1-reservations--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-reservations--id-"
+                    onclick="cancelTryOut('GETapi-v1-reservations--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-reservations--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/reservations/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-reservations--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the reservation. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="reservationsv1-PUTapi-v1-reservations--id-">Update a reservation</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTapi-v1-reservations--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost:8000/api/v1/reservations/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"guest_id\": 1,
+    \"room_id\": 1,
+    \"check_in\": \"2026-09-10\",
+    \"check_out\": \"2026-09-13\",
+    \"number_of_guests\": 2
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/reservations/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "guest_id": 1,
+    "room_id": 1,
+    "check_in": "2026-09-10",
+    "check_out": "2026-09-13",
+    "number_of_guests": 2
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-v1-reservations--id-">
+</span>
+<span id="execution-results-PUTapi-v1-reservations--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-v1-reservations--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-v1-reservations--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-v1-reservations--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-v1-reservations--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PUTapi-v1-reservations--id-" data-method="PUT"
+      data-path="api/v1/reservations/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-reservations--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-v1-reservations--id-"
+                    onclick="tryItOut('PUTapi-v1-reservations--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-v1-reservations--id-"
+                    onclick="cancelTryOut('PUTapi-v1-reservations--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-v1-reservations--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/reservations/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/v1/reservations/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the reservation. Example: <code>1</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>guest_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="guest_id"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the guest. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>room_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="room_id"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="1"
+               data-component="body">
+    <br>
+<p>The ID of the room. Example: <code>1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_in</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_in"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="2026-09-10"
+               data-component="body">
+    <br>
+<p>The check-in date. Example: <code>2026-09-10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_out</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_out"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="2026-09-13"
+               data-component="body">
+    <br>
+<p>The check-out date. Example: <code>2026-09-13</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>number_of_guests</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="number_of_guests"                data-endpoint="PUTapi-v1-reservations--id-"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of guests staying. Example: <code>2</code></p>
+        </div>
+        </form>
+
+                    <h2 id="reservationsv1-DELETEapi-v1-reservations--id-">Delete a reservation</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-v1-reservations--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:8000/api/v1/reservations/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/reservations/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-reservations--id-">
+</span>
+<span id="execution-results-DELETEapi-v1-reservations--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-reservations--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-reservations--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-reservations--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-reservations--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-reservations--id-" data-method="DELETE"
+      data-path="api/v1/reservations/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-reservations--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-reservations--id-"
+                    onclick="tryItOut('DELETEapi-v1-reservations--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-reservations--id-"
+                    onclick="cancelTryOut('DELETEapi-v1-reservations--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-reservations--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/reservations/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="DELETEapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="DELETEapi-v1-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="DELETEapi-v1-reservations--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the reservation. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="room-typesv1">Room Types(v1)</h1>
 
     
@@ -2284,7 +3265,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"filter\": {
         \"name\": \"vmqeopfuudtdsufvyvddq\"
     },
-    \"sort\": \"created_at\",
+    \"sort\": \"-name\",
     \"per_page\": 1
 }"
 </code></pre></div>
@@ -2304,7 +3285,7 @@ let body = {
     "filter": {
         "name": "vmqeopfuudtdsufvyvddq"
     },
-    "sort": "created_at",
+    "sort": "-name",
     "per_page": 1
 };
 
@@ -2438,10 +3419,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sort"                data-endpoint="GETapi-v1-room-types"
-               value="created_at"
+               value="-name"
                data-component="body">
     <br>
-<p>Example: <code>created_at</code></p>
+<p>Example: <code>-name</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>name</code></li> <li><code>created_at</code></li> <li><code>-name</code></li> <li><code>-created_at</code></li></ul>
         </div>
@@ -2478,8 +3459,9 @@ Must be one of:
     --header "Accept: application/json" \
     --form "name=Deluxe Room"\
     --form "description=Nice room"\
-    --form "is_active=1"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpFD93.tmp" </code></pre></div>
+    --form "is_active="\
+    --form "max_occupancy=13"\
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpE85A.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2495,7 +3477,8 @@ const headers = {
 const body = new FormData();
 body.append('name', 'Deluxe Room');
 body.append('description', 'Nice room');
-body.append('is_active', '1');
+body.append('is_active', '');
+body.append('max_occupancy', '13');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
@@ -2614,7 +3597,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpFD93.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpE85A.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -2636,7 +3619,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>max_occupancy</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="max_occupancy"                data-endpoint="POSTapi-v1-room-types"
+               value="13"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>13</code></p>
         </div>
         </form>
 
@@ -2800,8 +3795,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "name=Updated Room"\
     --form "description=Updated description"\
-    --form "is_active=1"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpFF59.tmp" </code></pre></div>
+    --form "is_active="\
+    --form "max_occupancy=13"\
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpE974.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2817,7 +3813,8 @@ const headers = {
 const body = new FormData();
 body.append('name', 'Updated Room');
 body.append('description', 'Updated description');
-body.append('is_active', '1');
+body.append('is_active', '');
+body.append('max_occupancy', '13');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
@@ -2953,7 +3950,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpFF59.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpE974.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -2975,7 +3972,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>max_occupancy</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="max_occupancy"                data-endpoint="PUTapi-v1-room-types--id-"
+               value="13"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>13</code></p>
         </div>
         </form>
 
