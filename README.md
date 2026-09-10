@@ -1,1251 +1,606 @@
 # 🏨 Hotel Management Information System (HMIS) API
 
-A production-oriented Hotel Management Information System (HMIS) REST API built with Laravel for managing hotel operations, including rooms, guests, reservations, hotel operations, billing, payments, and reporting.
+A production-grade Hotel Management Information System REST API built with Laravel for managing hotel operations, including rooms, guests, reservations, check-in and check-out, billing, payments, and reporting.
 
-The system provides a structured backend for managing the complete hotel workflow, from room and guest management through reservations, check-in and check-out, billing, payments, and operational reporting.
-
----
-
-## 📌 Overview
-
-HMIS is a backend-first hotel management platform designed around real-world hotel workflows.
-
-The system follows a modular architecture where each major business domain is independently organized while sharing common infrastructure such as authentication, authorization, validation, database access, testing, logging, and API standards.
-
-The project is intentionally built using production-oriented engineering practices rather than treating each feature as a simple CRUD implementation.
-
-### Core workflow
-
-```text
-Guest
-  │
-  ▼
-Reservation
-  │
-  ├── Room
-  │
-  ├── Check-in / Check-out
-  │
-  ▼
-Billing
-  │
-  ▼
-Payment
-  │
-  ▼
-Invoice
-```
-
-The system also provides operational and management reporting based on hotel activity.
+The system follows a layered backend architecture with clear separation between HTTP handling, authorization, validation, business logic, persistence, data integrity, testing, documentation, CI/CD, and infrastructure.
 
 ---
 
-# ✨ Key Features
+## Contents
 
-## 🔐 Authentication & Authorization
-
-* User registration
-* Login
-* Logout
-* Laravel Sanctum authentication
-* Protected API routes
-* Role-based access control
-* Permission-based authorization
-* Laravel Policies
-* Module-level permissions
-* Secure password handling
-* Authentication and authorization testing
+* [System Overview](#system-overview)
+* [Architecture & Design Patterns](#architecture--design-patterns)
+* [API & Business Workflows](#api--business-workflows)
+* [Database & Data Integrity](#database--data-integrity)
+* [Testing](#testing)
+* [API Documentation](#api-documentation)
+* [CI/CD & Git Workflow](#cicd--git-workflow)
+* [Infrastructure & Containerization](#infrastructure--containerization)
+* [Cloud & Deployment](#cloud--deployment)
+* [Security](#security)
+* [Technology Stack](#technology-stack)
+* [Local Development](#local-development)
 
 ---
 
-## 🏨 Hotel Management
+<details>
+<summary><strong>System Overview</strong></summary>
 
-### Room Types
+The HMIS API provides backend services for managing the complete hotel lifecycle.
 
-* Create room types
-* Update room types
-* Delete room types
-* View room types
-* Room type validation
-* Authorization
-* Pagination
-* API Resources
+### Core capabilities
 
-### Rooms
-
-* Create rooms
-* Update rooms
-* Delete rooms
-* View rooms
-* Room type relationships
-* Room status management
+* Authentication and authorization
+* Hotel and room management
+* Guest management
+* Reservation management
 * Room availability
-* Filtering
-* Sorting
-* Pagination
-* Authorization
+* Check-in and check-out
+* Billing and invoices
+* Payment processing
+* Operational reporting
+* External payment integration
+* Background processing
+* Administrative workflows
+
+### Engineering overview
+
+**Laravel REST API · Layered Architecture · Repository & Service Patterns · MySQL · Automated Testing · Scribe · GitHub Actions · Docker · Redis · AWS**
+
+</details>
 
 ---
 
-## 👤 Guest Management
+<details>
+<summary><strong>Architecture & Design Patterns</strong></summary>
 
-* Guest registration
-* Guest profiles
-* Guest updates
-* Guest deletion
-* Guest search
-* Filtering
-* Sorting
-* Pagination
-* Guest/reservation relationships
-* Validation
-* Authorization
-
----
-
-## 📅 Reservation Management
-
-Reservations form the central business workflow of the system.
-
-Features include:
-
-* Create reservations
-* Update reservations
-* Cancel reservations
-* Reservation status
-* Guest association
-* Room association
-* Check-in date
-* Check-out date
-* Availability validation
-* Reservation conflict prevention
-* Database transactions
-* Authorization
-* Reservation history
-
-The reservation workflow is designed to protect data integrity when multiple users attempt to reserve rooms.
-
----
-
-## 🛎️ Hotel Operations
-
-### Check-in
-
-* Verify reservation
-* Validate room availability
-* Check guest information
-* Update room status
-* Record check-in
-
-### Check-out
-
-* Validate active stay
-* Calculate outstanding charges
-* Complete checkout
-* Update room status
-* Record checkout
-
-### Room Status
-
-Rooms can transition between operational states such as:
+The application follows a layered architecture with clearly defined responsibilities.
 
 ```text
-Available
-Reserved
-Occupied
-Cleaning
-Maintenance
-Out of Service
-```
-
-State transitions are controlled by business rules rather than allowing arbitrary updates.
-
----
-
-# 💰 Billing & Payments
-
-The billing system manages charges generated during a guest's stay.
-
-### Billing
-
-* Invoice creation
-* Invoice items
-* Accommodation charges
-* Additional charges
-* Tax calculations
-* Discounts
-* Invoice status
-* Outstanding balances
-* Payment history
-
-### Payments
-
-* Payment recording
-* Payment status
-* Payment methods
-* Payment references
-* Transaction history
-* Payment reconciliation
-
-### M-Pesa
-
-The system is designed to support **Safaricom Daraja API** integration for M-Pesa payments.
-
-Example workflow:
-
-```text
-Customer
-   │
-   ▼
-STK Push Request
-   │
-   ▼
-M-Pesa
-   │
-   ▼
-Callback
-   │
-   ▼
-Payment Verification
-   │
-   ▼
-Invoice Updated
-```
-
-External payment integrations are isolated from core business logic to make the payment layer easier to test and maintain.
-
----
-
-# 📊 Reporting & Analytics
-
-The reporting layer provides management-level information derived from operational data.
-
-### Occupancy Reports
-
-* Current occupancy
-* Occupancy rates
-* Room utilization
-* Available rooms
-* Occupied rooms
-
-### Revenue Reports
-
-* Daily revenue
-* Monthly revenue
-* Revenue by room
-* Revenue by reservation
-* Payment summaries
-
-### Guest Reports
-
-* Guest statistics
-* Guest history
-* Frequent guests
-* Reservation history
-
-Reports are designed around query efficiency and appropriate database aggregation rather than loading unnecessary records into application memory.
-
----
-
-# 🤖 AI Assistant
-
-The system is designed to support an AI-powered hotel assistant for selected hotel operations and information queries.
-
-Potential capabilities include:
-
-* Hotel information queries
-* Room availability assistance
-* Reservation assistance
-* Guest-facing questions
-* Operational information
-
-The AI layer is isolated from the core application so that failures or changes in the external AI provider do not compromise core hotel operations.
-
----
-
-# 🏗️ Architecture
-
-HMIS follows a layered backend architecture.
-
-```text
-                         HTTP Request
-                              │
-                              ▼
-                    ┌──────────────────┐
-                    │ Authentication   │
-                    │    Sanctum       │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Authorization    │
-                    │ Policies / RBAC  │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │    Controller    │
-                    │ HTTP concerns    │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Service Layer    │
-                    │ Business Logic   │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Repository       │
-                    │ Interface        │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │ Repository       │
-                    │ Implementation   │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │      MySQL       │
-                    └──────────────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │  API Resource    │
-                    └──────────────────┘
-```
-
-This separation keeps HTTP handling, business logic, data access, authorization, and API presentation independently organized.
-
----
-
-# 🧩 Design Principles
-
-The project applies practical backend engineering principles including:
-
-* Separation of concerns
-* Single Responsibility Principle
-* Dependency Inversion
-* Encapsulation
-* Explicit domain boundaries
-* Thin controllers
-* Reusable services
-* Repository abstraction
-* Centralized validation
-* Consistent API responses
-* Database integrity
-* Testability
-
-The architecture is intentionally pragmatic rather than introducing abstractions where they provide no value.
-
----
-
-# 📦 Module Architecture
-
-Each major domain follows a consistent structure.
-
-```text
-Model
-Migration
-Repository Interface
-Repository Implementation
-Service
-Form Request
-API Resource
-Policy
-Controller
+Client
+  ↓
 Routes
-Feature Tests
-Unit Tests
-API Documentation
+  ↓
+Middleware / Authentication
+  ↓
+Controller
+  ↓
+Form Request
+  ↓
+Policy / Authorization
+  ↓
+Service Layer
+  ↓
+Repository Interface
+  ↓
+Repository Implementation
+  ↓
+Eloquent Models
+  ↓
+MySQL
+  ↓
+API Resource
+  ↓
+HTTP Response
 ```
 
-This consistency makes the codebase easier to understand and extend.
+### Architecture responsibilities
 
----
+| Layer                 | Responsibility                               |
+| --------------------- | -------------------------------------------- |
+| Routes                | Define API endpoints and middleware          |
+| Controllers           | Coordinate HTTP requests and responses       |
+| Form Requests         | Validate incoming request data               |
+| Policies / Gates      | Enforce authorization                        |
+| Services              | Execute application and business workflows   |
+| Repository Interfaces | Define persistence contracts                 |
+| Repositories          | Encapsulate database queries and persistence |
+| Eloquent Models       | Represent domain data and relationships      |
+| API Resources         | Transform data into controlled API responses |
 
-# 📁 Project Structure
+### Repository Pattern
 
-A simplified application structure:
+Persistence operations are exposed through repository interfaces rather than coupling business workflows directly to database implementations.
 
 ```text
-app/
-├── Http/
-│   ├── Controllers/
-│   │   └── Api/
-│   │       └── V1/
-│   │           ├── Auth/
-│   │           ├── RoomType/
-│   │           ├── Room/
-│   │           ├── Guest/
-│   │           ├── Reservation/
-│   │           ├── Billing/
-│   │           ├── Payment/
-│   │           └── Report/
-│   │
-│   ├── Requests/
-│   │   └── Api/
-│   │       └── V1/
-│   │
-│   └── Resources/
-│       └── Api/
-│           └── V1/
-│
-├── Models/
-│
-├── Policies/
-│
-├── Repositories/
-│   ├── Interfaces
-│   └── Implementations
-│
-├── Services/
-│
-├── Jobs/
-│
-├── Notifications/
-│
-├── Events/
-│
-└── Providers/
-
-database/
-├── migrations/
-├── seeders/
-└── factories/
-
-routes/
-├── api.php
-└── auth.php
-
-tests/
-├── Feature/
-└── Unit/
+ReservationInterface
+        ↓
+ReservationRepository
+        ↓
+Eloquent
+        ↓
+MySQL
 ```
+
+This provides separation of concerns, dependency inversion, testability, and replaceable persistence implementations.
+
+### Service Layer
+
+Business workflows are handled by dedicated services rather than controllers.
+
+Services coordinate:
+
+* Repository operations
+* Business rules
+* Transactions
+* Domain validation
+* Calculations
+* State changes
+* External integrations
+
+### Dependency Injection
+
+Interfaces are bound to their concrete implementations through Laravel's service container, allowing services to depend on abstractions rather than concrete repository classes.
+
+### Policies & Gates
+
+Authorization is handled independently from business logic using Laravel Policies, Gates, and permissions.
+
+### Form Requests
+
+HTTP input validation is handled through dedicated Form Request classes.
+
+### API Resources
+
+Laravel API Resources provide a controlled transformation layer between Eloquent models and API responses.
+
+</details>
 
 ---
 
-# 🔗 Domain Model
+<details>
+<summary><strong>API & Business Workflows</strong></summary>
 
-The primary domain relationships are:
+The API follows REST conventions and is versioned under:
+
+```text
+/api/v1
+```
+
+Resources use appropriate HTTP methods, status codes, validation responses, pagination, filtering, sorting, and consistent API response structures.
+
+### Reservation workflow
+
+```text
+Request
+  ↓
+Validate Guest & Room
+  ↓
+Check Room Status
+  ↓
+Validate Occupancy
+  ↓
+Check Availability
+  ↓
+Calculate Nights
+  ↓
+Snapshot Nightly Rate
+  ↓
+Calculate Total
+  ↓
+Create Reservation
+```
+
+### Reservation consistency
+
+Reservations use an interval-overlap rule to determine whether requested dates conflict with an existing reservation:
+
+```text
+existing_check_in < requested_check_out
+AND
+existing_check_out > requested_check_in
+```
+
+This permits consecutive stays while preventing overlapping reservations.
+
+### Concurrent booking protection
+
+Availability checks are protected by transactional database operations and appropriate locking around critical state changes.
+
+This prevents two concurrent requests from successfully allocating the same room for overlapping dates.
+
+### Reservation pricing
+
+The room's current price is captured as the reservation's `nightly_rate` at booking time.
+
+The reservation total is calculated from:
+
+```text
+number_of_nights × nightly_rate
+```
+
+This preserves the historical price agreed at the time of reservation.
+
+### Idempotent operations
+
+Critical write operations support idempotency where required.
+
+Idempotency protection prevents repeated requests from producing duplicate business operations when caused by:
+
+* Network failures
+* Client retries
+* Double-clicks
+* Mobile connectivity issues
+* External gateway retries
+* Repeated callbacks
+
+An idempotency key identifies a logical operation so that a retry can return the original result instead of executing the operation again.
+
+### Billing workflow
+
+```text
+Reservation
+    ↓
+Invoice
+    ↓
+Invoice Items
+    ↓
+Payments
+    ↓
+Outstanding Balance
+```
+
+Invoices represent amounts owed while payments represent settlements against those invoices.
+
+Multiple payments can be applied to the same invoice, allowing partial and full settlement.
+
+### Payment consistency
+
+Payment processing is treated as a transactional financial workflow.
+
+Critical operations protect against:
+
+* Duplicate payment requests
+* Concurrent payment attempts
+* Repeated provider callbacks
+* Overpayment
+* Duplicate transaction references
+* Incorrect invoice balances
+* Failed partial updates
+
+Payment creation and invoice balance updates are kept within the same transaction boundary.
+
+### External payment integration
+
+The payment architecture supports integration with external payment providers, including Safaricom Daraja, while maintaining internal transaction consistency.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Database & Data Integrity</strong></summary>
+
+MySQL provides the primary relational database for the application.
+
+Eloquent ORM is used for database interaction while critical integrity rules are reinforced at the database level.
+
+### Database responsibilities
+
+* Foreign-key constraints
+* Unique constraints
+* Indexes
+* Referential integrity
+* Transactional operations
+* Restrictive delete behavior
+* Consistent relationships
+* Atomic state changes
+
+### Core domain relationships
 
 ```text
 Room Type
-    │
-    └──────< Room
-                │
-                └──────< Reservation >────── Guest
-                              │
-                              ├──── Check-in
-                              │
-                              ├──── Check-out
-                              │
-                              ▼
-                           Invoice
-                              │
-                              └────< Payment
+    ↓
+Room
+    ↓
+Reservation
+    ↓
+Invoice
+    ↓
+Payment
+
+Guest
+    ↓
+Reservation
 ```
 
-This allows the system to model the complete guest lifecycle from reservation through payment and checkout.
+### Transactional integrity
 
----
+Critical multi-step operations are executed within database transactions where multiple records must remain consistent.
 
-# 🌐 API Design
-
-The API follows REST principles and is versioned.
+For example:
 
 ```text
-/api/v1/...
+Payment Created
+      +
+Invoice Balance Updated
+      ↓
+    COMMIT
 ```
 
-Example endpoints:
+If a critical operation fails, the transaction can be rolled back rather than leaving partially updated financial data.
 
-```http
-POST   /api/v1/register
-POST   /api/v1/login
-POST   /api/v1/logout
+### Concurrency control
 
-GET    /api/v1/room-types
-POST   /api/v1/room-types
-GET    /api/v1/room-types/{id}
-PUT    /api/v1/room-types/{id}
-DELETE /api/v1/room-types/{id}
+Database locking is applied to critical records when necessary to protect against race conditions during concurrent operations.
 
-GET    /api/v1/rooms
-POST   /api/v1/rooms
-GET    /api/v1/rooms/{id}
+### Database as final authority
 
-GET    /api/v1/guests
-POST   /api/v1/guests
-GET    /api/v1/guests/{id}
-PUT    /api/v1/guests/{id}
-DELETE /api/v1/guests/{id}
+Application validation provides user-friendly validation, while database constraints provide the final layer of protection against invalid states.
 
-GET    /api/v1/reservations
-POST   /api/v1/reservations
-GET    /api/v1/reservations/{id}
-PUT    /api/v1/reservations/{id}
-DELETE /api/v1/reservations/{id}
-```
-
-The API uses appropriate HTTP status codes and standardized response structures.
+</details>
 
 ---
 
-# 🔎 Filtering, Sorting & Pagination
+<details>
+<summary><strong>Testing</strong></summary>
 
-The API supports controlled querying through **Spatie Query Builder**.
+The application uses Pest/PHPUnit for automated testing.
 
-Examples:
+Testing is divided into unit and feature/API testing.
 
-```http
-GET /api/v1/guests?filter[first_name]=John
-GET /api/v1/guests?filter[country]=Kenya
-GET /api/v1/guests?sort=last_name
-GET /api/v1/guests?per_page=20
-```
+### Unit Tests
 
-Only explicitly allowed filters and sorts are exposed to the API.
+Unit tests isolate individual application components and verify:
 
-This prevents unrestricted query behavior while providing flexible resource discovery.
-
----
-
-# 🛡️ Security
-
-Security is treated as a core application concern.
-
-The API implements or is designed around:
-
-* Sanctum authentication
-* Policy-based authorization
-* Role-based access control
-* Permission-based access control
-* Form Request validation
-* Mass-assignment protection
-* Secure password hashing
-* Environment-based secrets
-* API rate limiting
-* Database constraints
-* Transactional operations
-* Controlled query parameters
-* Secure production configuration
-
-Sensitive credentials and API keys are never committed to the repository.
-
----
-
-# 🗄️ Database Design
-
-MySQL is used as the primary relational database.
-
-The database uses:
-
-* Foreign keys
-* Indexes
-* Unique constraints
-* Appropriate column types
-* Nullable fields where appropriate
-* Database-level referential integrity
-* Transactions for multi-step operations
-
-Business relationships are represented through relational constraints rather than relying solely on application-level assumptions.
-
----
-
-# ⚡ Caching
-
-Redis is used where caching provides a measurable benefit.
-
-Potential cached data includes:
-
-* Frequently requested hotel configuration
-* Room availability data
-* Reporting data
-* Other expensive read operations
-
-Cache invalidation is tied to relevant domain changes to prevent stale operational information.
-
----
-
-# 🔄 Background Jobs
-
-Long-running or non-critical operations can be processed asynchronously using Laravel queues.
-
-Examples:
-
-* Notifications
-* Emails
-* Report generation
-* External API processing
-* AI-related operations
-* Other time-consuming tasks
-
-Example architecture:
-
-```text
-API Request
-    │
-    ▼
-Create Job
-    │
-    ▼
-Queue
-    │
-    ▼
-Redis
-    │
-    ▼
-Worker
-    │
-    ▼
-External Service / Database
-```
-
-This prevents expensive operations from unnecessarily blocking API requests.
-
----
-
-# 🔔 Events & Notifications
-
-The system can use Laravel events and notifications to decouple domain events from secondary operations.
-
-Examples:
-
-```text
-Reservation Created
-        │
-        ├── Send confirmation
-        ├── Update availability
-        └── Trigger notification
-```
-
-This keeps the primary reservation workflow focused on its core business operation.
-
----
-
-# 🧪 Testing
-
-Testing is a major part of the project.
-
-The test suite covers both application behavior and individual components.
+* Repository behavior
+* Service logic
+* Business calculations
+* Domain rules
+* Persistence-related behavior
 
 ### Feature Tests
 
-Feature tests verify complete API workflows including:
+Feature tests verify complete application behavior through the HTTP layer.
+
+Coverage includes:
 
 * Authentication
 * Authorization
 * CRUD operations
 * Validation
 * HTTP responses
-* Database changes
+* Database state
 * Filtering
 * Sorting
 * Pagination
-* Business rules
+* Reservation workflows
 * Reservation conflicts
-* Payment workflows
+* Billing
+* Payments
+* Business rules
+* Concurrency-sensitive workflows
 
-### Unit Tests
-
-Unit tests verify isolated application components such as:
-
-* Services
-* Repository behavior
-* Business calculations
-* Domain-specific logic
-
-Run the complete test suite:
+### Test execution
 
 ```bash
 php artisan test
 ```
 
----
+The same automated test suite is executed as part of the CI pipeline.
 
-# 📈 Test Strategy
-
-The project follows a practical testing pyramid:
-
-```text
-                 ┌─────────────┐
-                 │   Feature   │
-                 │    Tests    │
-                 └──────┬──────┘
-                        │
-                ┌───────┴───────┐
-                │  Unit Tests   │
-                └───────────────┘
-```
-
-Critical business workflows receive integration/feature coverage because correctness at the API and database level is more important than testing implementation details alone.
+</details>
 
 ---
 
-# 🚦 Continuous Integration
+<details>
+<summary><strong>API Documentation</strong></summary>
 
-GitHub Actions automatically validates changes before they are merged into the main branch.
+The API is documented using Scribe.
 
-The CI pipeline:
+Documentation covers:
 
-```text
-Pull Request
-     │
-     ▼
-GitHub Actions
-     │
-     ├── Install PHP
-     ├── Install Composer dependencies
-     ├── Start MySQL
-     ├── Prepare environment
-     ├── Run migrations
-     └── Run tests
-              │
-              ▼
-        Pass / Fail
-```
-
-Pull requests cannot be considered complete until the automated test suite passes.
-
----
-
-# 🔀 Git Workflow
-
-Development follows a feature-branch and Pull Request workflow.
-
-```text
-master
-   │
-   ├── features/room
-   │
-   ├── features/guest
-   │
-   ├── features/reservation
-   │
-   ├── features/operations
-   │
-   ├── features/billing
-   │
-   └── features/reporting
-```
-
-Typical workflow:
-
-```text
-Create feature branch
-        ↓
-Develop feature
-        ↓
-Write tests
-        ↓
-Run tests locally
-        ↓
-Commit changes
-        ↓
-Push branch
-        ↓
-Open Pull Request
-        ↓
-GitHub Actions
-        ↓
-Code review / verification
-        ↓
-Merge into master
-```
-
-This keeps the main branch stable and provides a traceable development history.
-
----
-
-# 🐳 Docker
-
-The application is containerized using Docker to provide a consistent development and deployment environment.
-
-The Docker environment is designed around services such as:
-
-```text
-┌───────────────────────────────┐
-│           Docker              │
-│                               │
-│  ┌─────────┐   ┌──────────┐  │
-│  │  Nginx  │──▶│ PHP-FPM  │  │
-│  └─────────┘   └────┬─────┘  │
-│                     │        │
-│          ┌──────────┴──────┐ │
-│          │                 │ │
-│      ┌───▼───┐         ┌──▼─┐│
-│      │ MySQL │         │Redis││
-│      └───────┘         └────┘│
-│                               │
-└───────────────────────────────┘
-```
-
-Docker provides:
-
-* Reproducible development environments
-* Consistent PHP configuration
-* Isolated database services
-* Redis integration
-* Easier onboarding
-* Production-like local infrastructure
-
----
-
-# 🌍 Deployment Architecture
-
-The application is designed to support deployment to a cloud environment.
-
-A typical production architecture:
-
-```text
-                  Internet
-                     │
-                     ▼
-              ┌─────────────┐
-              │ Load Balancer│
-              └──────┬──────┘
-                     │
-              ┌──────▼──────┐
-              │    Nginx    │
-              └──────┬──────┘
-                     │
-              ┌──────▼──────┐
-              │  Laravel    │
-              │   PHP-FPM   │
-              └──────┬──────┘
-                     │
-          ┌──────────┼──────────┐
-          ▼          ▼          ▼
-       MySQL       Redis      Queue
-                              Workers
-```
-
-Production deployment will prioritize:
-
-* HTTPS
-* Environment-based configuration
-* Secure secrets
-* Database backups
-* Logging
-* Queue workers
-* Cache management
-* Health checks
-* Application monitoring
-
----
-
-# 📚 API Documentation
-
-API documentation is generated using **Scribe**.
-
-Documentation includes:
-
-* Authentication requirements
 * Endpoints
+* HTTP methods
 * Parameters
 * Request bodies
-* Response structures
-* Validation requirements
-* Filtering
-* Sorting
-* Pagination
-* API versioning
-
-Generate documentation with:
-
-```bash
-php artisan scribe:generate
-```
-
-Then access:
-
-```text
-/docs
-```
-
----
-
-# 🧰 Technology Stack
-
-### Backend
-
-* PHP
-* Laravel
-
-### Database
-
-* MySQL
-* Redis
-
-### Authentication & Authorization
-
-* Laravel Sanctum
-* Spatie Laravel Permission
-* Laravel Policies
-
-### API
-
-* REST
-* API Resources
-* Form Requests
-* Spatie Query Builder
-* Scribe
-
-### Testing
-
-* Pest
-* PHPUnit
-
-### Infrastructure
-
-* Docker
-* Docker Compose
-* Nginx
-* PHP-FPM
-* Redis
-
-### CI/CD
-
-* GitHub Actions
-* Git
-* GitHub
-
-### Integrations
-
-* Safaricom Daraja API
-* OpenAI API
-
----
-
-# 🚀 Local Development
-
-## Requirements
-
-For non-containerized development:
-
-* PHP 8.2+
-* Composer
-* MySQL
-* Node.js/npm where required by Laravel tooling
-
-For the containerized environment:
-
-* Docker
-* Docker Compose
-
----
-
-## Installation
-
-Clone the repository:
-
-```bash
-git clone <repository-url>
-
-cd hmis
-```
-
-Install dependencies:
-
-```bash
-composer install
-```
-
-Create environment configuration:
-
-```bash
-cp .env.example .env
-```
-
-Generate the application key:
-
-```bash
-php artisan key:generate
-```
-
-Configure the database and other services in `.env`.
-
-Run migrations and seed initial data:
-
-```bash
-php artisan migrate --seed
-```
-
-Start the application:
-
-```bash
-php artisan serve
-```
-
----
-
-# 🐳 Docker Installation
-
-Build and start the containers:
-
-```bash
-docker compose up -d --build
-```
-
-Run migrations:
-
-```bash
-docker compose exec app php artisan migrate --seed
-```
-
-Run tests:
-
-```bash
-docker compose exec app php artisan test
-```
-
-Stop the environment:
-
-```bash
-docker compose down
-```
-
-The exact Docker commands may evolve with the final infrastructure configuration.
-
----
-
-# 🧪 Development Commands
-
-Run tests:
-
-```bash
-php artisan test
-```
-
-Run migrations:
-
-```bash
-php artisan migrate
-```
-
-Refresh the database:
-
-```bash
-php artisan migrate:fresh --seed
-```
-
-Generate API documentation:
-
-```bash
-php artisan scribe:generate
-```
-
-Clear application caches:
-
-```bash
-php artisan optimize:clear
-```
-
----
-
-# 🗺️ Development Roadmap
-
-## Phase 1 — Authentication ✅
-
-* Registration
-* Login
-* Logout
-* Sanctum authentication
-* API Resources
-* Standardized API responses
-
-## Phase 2 — Hotel Setup ✅
-
-* Room Types
-* Rooms
-* Relationships
-* CRUD
-* Validation
-* Authorization
-* Filtering
-* Sorting
-* Pagination
-* Tests
-* API documentation
-
-## Phase 3 — Guest Management ✅
-
-* Guest CRUD
-* Validation
-* Authorization
-* API Resources
-* Filtering
-* Sorting
-* Pagination
-* Feature tests
-* API documentation
-
-## Phase 4 — Reservations 🚧
-
-* Reservation CRUD
-* Guest relationships
-* Room relationships
-* Availability checking
-* Conflict prevention
-* Reservation status
-* Database transactions
-* Tests
-* API documentation
-
-## Phase 5 — Hotel Operations 📋
-
-* Check-in
-* Check-out
-* Room status
-* Occupancy handling
-* Operational workflows
-
-## Phase 6 — Billing & Payments 📋
-
-* Invoices
-* Invoice items
-* Payments
-* Payment status
-* Payment history
-* M-Pesa integration
-
-## Phase 7 — Reporting 📋
-
-* Occupancy reports
-* Revenue reports
-* Guest reports
-* Operational analytics
-
-## Phase 8 — Infrastructure & Production 📋
-
-* Docker
-* Redis
-* Queues
-* Background workers
-* Notifications
-* Logging
-* Health checks
-* CI/CD
-* Production deployment
-
-## Phase 9 — Advanced Features 📋
-
-* AI hotel assistant
-* Advanced caching
-* Audit logging
-* Advanced reporting
-* Performance optimization
-* Production hardening
-
----
-
-# 📐 Engineering Practices
-
-The project emphasizes:
-
-### Maintainability
-
-* Modular organization
-* Consistent naming
-* Separation of concerns
-* Reusable services
-* Clear domain boundaries
-
-### Reliability
-
-* Automated testing
-* Database constraints
-* Transactions
-* Validation
-* CI checks
-
-### Security
-
 * Authentication
-* Authorization
-* Input validation
-* Secure configuration
-* Permission boundaries
+* Validation
+* Response structures
+* Example requests
+* Example responses
 
-### Scalability
+The documentation provides a consistent reference for API consumers and developers.
 
-* Stateless API architecture
-* Pagination
-* Efficient queries
-* Caching
-* Queues
-* Background processing
-
-### Observability
-
-* Structured application logging
-* Error handling
-* Health checks
-* Operational monitoring
+</details>
 
 ---
 
-# 📈 Performance Considerations
+<details>
+<summary><strong>CI/CD & Git Workflow</strong></summary>
 
-Performance considerations include:
+The project uses GitHub Actions for automated continuous integration.
 
-* Database indexing
-* Eager loading where appropriate
-* Pagination for collection endpoints
-* Query optimization
-* Redis caching
-* Queue-based background processing
-* Avoiding unnecessary database queries
-* Efficient reporting queries
-
-The application favors measuring and addressing actual bottlenecks rather than prematurely optimizing every component.
-
----
-
-# 📝 API Response Philosophy
-
-The API uses a consistent response format to make client integration predictable.
-
-Successful responses provide:
-
-* Request status
-* Human-readable message where appropriate
-* Resource data
-* Pagination metadata where applicable
-
-Validation and application errors use appropriate HTTP status codes and structured error responses.
-
----
-
-# 🧑‍💻 Development Philosophy
-
-HMIS is intentionally developed incrementally.
-
-Each major domain is:
+### Development workflow
 
 ```text
-Designed
-   ↓
-Implemented
-   ↓
-Validated
-   ↓
-Tested
-   ↓
-Documented
-   ↓
-Reviewed
-   ↓
-Merged
+Feature Branch
+      ↓
+Implementation
+      ↓
+Automated Tests
+      ↓
+Commit
+      ↓
+Push
+      ↓
+Pull Request
+      ↓
+GitHub Actions
+      ↓
+Review
+      ↓
+Merge
 ```
 
-This prevents the project from becoming a collection of disconnected CRUD endpoints and allows each business capability to be integrated safely into the larger system.
+### CI pipeline
+
+The CI environment:
+
+* Installs PHP dependencies
+* Configures the application environment
+* Prepares the database
+* Runs migrations
+* Executes automated tests
+* Verifies the application before merging changes
+
+This ensures that changes are automatically validated before entering the main branch.
+
+</details>
 
 ---
 
-# 📄 License
+<details>
+<summary><strong>Infrastructure & Containerization</strong></summary>
 
-This project is licensed under the MIT License.
+The application uses Docker to provide a consistent development and deployment environment.
+
+### Containerized services
+
+```text
+┌───────────────────────────┐
+│          Nginx             │
+└─────────────┬─────────────┘
+              ↓
+┌───────────────────────────┐
+│        PHP-FPM             │
+│        Laravel             │
+└─────────────┬─────────────┘
+              ↓
+      ┌───────┴────────┐
+      ↓                ↓
+   MySQL             Redis
+                       ↓
+                 Queue Workers
+```
+
+Docker isolates application and infrastructure services while providing reproducible environments.
+
+Nginx handles incoming HTTP traffic and PHP-FPM executes the Laravel application.
+
+Redis provides caching and queue infrastructure, while Laravel queue workers process asynchronous workloads.
+
+</details>
+
+---
+
+<details>
+<summary><strong>Cloud & Deployment</strong></summary>
+
+The application is designed for deployment on AWS using managed and containerized infrastructure.
+
+A production deployment can be structured around:
+
+```text
+Internet
+    ↓
+Load Balancer
+    ↓
+Application Containers
+    ↓
+Nginx / PHP-FPM
+    ↓
+Laravel
+    ↓
+RDS MySQL
+    ↓
+Redis
+```
+
+AWS infrastructure separates application execution from managed database and supporting infrastructure.
+
+The deployment architecture supports:
+
+* Application containers
+* Load balancing
+* Managed relational database
+* Redis-backed caching
+* Queue workers
+* Environment-based configuration
+* Secure secret management
+* Horizontal application scaling
+
+</details>
+
+---
+
+<details>
+<summary><strong>Security</strong></summary>
+
+Security controls are implemented across the application and infrastructure layers.
+
+### Application security
+
+* Laravel Sanctum authentication
+* Policies and Gates
+* Permission-based authorization
+* Form Request validation
+* Mass-assignment protection
+* Password hashing
+* Controlled query parameters
+* Authorization boundaries
+
+### Data security
+
+* Database constraints
+* Referential integrity
+* Transactional operations
+* Environment-based secrets
+* Restricted production configuration
+
+</details>
+
+---
+
+<details>
+<summary><strong>Technology Stack</strong></summary>
+
+| Category            | Technology                     |
+| ------------------- | ------------------------------ |
+| Backend             | PHP / Laravel                  |
+| API                 | REST / Laravel API Resources   |
+| Database            | MySQL / Eloquent ORM           |
+| Authentication      | Laravel Sanctum                |
+| Authorization       | Policies / Gates / Permissions |
+| Validation          | Laravel Form Requests          |
+| Querying            | Spatie Laravel Query Builder   |
+| Testing             | Pest / PHPUnit                 |
+| Documentation       | Scribe                         |
+| Caching             | Redis                          |
+| Queues              | Laravel Queues                 |
+| Containers          | Docker / Docker Compose        |
+| Web Server          | Nginx                          |
+| Application Runtime | PHP-FPM                        |
+| CI/CD               | GitHub Actions                 |
+| Cloud               | AWS                            |
+| Payments            | Safaricom Daraja               |
+| AI Integration      | OpenAI                         |
+
+</details>
+
+---
+
+<details>
+<summary><strong>Local Development</strong></summary>
+
+The project can be run locally using Laravel's development tooling and Docker-based infrastructure.
+
+### Development workflow
+
+```text
+Develop
+   ↓
+Run Tests
+   ↓
+Commit
+   ↓
+Push Feature Branch
+   ↓
+Pull Request
+   ↓
+CI Verification
+   ↓
+Merge
+```
+
+</details>
