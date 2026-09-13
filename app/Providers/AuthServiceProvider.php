@@ -10,6 +10,8 @@ use App\Policies\Guest\GuestPolicy;
 use App\Policies\Room\RoomPolicy;
 use App\Models\Reservation\Reservation;
 use App\Policies\Reservation\ReservationPolicy;
+use App\Policies\Operation\OperationPolicy;
+use App\Models\Contract\Operation;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -20,6 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         Room::class => RoomPolicy::class,
         Guest::class => GuestPolicy::class,
         Reservation::class => ReservationPolicy::class,
+        Operation::class => OperationPolicy::class,
     ];
 
     public function boot(): void

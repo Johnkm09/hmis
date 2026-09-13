@@ -10,6 +10,8 @@ use App\Repositories\Guest\GuestRepository;
 use App\Repositories\Guest\GuestRepositoryInterface;
 use App\Repositories\Reservation\ReservationInterface;
 use App\Repositories\Reservation\ReservationRepository;
+use App\Repositories\Contracts\OperationInterface;
+use App\Repositories\Contracts\OperationRepository;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RoomRepositoryInterface::class, RoomRepository::class);
         $this->app->bind(GuestRepositoryInterface::class, GuestRepository::class);
         $this->app->bind(ReservationInterface::class, ReservationRepository::class);
+        $this->app->bind(OperationInterface::class, OperationRepository::class);
     }
 
     /**

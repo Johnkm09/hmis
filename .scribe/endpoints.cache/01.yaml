@@ -314,7 +314,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -334,7 +334,7 @@ endpoints:
     cleanBodyParameters:
       name: 'Updated Room'
       description: 'Updated description'
-      is_active: false
+      is_active: true
       max_occupancy: 13
     fileParameters:
       image: null

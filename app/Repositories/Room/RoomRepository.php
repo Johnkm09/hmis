@@ -41,6 +41,13 @@ class RoomRepository implements RoomRepositoryInterface
         return Room::findOrFail($id);
     }
 
+    public function findAndLock(int $id)
+    {
+        return Room::where('id', $id)
+            ->lockForUpdate()
+            ->firstOrFail();
+    }
+
     public function update(int $id, array $data)
     {
         $room = Room::findOrFail($id);
@@ -50,7 +57,7 @@ class RoomRepository implements RoomRepositoryInterface
 
     public function delete(int $id): void
     {
-         $room = Room::findOrFail($id);
+        $room = Room::findOrFail($id);
         $room->delete();
     }
 }

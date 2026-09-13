@@ -1,0 +1,469 @@
+name: Operations(v1)
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/operations/walk-in
+    metadata:
+      custom: []
+      groupName: Operations(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Walk-in guest.'
+      description: |-
+        Creates or reuses a guest, creates a reservation for the selected room,
+        and immediately checks the guest in.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      first_name:
+        custom: []
+        name: first_name
+        description: 'Guest first name.'
+        required: true
+        example: John
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      last_name:
+        custom: []
+        name: last_name
+        description: 'Guest last name.'
+        required: true
+        example: Doe
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      id_number:
+        custom: []
+        name: id_number
+        description: 'Guest identification number.'
+        required: true
+        example: ID123456
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      phone_number:
+        custom: []
+        name: phone_number
+        description: 'Guest phone number.'
+        required: true
+        example: '0712345678'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: 'Guest email address.'
+        required: false
+        example: john@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      country:
+        custom: []
+        name: country
+        description: 'Guest country.'
+        required: true
+        example: Kenya
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      city:
+        custom: []
+        name: city
+        description: 'Guest city.'
+        required: true
+        example: Nairobi
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      address:
+        custom: []
+        name: address
+        description: 'Guest address.'
+        required: false
+        example: '123 Main Street'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+      room_id:
+        custom: []
+        name: room_id
+        description: 'ID of the available room.'
+        required: true
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      check_in:
+        custom: []
+        name: check_in
+        description: 'Check-in date.'
+        required: true
+        example: '2026-09-13'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      check_out:
+        custom: []
+        name: check_out
+        description: 'Check-out date. Must be after check_in.'
+        required: true
+        example: '2026-09-15'
+        type: date
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      number_of_guests:
+        custom: []
+        name: number_of_guests
+        description: 'Number of guests.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      notes:
+        custom: []
+        name: notes
+        description: 'Additional notes about the walk-in.'
+        required: false
+        example: 'Walk-in guest.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      first_name: John
+      last_name: Doe
+      id_number: ID123456
+      phone_number: '0712345678'
+      email: john@example.com
+      country: Kenya
+      city: Nairobi
+      address: '123 Main Street'
+      room_id: 5
+      check_in: '2026-09-13'
+      check_out: '2026-09-15'
+      number_of_guests: 2
+      notes: 'Walk-in guest.'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "message": "Walk-in completed successfully.",
+            "data": {
+              "id": 1,
+              "reservation_id": 10,
+              "type": "check_in",
+              "performed_at": "2026-09-13T10:30:00.000000Z",
+              "notes": "Walk-in guest.",
+              "performed_by": {
+                "id": 5,
+                "name": "John Doe",
+                "email": "john@example.com"
+              },
+              "created_at": "2026-09-13T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 403
+        content: |-
+          {
+            "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+            "message": "The given data was invalid.",
+            "errors": {
+              "room_id": [
+                "The selected room is not available."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/operations/check-in
+    metadata:
+      custom: []
+      groupName: Operations(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Check in an existing reservation.'
+      description: |-
+        Checks in a guest with an existing pending reservation.
+        The reservation must be pending and the associated room must
+        currently have a reserved status.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      reservation_id:
+        custom: []
+        name: reservation_id
+        description: 'ID of the reservation to check in.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      notes:
+        custom: []
+        name: notes
+        description: 'Additional notes about the check-in.'
+        required: false
+        example: 'Guest arrived early.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      reservation_id: 10
+      notes: 'Guest arrived early.'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "message": "Guest checked in successfully.",
+            "data": {
+              "id": 1,
+              "reservation_id": 10,
+              "type": "check_in",
+              "performed_at": "2026-09-13T10:30:00.000000Z",
+              "notes": "Guest arrived early.",
+              "performed_by": {
+                "id": 5,
+                "name": "John Doe",
+                "email": "john@example.com"
+              },
+              "created_at": "2026-09-13T10:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 403
+        content: |-
+          {
+            "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+            "message": "The given data was invalid.",
+            "errors": {
+              "reservation": [
+                "Only pending reservations can be checked in."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/operations/check-out
+    metadata:
+      custom: []
+      groupName: Operations(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Check out a guest.'
+      description: |-
+        Checks out a guest with an existing checked-in reservation
+        and makes the occupied room available again.
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      reservation_id:
+        custom: []
+        name: reservation_id
+        description: 'ID of the reservation to check out.'
+        required: true
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      notes:
+        custom: []
+        name: notes
+        description: 'Additional notes about the check-out.'
+        required: false
+        example: 'Guest departed.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      reservation_id: 10
+      notes: 'Guest departed.'
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "message": "Guest checked out successfully.",
+            "data": {
+              "id": 2,
+              "reservation_id": 10,
+              "type": "check_out",
+              "performed_at": "2026-09-15T09:30:00.000000Z",
+              "notes": "Guest departed.",
+              "performed_by": {
+                "id": 5,
+                "name": "John Doe",
+                "email": "john@example.com"
+              },
+              "created_at": "2026-09-15T09:30:00.000000Z"
+            }
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 401
+        content: |-
+          {
+            "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 403
+        content: |-
+          {
+            "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+      -
+        custom: []
+        status: 422
+        content: |-
+          {
+            "message": "The given data was invalid.",
+            "errors": {
+              "reservation": [
+                "Only checked-in reservations can be checked out."
+              ]
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

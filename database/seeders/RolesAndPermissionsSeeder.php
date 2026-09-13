@@ -37,6 +37,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'create reservations',
             'update reservations',
             'delete reservations',
+
+            // Operations
+            'view operations',
+            'create operations',
         ];
 
         foreach ($permissions as $permission) {
@@ -87,6 +91,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'create reservations',
             'update reservations',
             'delete reservations',
+
+            // Operations
+            'view operations',
+            'create operations',
         ]);
 
         $receptionist->givePermissionTo([
@@ -103,6 +111,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'view reservations',
             'create reservations',
             'update reservations',
+
+            // Operations
+            'view operations',
+            'create operations',
         ]);
 
         $user->givePermissionTo([

@@ -119,6 +119,22 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-operationsv1" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="operationsv1">
+                    <a href="#operationsv1">Operations(v1)</a>
+                </li>
+                                    <ul id="tocify-subheader-operationsv1" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="operationsv1-POSTapi-v1-operations-walk-in">
+                                <a href="#operationsv1-POSTapi-v1-operations-walk-in">Walk-in guest.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="operationsv1-POSTapi-v1-operations-check-in">
+                                <a href="#operationsv1-POSTapi-v1-operations-check-in">Check in an existing reservation.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="operationsv1-POSTapi-v1-operations-check-out">
+                                <a href="#operationsv1-POSTapi-v1-operations-check-out">Check out a guest.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-reservationsv1" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="reservationsv1">
                     <a href="#reservationsv1">Reservations(v1)</a>
@@ -194,7 +210,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: September 10, 2026</li>
+        <li>Last updated: September 13, 2026</li>
     </ul>
 </div>
 
@@ -365,7 +381,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"name\": \"vmqeopfuudtdsufvyvddq\",
     \"email\": \"kunde.eloisa@example.com\",
     \"password\": \"consequatur\",
-    \"role\": \"super_admin\"
+    \"role\": \"receptionist\"
 }"
 </code></pre></div>
 
@@ -384,7 +400,7 @@ let body = {
     "name": "vmqeopfuudtdsufvyvddq",
     "email": "kunde.eloisa@example.com",
     "password": "consequatur",
-    "role": "super_admin"
+    "role": "receptionist"
 };
 
 fetch(url, {
@@ -512,10 +528,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="role"                data-endpoint="POSTapi-register"
-               value="super_admin"
+               value="receptionist"
                data-component="body">
     <br>
-<p>Example: <code>super_admin</code></p>
+<p>Example: <code>receptionist</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>super_admin</code></li> <li><code>manager</code></li> <li><code>receptionist</code></li></ul>
         </div>
@@ -2310,6 +2326,768 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="operationsv1">Operations(v1)</h1>
+
+    
+
+                                <h2 id="operationsv1-POSTapi-v1-operations-walk-in">Walk-in guest.</h2>
+
+<p>
+</p>
+
+<p>Creates or reuses a guest, creates a reservation for the selected room,
+and immediately checks the guest in.</p>
+
+<span id="example-requests-POSTapi-v1-operations-walk-in">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/operations/walk-in" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"John\",
+    \"last_name\": \"Doe\",
+    \"id_number\": \"ID123456\",
+    \"phone_number\": \"0712345678\",
+    \"email\": \"john@example.com\",
+    \"country\": \"Kenya\",
+    \"city\": \"Nairobi\",
+    \"address\": \"123 Main Street\",
+    \"room_id\": 5,
+    \"check_in\": \"2026-09-13\",
+    \"check_out\": \"2026-09-15\",
+    \"number_of_guests\": 2,
+    \"notes\": \"Walk-in guest.\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/operations/walk-in"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "John",
+    "last_name": "Doe",
+    "id_number": "ID123456",
+    "phone_number": "0712345678",
+    "email": "john@example.com",
+    "country": "Kenya",
+    "city": "Nairobi",
+    "address": "123 Main Street",
+    "room_id": 5,
+    "check_in": "2026-09-13",
+    "check_out": "2026-09-15",
+    "number_of_guests": 2,
+    "notes": "Walk-in guest."
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-operations-walk-in">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Walk-in completed successfully.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;reservation_id&quot;: 10,
+        &quot;type&quot;: &quot;check_in&quot;,
+        &quot;performed_at&quot;: &quot;2026-09-13T10:30:00.000000Z&quot;,
+        &quot;notes&quot;: &quot;Walk-in guest.&quot;,
+        &quot;performed_by&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;john@example.com&quot;
+        },
+        &quot;created_at&quot;: &quot;2026-09-13T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;room_id&quot;: [
+            &quot;The selected room is not available.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-operations-walk-in" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-operations-walk-in"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-operations-walk-in"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-operations-walk-in" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-operations-walk-in">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-operations-walk-in" data-method="POST"
+      data-path="api/v1/operations/walk-in"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-operations-walk-in', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-operations-walk-in"
+                    onclick="tryItOut('POSTapi-v1-operations-walk-in');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-operations-walk-in"
+                    onclick="cancelTryOut('POSTapi-v1-operations-walk-in');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-operations-walk-in"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/operations/walk-in</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="first_name"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="John"
+               data-component="body">
+    <br>
+<p>Guest first name. Example: <code>John</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="last_name"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="Doe"
+               data-component="body">
+    <br>
+<p>Guest last name. Example: <code>Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id_number"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="ID123456"
+               data-component="body">
+    <br>
+<p>Guest identification number. Example: <code>ID123456</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone_number"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="0712345678"
+               data-component="body">
+    <br>
+<p>Guest phone number. Example: <code>0712345678</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="john@example.com"
+               data-component="body">
+    <br>
+<p>Guest email address. Example: <code>john@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="country"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="Kenya"
+               data-component="body">
+    <br>
+<p>Guest country. Example: <code>Kenya</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="Nairobi"
+               data-component="body">
+    <br>
+<p>Guest city. Example: <code>Nairobi</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="address"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="123 Main Street"
+               data-component="body">
+    <br>
+<p>Guest address. Example: <code>123 Main Street</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>room_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="room_id"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="5"
+               data-component="body">
+    <br>
+<p>ID of the available room. Example: <code>5</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_in</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_in"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="2026-09-13"
+               data-component="body">
+    <br>
+<p>Check-in date. Example: <code>2026-09-13</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>check_out</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="check_out"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="2026-09-15"
+               data-component="body">
+    <br>
+<p>Check-out date. Must be after check_in. Example: <code>2026-09-15</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>number_of_guests</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="number_of_guests"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="2"
+               data-component="body">
+    <br>
+<p>Number of guests. Example: <code>2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTapi-v1-operations-walk-in"
+               value="Walk-in guest."
+               data-component="body">
+    <br>
+<p>Additional notes about the walk-in. Example: <code>Walk-in guest.</code></p>
+        </div>
+        </form>
+
+                    <h2 id="operationsv1-POSTapi-v1-operations-check-in">Check in an existing reservation.</h2>
+
+<p>
+</p>
+
+<p>Checks in a guest with an existing pending reservation.
+The reservation must be pending and the associated room must
+currently have a reserved status.</p>
+
+<span id="example-requests-POSTapi-v1-operations-check-in">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/operations/check-in" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"reservation_id\": 10,
+    \"notes\": \"Guest arrived early.\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/operations/check-in"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reservation_id": 10,
+    "notes": "Guest arrived early."
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-operations-check-in">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Guest checked in successfully.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;reservation_id&quot;: 10,
+        &quot;type&quot;: &quot;check_in&quot;,
+        &quot;performed_at&quot;: &quot;2026-09-13T10:30:00.000000Z&quot;,
+        &quot;notes&quot;: &quot;Guest arrived early.&quot;,
+        &quot;performed_by&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;john@example.com&quot;
+        },
+        &quot;created_at&quot;: &quot;2026-09-13T10:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;reservation&quot;: [
+            &quot;Only pending reservations can be checked in.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-operations-check-in" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-operations-check-in"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-operations-check-in"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-operations-check-in" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-operations-check-in">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-operations-check-in" data-method="POST"
+      data-path="api/v1/operations/check-in"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-operations-check-in', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-operations-check-in"
+                    onclick="tryItOut('POSTapi-v1-operations-check-in');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-operations-check-in"
+                    onclick="cancelTryOut('POSTapi-v1-operations-check-in');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-operations-check-in"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/operations/check-in</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-operations-check-in"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-operations-check-in"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reservation_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reservation_id"                data-endpoint="POSTapi-v1-operations-check-in"
+               value="10"
+               data-component="body">
+    <br>
+<p>ID of the reservation to check in. Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTapi-v1-operations-check-in"
+               value="Guest arrived early."
+               data-component="body">
+    <br>
+<p>Additional notes about the check-in. Example: <code>Guest arrived early.</code></p>
+        </div>
+        </form>
+
+                    <h2 id="operationsv1-POSTapi-v1-operations-check-out">Check out a guest.</h2>
+
+<p>
+</p>
+
+<p>Checks out a guest with an existing checked-in reservation
+and makes the occupied room available again.</p>
+
+<span id="example-requests-POSTapi-v1-operations-check-out">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/operations/check-out" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"reservation_id\": 10,
+    \"notes\": \"Guest departed.\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/operations/check-out"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "reservation_id": 10,
+    "notes": "Guest departed."
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-operations-check-out">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Guest checked out successfully.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 2,
+        &quot;reservation_id&quot;: 10,
+        &quot;type&quot;: &quot;check_out&quot;,
+        &quot;performed_at&quot;: &quot;2026-09-15T09:30:00.000000Z&quot;,
+        &quot;notes&quot;: &quot;Guest departed.&quot;,
+        &quot;performed_by&quot;: {
+            &quot;id&quot;: 5,
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;john@example.com&quot;
+        },
+        &quot;created_at&quot;: &quot;2026-09-15T09:30:00.000000Z&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;This action is unauthorized.&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;reservation&quot;: [
+            &quot;Only checked-in reservations can be checked out.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-operations-check-out" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-operations-check-out"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-operations-check-out"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-operations-check-out" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-operations-check-out">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-operations-check-out" data-method="POST"
+      data-path="api/v1/operations/check-out"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-operations-check-out', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-operations-check-out"
+                    onclick="tryItOut('POSTapi-v1-operations-check-out');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-operations-check-out"
+                    onclick="cancelTryOut('POSTapi-v1-operations-check-out');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-operations-check-out"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/operations/check-out</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-operations-check-out"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-operations-check-out"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reservation_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reservation_id"                data-endpoint="POSTapi-v1-operations-check-out"
+               value="10"
+               data-component="body">
+    <br>
+<p>ID of the reservation to check out. Example: <code>10</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="notes"                data-endpoint="POSTapi-v1-operations-check-out"
+               value="Guest departed."
+               data-component="body">
+    <br>
+<p>Additional notes about the check-out. Example: <code>Guest departed.</code></p>
+        </div>
+        </form>
+
                 <h1 id="reservationsv1">Reservations(v1)</h1>
 
     
@@ -3461,7 +4239,7 @@ Must be one of:
     --form "description=Nice room"\
     --form "is_active="\
     --form "max_occupancy=13"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpE85A.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php8AA3.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3597,7 +4375,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpE85A.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php8AA3.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -3795,9 +4573,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "name=Updated Room"\
     --form "description=Updated description"\
-    --form "is_active="\
+    --form "is_active=1"\
     --form "max_occupancy=13"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpE974.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\php8AD3.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3813,7 +4591,7 @@ const headers = {
 const body = new FormData();
 body.append('name', 'Updated Room');
 body.append('description', 'Updated description');
-body.append('is_active', '');
+body.append('is_active', '1');
 body.append('max_occupancy', '13');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
@@ -3950,7 +4728,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpE974.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\php8AD3.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -3972,7 +4750,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>max_occupancy</code></b>&nbsp;&nbsp;
