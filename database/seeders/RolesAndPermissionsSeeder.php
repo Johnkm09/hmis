@@ -52,32 +52,44 @@ class RolesAndPermissionsSeeder extends Seeder
             'view folios',
             'create folios',
             'update folios',
+
+            // Folio Charges
+            'view folio charges',
+            'create folio charges',
+            'update folio charges',
         ];
 
         foreach ($permissions as $permission) {
             Permission::firstOrCreate([
                 'name' => $permission,
+                'guard_name' => 'web',
             ]);
         }
 
         $superAdmin = Role::firstOrCreate([
             'name' => 'super_admin',
+            'guard_name' => 'web',
         ]);
 
         $manager = Role::firstOrCreate([
             'name' => 'manager',
+            'guard_name' => 'web',
         ]);
 
         $receptionist = Role::firstOrCreate([
             'name' => 'receptionist',
+            'guard_name' => 'web',
         ]);
 
         $user = Role::firstOrCreate([
             'name' => 'user',
+            'guard_name' => 'web',
         ]);
 
+        // Super Admin
         $superAdmin->givePermissionTo($permissions);
 
+        // Manager
         $manager->givePermissionTo([
             // Room Types
             'view room types',
@@ -117,8 +129,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'view folios',
             'create folios',
             'update folios',
+
+            // Folio Charges
+            'view folio charges',
+            'create folio charges',
+            'update folio charges',
         ]);
 
+        // Receptionist
         $receptionist->givePermissionTo([
             // Room Types
             'view room types',
@@ -145,8 +163,13 @@ class RolesAndPermissionsSeeder extends Seeder
             'view folios',
             'create folios',
             'update folios',
+
+            // Folio Charges
+            'view folio charges',
+            'create folio charges',
         ]);
 
+        // User
         $user->givePermissionTo([
             // Room Types
             'view room types',

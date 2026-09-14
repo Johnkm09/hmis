@@ -16,6 +16,8 @@ use App\Models\Service\Service;
 use App\Policies\Service\ServicePolicy;
 use App\Models\Folio\Folio;
 use App\Policies\Folio\FolioPolicy;
+use App\Models\Folio\FolioCharge;
+use App\Policies\Folio\FolioChargePolicy;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -29,6 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         Operation::class => OperationPolicy::class,
         Service::class => ServicePolicy::class,
         Folio::class => FolioPolicy::class,
+        FolioCharge::class => FolioChargePolicy::class,
     ];
 
     public function boot(): void
