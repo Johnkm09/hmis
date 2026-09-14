@@ -5,6 +5,7 @@ namespace App\Models\Folio;
 use App\Models\Reservation\Reservation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Folio\FolioCharge;
 
 class Folio extends Model
 {
@@ -28,5 +29,10 @@ class Folio extends Model
     public function reservation()
     {
         return $this->belongsTo(Reservation::class);
+    }
+
+    public function charges()
+    {
+        return $this->hasMany(FolioCharge::class);
     }
 }
