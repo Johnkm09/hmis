@@ -47,6 +47,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'create services',
             'update services',
             'delete services',
+
+            // Folios
+            'view folios',
+            'create folios',
+            'update folios',
         ];
 
         foreach ($permissions as $permission) {
@@ -107,6 +112,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'create services',
             'update services',
             'delete services',
+
+            // Folios
+            'view folios',
+            'create folios',
+            'update folios',
         ]);
 
         $receptionist->givePermissionTo([
@@ -130,6 +140,11 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Services
             'view services',
+
+            // Folios
+            'view folios',
+            'create folios',
+            'update folios',
         ]);
 
         $user->givePermissionTo([
