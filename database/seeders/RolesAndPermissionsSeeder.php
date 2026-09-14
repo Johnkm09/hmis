@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
 class RolesAndPermissionsSeeder extends Seeder
@@ -41,28 +41,34 @@ class RolesAndPermissionsSeeder extends Seeder
             // Operations
             'view operations',
             'create operations',
+
+            // Services
+            'view services',
+            'create services',
+            'update services',
+            'delete services',
         ];
 
         foreach ($permissions as $permission) {
             Permission::firstOrCreate([
-                'name' => $permission
+                'name' => $permission,
             ]);
         }
 
         $superAdmin = Role::firstOrCreate([
-            'name' => 'super_admin'
+            'name' => 'super_admin',
         ]);
 
         $manager = Role::firstOrCreate([
-            'name' => 'manager'
+            'name' => 'manager',
         ]);
 
         $receptionist = Role::firstOrCreate([
-            'name' => 'receptionist'
+            'name' => 'receptionist',
         ]);
 
         $user = Role::firstOrCreate([
-            'name' => 'user'
+            'name' => 'user',
         ]);
 
         $superAdmin->givePermissionTo($permissions);
@@ -95,6 +101,12 @@ class RolesAndPermissionsSeeder extends Seeder
             // Operations
             'view operations',
             'create operations',
+
+            // Services
+            'view services',
+            'create services',
+            'update services',
+            'delete services',
         ]);
 
         $receptionist->givePermissionTo([
@@ -115,6 +127,9 @@ class RolesAndPermissionsSeeder extends Seeder
             // Operations
             'view operations',
             'create operations',
+
+            // Services
+            'view services',
         ]);
 
         $user->givePermissionTo([
@@ -129,6 +144,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Reservations
             'view reservations',
+
+            // Services
+            'view services',
         ]);
     }
 }
