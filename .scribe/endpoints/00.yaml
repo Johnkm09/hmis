@@ -103,7 +103,7 @@ endpoints:
         name: role
         description: ''
         required: false
-        example: super_admin
+        example: manager
         type: string
         enumValues:
           - super_admin
@@ -116,7 +116,7 @@ endpoints:
       name: vmqeopfuudtdsufvyvddq
       email: kunde.eloisa@example.com
       password: consequatur
-      role: super_admin
+      role: manager
     fileParameters: []
     responses: []
     responseFields: []

@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\Guest\GuestController;
 use App\Http\Controllers\Api\V1\Reservation\ReservationController;
 use App\Http\Controllers\Api\V1\Operation\OperationController;
 use App\Http\Controllers\Api\V1\Service\ServiceController;
+use App\Http\Controllers\Api\V1\Folio\FolioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::prefix('v1')->group(function () {
             Route::post('/check-out', [OperationController::class, 'checkOut']);
         });
         Route::apiResource('services', ServiceController::class);
+        Route::post('reservations/{reservation}/folio', [FolioController::class, 'store']);
+        Route::get('reservations/{reservation}/folio', [FolioController::class, 'byReservation']);
+        Route::get('folios/{folio}', [FolioController::class, 'show']);
+        Route::post('folios/{folio}/close', [FolioController::class, 'close']);
     });
 });
 

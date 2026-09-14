@@ -4,6 +4,7 @@ namespace App\Models\Reservation;
 
 use App\Models\Guest\Guest;
 use App\Models\Room\Room;
+use App\Models\Folio;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,5 +43,10 @@ class Reservation extends Model
     public function room()
     {
         return $this->belongsTo(Room::class);
+    }
+
+    public function folio()
+    {
+        return $this->hasOne(Folio::class);
     }
 }
