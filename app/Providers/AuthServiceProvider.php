@@ -12,6 +12,8 @@ use App\Models\Reservation\Reservation;
 use App\Policies\Reservation\ReservationPolicy;
 use App\Policies\Operation\OperationPolicy;
 use App\Models\Contract\Operation;
+use App\Models\Service\Service;
+use App\Policies\Service\ServicePolicy;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -23,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Guest::class => GuestPolicy::class,
         Reservation::class => ReservationPolicy::class,
         Operation::class => OperationPolicy::class,
+        Service::class => ServicePolicy::class,
     ];
 
     public function boot(): void
