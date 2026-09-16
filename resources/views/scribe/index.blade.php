@@ -192,6 +192,25 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-refunds" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="refunds">
+                    <a href="#refunds">Refunds</a>
+                </li>
+                                    <ul id="tocify-subheader-refunds" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="refunds-GETapi-v1-payments--payment_id--refunds">
+                                <a href="#refunds-GETapi-v1-payments--payment_id--refunds">Display a list of refunds for a payment.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="refunds-POSTapi-v1-payments--payment_id--refunds">
+                                <a href="#refunds-POSTapi-v1-payments--payment_id--refunds">Create a refund against a payment.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="refunds-GETapi-v1-refunds--id-">
+                                <a href="#refunds-GETapi-v1-refunds--id-">Display a refund.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="refunds-PATCHapi-v1-refunds--id-">
+                                <a href="#refunds-PATCHapi-v1-refunds--id-">Update a refund.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-reservationsv1" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="reservationsv1">
                     <a href="#reservationsv1">Reservations(v1)</a>
@@ -5183,6 +5202,692 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
+                <h1 id="refunds">Refunds</h1>
+
+    
+
+                                <h2 id="refunds-GETapi-v1-payments--payment_id--refunds">Display a list of refunds for a payment.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-payments--payment_id--refunds">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/payments/17/refunds" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/payments/17/refunds"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-payments--payment_id--refunds">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-payments--payment_id--refunds" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-payments--payment_id--refunds"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-payments--payment_id--refunds"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-payments--payment_id--refunds" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-payments--payment_id--refunds">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-payments--payment_id--refunds" data-method="GET"
+      data-path="api/v1/payments/{payment_id}/refunds"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-payments--payment_id--refunds', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-payments--payment_id--refunds"
+                    onclick="tryItOut('GETapi-v1-payments--payment_id--refunds');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-payments--payment_id--refunds"
+                    onclick="cancelTryOut('GETapi-v1-payments--payment_id--refunds');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-payments--payment_id--refunds"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/payments/{payment_id}/refunds</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-payments--payment_id--refunds"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-payments--payment_id--refunds"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>payment_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="payment_id"                data-endpoint="GETapi-v1-payments--payment_id--refunds"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the payment. Example: <code>17</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>payment</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="payment"                data-endpoint="GETapi-v1-payments--payment_id--refunds"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the payment. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="refunds-POSTapi-v1-payments--payment_id--refunds">Create a refund against a payment.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-payments--payment_id--refunds">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/payments/17/refunds" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 11613.31890586,
+    \"reason\": \"consequatur\",
+    \"status\": \"completed\",
+    \"transaction_reference\": \"consequatur\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/payments/17/refunds"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 11613.31890586,
+    "reason": "consequatur",
+    "status": "completed",
+    "transaction_reference": "consequatur"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-payments--payment_id--refunds">
+            <blockquote>
+            <p>Example response (201):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {}
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-payments--payment_id--refunds" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-payments--payment_id--refunds"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-payments--payment_id--refunds"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-payments--payment_id--refunds" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-payments--payment_id--refunds">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-payments--payment_id--refunds" data-method="POST"
+      data-path="api/v1/payments/{payment_id}/refunds"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-payments--payment_id--refunds', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-payments--payment_id--refunds"
+                    onclick="tryItOut('POSTapi-v1-payments--payment_id--refunds');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-payments--payment_id--refunds"
+                    onclick="cancelTryOut('POSTapi-v1-payments--payment_id--refunds');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-payments--payment_id--refunds"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/payments/{payment_id}/refunds</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>payment_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="payment_id"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the payment. Example: <code>17</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>payment</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="payment"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="17"
+               data-component="url">
+    <br>
+<p>The ID of the payment. Example: <code>17</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="11613.31890586"
+               data-component="body">
+    <br>
+<p>Refund amount. Example: <code>11613.31890586</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="reason"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Reason for the refund. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="completed"
+               data-component="body">
+    <br>
+<p>Refund status. Example: <code>completed</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_reference</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_reference"                data-endpoint="POSTapi-v1-payments--payment_id--refunds"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Optional refund transaction reference. Example: <code>consequatur</code></p>
+        </div>
+        </form>
+
+                    <h2 id="refunds-GETapi-v1-refunds--id-">Display a refund.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-refunds--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/refunds/17" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/refunds/17"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-refunds--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {}
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-refunds--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-refunds--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-refunds--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-refunds--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-refunds--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-refunds--id-" data-method="GET"
+      data-path="api/v1/refunds/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-refunds--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-refunds--id-"
+                    onclick="tryItOut('GETapi-v1-refunds--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-refunds--id-"
+                    onclick="cancelTryOut('GETapi-v1-refunds--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-refunds--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/refunds/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-refunds--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-refunds--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-v1-refunds--id-"
+               value="17"
+               data-component="url">
+    <br>
+<p>The refund ID. Example: <code>17</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="refunds-PATCHapi-v1-refunds--id-">Update a refund.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PATCHapi-v1-refunds--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PATCH \
+    "http://localhost:8000/api/v1/refunds/17" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 11613.31890586,
+    \"reason\": \"consequatur\",
+    \"status\": \"consequatur\",
+    \"transaction_reference\": \"consequatur\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/refunds/17"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 11613.31890586,
+    "reason": "consequatur",
+    "status": "consequatur",
+    "transaction_reference": "consequatur"
+};
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PATCHapi-v1-refunds--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: {}
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PATCHapi-v1-refunds--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-v1-refunds--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-v1-refunds--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PATCHapi-v1-refunds--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-v1-refunds--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-PATCHapi-v1-refunds--id-" data-method="PATCH"
+      data-path="api/v1/refunds/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-v1-refunds--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-v1-refunds--id-"
+                    onclick="tryItOut('PATCHapi-v1-refunds--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-v1-refunds--id-"
+                    onclick="cancelTryOut('PATCHapi-v1-refunds--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-v1-refunds--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/v1/refunds/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="17"
+               data-component="url">
+    <br>
+<p>The refund ID. Example: <code>17</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="11613.31890586"
+               data-component="body">
+    <br>
+<p>Optional Refund amount. Example: <code>11613.31890586</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="reason"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Optional reason for the refund. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Optional Refund status. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>transaction_reference</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="transaction_reference"                data-endpoint="PATCHapi-v1-refunds--id-"
+               value="consequatur"
+               data-component="body">
+    <br>
+<p>Optional refund transaction reference. Example: <code>consequatur</code></p>
+        </div>
+        </form>
+
                 <h1 id="reservationsv1">Reservations(v1)</h1>
 
     
@@ -6138,7 +6843,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"filter\": {
         \"name\": \"vmqeopfuudtdsufvyvddq\"
     },
-    \"sort\": \"-name\",
+    \"sort\": \"created_at\",
     \"per_page\": 1
 }"
 </code></pre></div>
@@ -6158,7 +6863,7 @@ let body = {
     "filter": {
         "name": "vmqeopfuudtdsufvyvddq"
     },
-    "sort": "-name",
+    "sort": "created_at",
     "per_page": 1
 };
 
@@ -6292,10 +6997,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="sort"                data-endpoint="GETapi-v1-room-types"
-               value="-name"
+               value="created_at"
                data-component="body">
     <br>
-<p>Example: <code>-name</code></p>
+<p>Example: <code>created_at</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>name</code></li> <li><code>created_at</code></li> <li><code>-name</code></li> <li><code>-created_at</code></li></ul>
         </div>
@@ -6332,9 +7037,9 @@ Must be one of:
     --header "Accept: application/json" \
     --form "name=Deluxe Room"\
     --form "description=Nice room"\
-    --form "is_active="\
+    --form "is_active=1"\
     --form "max_occupancy=13"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpCECA.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpF5F8.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6350,7 +7055,7 @@ const headers = {
 const body = new FormData();
 body.append('name', 'Deluxe Room');
 body.append('description', 'Nice room');
-body.append('is_active', '');
+body.append('is_active', '1');
 body.append('max_occupancy', '13');
 body.append('image', document.querySelector('input[name="image"]').files[0]);
 
@@ -6470,7 +7175,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpCECA.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpF5F8.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;
@@ -6492,7 +7197,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>max_occupancy</code></b>&nbsp;&nbsp;
@@ -6670,7 +7375,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "description=Updated description"\
     --form "is_active=1"\
     --form "max_occupancy=13"\
-    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpD051.tmp" </code></pre></div>
+    --form "image=@C:\Users\Administrator\AppData\Local\Temp\phpF7DD.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6823,7 +7528,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpD051.tmp</code></p>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Administrator\AppData\Local\Temp\phpF7DD.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_active</code></b>&nbsp;&nbsp;

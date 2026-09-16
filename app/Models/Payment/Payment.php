@@ -40,4 +40,9 @@ class Payment extends Model
     {
         return $this->belongsTo(User::class, 'received_by');
     }
+
+    public function refunds()
+    {
+        return $this->hasMany(Refund::class);
+    }
 }
