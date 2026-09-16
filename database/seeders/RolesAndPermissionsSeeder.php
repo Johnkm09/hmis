@@ -57,6 +57,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'view folio charges',
             'create folio charges',
             'update folio charges',
+
+            // Payments
+            'view payments',
+            'create payments',
+            'update payments',
         ];
 
         foreach ($permissions as $permission) {
@@ -134,6 +139,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'view folio charges',
             'create folio charges',
             'update folio charges',
+
+            // Payments
+            'view payments',
+            'create payments',
+            'update payments',
         ]);
 
         // Receptionist
@@ -167,6 +177,10 @@ class RolesAndPermissionsSeeder extends Seeder
             // Folio Charges
             'view folio charges',
             'create folio charges',
+
+            // Payments
+            'view payments',
+            'create payments',
         ]);
 
         // User

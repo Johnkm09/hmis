@@ -18,6 +18,8 @@ use App\Repositories\Folio\FolioRepositoryInterface;
 use App\Repositories\Folio\FolioRepository;
 use App\Repositories\Folio\FolioChargeRepository;
 use App\Repositories\Folio\FolioChargeRepositoryInterface;
+use App\Repositories\Payment\PaymentRepository;
+use App\Repositories\Payment\PaymentRepositoryInterface;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
         $this->app->bind(FolioRepositoryInterface::class, FolioRepository::class);
         $this->app->bind(FolioChargeRepositoryInterface::class, FolioChargeRepository::class);
+        $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
     }
 
     /**
