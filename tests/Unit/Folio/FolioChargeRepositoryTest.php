@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Repositories\Folio;
+namespace Tests\Unit\Folio;
 
 use App\Models\Folio\Folio;
 use App\Models\Folio\FolioCharge;

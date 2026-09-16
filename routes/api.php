@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\V1\Operation\OperationController;
 use App\Http\Controllers\Api\V1\Service\ServiceController;
 use App\Http\Controllers\Api\V1\Folio\FolioController;
 use App\Http\Controllers\Api\V1\Folio\FolioChargeController;
+use App\Http\Controllers\Api\V1\Payment\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,10 @@ Route::prefix('v1')->group(function () {
         Route::post('folios/{folio}/charges', [FolioChargeController::class, 'store']);
         Route::get('folio-charges/{id}', [FolioChargeController::class, 'show']);
         Route::put('folio-charges/{id}', [FolioChargeController::class, 'update']);
+        Route::get('folios/{folio}/payments', [PaymentController::class, 'index']);
+        Route::post('folios/{folio}/payments', [PaymentController::class, 'store']);
+        Route::get('payments/{id}', [PaymentController::class, 'show']);
+        Route::patch('payments/{id}', [PaymentController::class, 'update']);
     });
 });
 

@@ -6,6 +6,7 @@ use App\Models\Reservation\Reservation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Folio\FolioCharge;
+use App\Models\Payment\Payment;
 
 class Folio extends Model
 {
@@ -34,5 +35,10 @@ class Folio extends Model
     public function charges()
     {
         return $this->hasMany(FolioCharge::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }
