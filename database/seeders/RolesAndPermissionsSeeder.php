@@ -62,6 +62,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'view payments',
             'create payments',
             'update payments',
+
+            // Refunds
+            'view refunds',
+            'create refunds',
+            'update refunds',
         ];
 
         foreach ($permissions as $permission) {
@@ -144,6 +149,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'view payments',
             'create payments',
             'update payments',
+
+            // Refunds
+            'view refunds',
+            'create refunds',
+            'update refunds',
         ]);
 
         // Receptionist
@@ -181,6 +191,10 @@ class RolesAndPermissionsSeeder extends Seeder
             // Payments
             'view payments',
             'create payments',
+
+            // Refunds
+            'view refunds',
+            'create refunds',
         ]);
 
         // User
