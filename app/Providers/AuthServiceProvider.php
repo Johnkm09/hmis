@@ -24,6 +24,8 @@ use App\Models\Payment\Refund;
 use App\Policies\Payment\RefundPolicy;
 use App\Models\Payment\Invoice;
 use App\Policies\Payment\InvoicePolicy;
+use App\Models\Payment\Receipt;
+use App\Policies\Payment\ReceiptPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -40,6 +42,7 @@ class AuthServiceProvider extends ServiceProvider
         Payment::class => PaymentPolicy::class,
         Refund::class => RefundPolicy::class,
         Invoice::class => InvoicePolicy::class,
+        Receipt::class => ReceiptPolicy::class,
     ];
 
     public function boot(): void

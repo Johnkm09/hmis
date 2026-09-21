@@ -1,0 +1,327 @@
+name: Invoices(v1)
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/v1/invoices
+    metadata:
+      custom: []
+      groupName: Invoices(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get all invoices list'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      'filter[status]':
+        custom: []
+        name: 'filter[status]'
+        description: 'Filter by invoice status.'
+        required: false
+        example: issued
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'filter[folio_id]':
+        custom: []
+        name: 'filter[folio_id]'
+        description: 'Filter by folio ID.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      'filter[invoice_number]':
+        custom: []
+        name: 'filter[invoice_number]'
+        description: 'Filter by invoice number.'
+        required: false
+        example: '000001'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      sort:
+        custom: []
+        name: sort
+        description: 'Sort invoices. Prefix with - for descending order.'
+        required: false
+        example: '-created_at'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      'filter[status]': issued
+      'filter[folio_id]': 1
+      'filter[invoice_number]': '000001'
+      sort: '-created_at'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: 'http://localhost:3000'
+          access-control-allow-credentials: 'true'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/invoices
+    metadata:
+      custom: []
+      groupName: Invoices(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create an invoice'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      folio_id:
+        custom: []
+        name: folio_id
+        description: 'The ID of the folio to invoice.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      tax_amount:
+        custom: []
+        name: tax_amount
+        description: 'optional The tax amount.'
+        required: false
+        example: 3000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      discount_amount:
+        custom: []
+        name: discount_amount
+        description: 'optional The discount amount.'
+        required: false
+        example: 1000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Invoice status.'
+        required: true
+        example: issued
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      notes:
+        custom: []
+        name: notes
+        description: 'optional Invoice notes.'
+        required: false
+        example: 'Final guest invoice'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      folio_id: 1
+      tax_amount: 3000.0
+      discount_amount: 1000.0
+      status: issued
+      notes: 'Final guest invoice'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/v1/invoices/{id}'
+    metadata:
+      custom: []
+      groupName: Invoices(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a single invoice'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the invoice.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: 'http://localhost:3000'
+          access-control-allow-credentials: 'true'
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PATCH
+    uri: 'api/v1/invoices/{id}'
+    metadata:
+      custom: []
+      groupName: Invoices(v1)
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an invoice'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the invoice.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      tax_amount:
+        custom: []
+        name: tax_amount
+        description: 'The tax amount.'
+        required: false
+        example: 3000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      discount_amount:
+        custom: []
+        name: discount_amount
+        description: 'The discount amount.'
+        required: false
+        example: 1000.0
+        type: number
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'The invoice status.'
+        required: false
+        example: paid
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      notes:
+        custom: []
+        name: notes
+        description: 'Invoice notes.'
+        required: false
+        example: 'Invoice settled'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      tax_amount: 3000.0
+      discount_amount: 1000.0
+      status: paid
+      notes: 'Invoice settled'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null

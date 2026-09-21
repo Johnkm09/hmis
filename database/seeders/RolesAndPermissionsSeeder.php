@@ -73,6 +73,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'create invoices',
             'update invoices',
             'delete invoices',
+
+            // Receipts
+            'view receipts',
+            'create receipts',
+            'update receipts',
+            'delete receipts',
         ];
 
         foreach ($permissions as $permission) {
@@ -166,6 +172,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'create invoices',
             'update invoices',
             'delete invoices',
+
+            // Receipts
+            'view receipts',
+            'create receipts',
+            'update receipts',
+            'delete receipts',
         ]);
 
         // Receptionist
@@ -211,6 +223,10 @@ class RolesAndPermissionsSeeder extends Seeder
             // Invoices
             'view invoices',
             'create invoices',
+
+            // Receipts
+            'view receipts',
+            'create receipts',
         ]);
 
         // User
