@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\V1\Folio\FolioController;
 use App\Http\Controllers\Api\V1\Folio\FolioChargeController;
 use App\Http\Controllers\Api\V1\Payment\PaymentController;
 use App\Http\Controllers\Api\V1\Payment\RefundController;
+use App\Http\Controllers\Api\V1\Payment\InvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,10 @@ Route::prefix('v1')->group(function () {
         Route::post('payments/{payment}/refunds', [RefundController::class, 'store']);
         Route::get('refunds/{id}', [RefundController::class, 'show']);
         Route::patch('refunds/{id}', [RefundController::class, 'update']);
+        Route::get('invoices', [InvoiceController::class, 'index']);
+        Route::post('invoices', [InvoiceController::class, 'store']);
+        Route::get('invoices/{id}', [InvoiceController::class, 'show']);
+        Route::patch('invoices/{id}', [InvoiceController::class, 'update']);
     });
 });
 
