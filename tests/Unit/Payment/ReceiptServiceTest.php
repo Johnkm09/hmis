@@ -4,8 +4,8 @@ use App\Models\Payment\Payment;
 use App\Models\Payment\Receipt;
 use App\Models\User;
 use App\Services\ReceiptService;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Validation\ValidationException;
 
 uses(RefreshDatabase::class);
 
@@ -63,7 +63,7 @@ test('service rejects receipt for pending payment', function () {
         'payment_id' => $payment->id,
     ]))->toThrow(
         ValidationException::class,
-        'A receipt can only be issued for a completed payment.'
+        'Receipt can only be created for a completed payment.'
     );
 });
 
@@ -78,7 +78,7 @@ test('service rejects receipt for failed payment', function () {
         'payment_id' => $payment->id,
     ]))->toThrow(
         ValidationException::class,
-        'A receipt can only be issued for a completed payment.'
+        'Receipt can only be created for a completed payment.'
     );
 });
 
@@ -97,7 +97,7 @@ test('service rejects duplicate receipt for payment', function () {
         'payment_id' => $payment->id,
     ]))->toThrow(
         ValidationException::class,
-        'This payment already has a receipt.'
+        'Payment already has a receipt.'
     );
 });
 
