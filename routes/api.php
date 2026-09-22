@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\Payment\PaymentController;
 use App\Http\Controllers\Api\V1\Payment\RefundController;
 use App\Http\Controllers\Api\V1\Payment\InvoiceController;
 use App\Http\Controllers\Api\V1\Payment\ReceiptController;
+use App\Http\Controllers\Api\V1\Payment\MpesaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -55,7 +56,11 @@ Route::prefix('v1')->group(function () {
         Route::post('receipts', [ReceiptController::class, 'store']);
         Route::get('receipts/{id}', [ReceiptController::class, 'show']);
         Route::patch('receipts/{id}', [ReceiptController::class, 'update']);
+
+        Route::post('mpesa/stk-push', [MpesaController::class, 'stkPush']);
+        Route::post('mpesa/query/{payment}', [MpesaController::class, 'query']);
     });
+    Route::post('mpesa/callback', [MpesaController::class, 'callback']);
 });
 
 require __DIR__ . '/auth.php';
