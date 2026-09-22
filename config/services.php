@@ -44,4 +44,9 @@ return [
         'callback_url' => env('MPESA_CALLBACK_URL'),
     ],
 
+    'stripe' => [
+        'secret' => env('STRIPE_SECRET'),
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+
 ];
