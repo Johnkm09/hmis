@@ -4,7 +4,7 @@ namespace App\Models\Reservation;
 
 use App\Models\Guest\Guest;
 use App\Models\Room\Room;
-use App\Models\Folio;
+use App\Models\Folio\Folio;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

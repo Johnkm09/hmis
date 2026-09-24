@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\V1\Payment\InvoiceController;
 use App\Http\Controllers\Api\V1\Payment\ReceiptController;
 use App\Http\Controllers\Api\V1\Payment\MpesaController;
 use App\Http\Controllers\Api\V1\Payment\StripeController;
+use App\Http\Controllers\Api\V1\Reports\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,11 +58,15 @@ Route::prefix('v1')->group(function () {
         Route::post('receipts', [ReceiptController::class, 'store']);
         Route::get('receipts/{id}', [ReceiptController::class, 'show']);
         Route::patch('receipts/{id}', [ReceiptController::class, 'update']);
-
         Route::post('mpesa/stk-push', [MpesaController::class, 'stkPush']);
         Route::post('mpesa/query/{payment}', [MpesaController::class, 'query']);
-
         Route::post('stripe/payment-intent', [StripeController::class, 'createPaymentIntent']);
+        Route::prefix('reports')->group(function () {
+            Route::get('/revenue', [ReportController::class, 'revenue']);
+            Route::get('/occupancy', [ReportController::class, 'occupancy']);
+            Route::get('/reservations', [ReportController::class, 'reservations']);
+            Route::get('/payments', [ReportController::class, 'payments']);
+        });
     });
     Route::post('stripe/webhook', [StripeController::class, 'webhook']);
     Route::post('mpesa/callback', [MpesaController::class, 'callback']);
