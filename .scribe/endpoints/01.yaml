@@ -51,7 +51,7 @@ endpoints:
         name: sort
         description: ''
         required: false
-        example: '-name'
+        example: name
         type: string
         enumValues:
           - name
@@ -75,7 +75,7 @@ endpoints:
     cleanBodyParameters:
       filter:
         name: vmqeopfuudtdsufvyvddq
-      sort: '-name'
+      sort: name
       per_page: 1
     fileParameters: []
     responses:
@@ -155,7 +155,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -175,7 +175,7 @@ endpoints:
     cleanBodyParameters:
       name: 'Deluxe Room'
       description: 'Nice room'
-      is_active: true
+      is_active: false
       max_occupancy: 13
     fileParameters:
       image: null
@@ -312,7 +312,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -332,7 +332,7 @@ endpoints:
     cleanBodyParameters:
       name: 'Updated Room'
       description: 'Updated description'
-      is_active: false
+      is_active: true
       max_occupancy: 13
     fileParameters:
       image: null

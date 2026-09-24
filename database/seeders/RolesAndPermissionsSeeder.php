@@ -79,6 +79,9 @@ class RolesAndPermissionsSeeder extends Seeder
             'create receipts',
             'update receipts',
             'delete receipts',
+
+            // Reports
+            'view reports',
         ];
 
         foreach ($permissions as $permission) {
@@ -178,6 +181,9 @@ class RolesAndPermissionsSeeder extends Seeder
             'create receipts',
             'update receipts',
             'delete receipts',
+
+            // Reports
+            'view reports',
         ]);
 
         // Receptionist
