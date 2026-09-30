@@ -611,8 +611,8 @@ Merge
 
 The screenshots below provide visual evidence of the implemented API workflows.
 
-## 🔐 Authentication Screenshots
-
+<details>
+<summary><strong>## 🔐 Authentication Screenshots</strong></summary>
 <table>
   <tr>
     <td align="center">
@@ -698,7 +698,7 @@ The screenshots below provide visual evidence of the implemented API workflows.
     </td>
   </tr>
 </table>
-
+</details>
 ## 🏨 Hotel Setup Screenshots
 
 Screenshots for room types and room management will be added here as the Hotel Setup module is completed.
