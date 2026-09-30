@@ -1,6 +1,6 @@
 # 🏨 Hotel Management Information System (HMIS) API
 
-A production-grade Hotel Management Information System REST API built with Laravel for managing hotel operations, including rooms, guests, reservations, check-in and check-out, billing, payments, and reporting.
+A Hotel Management Information System REST API built with Laravel for managing hotel operations, including rooms, guests, reservations, check-in and check-out, billing, payments, and reporting.
 
 The system follows a layered backend architecture with clear separation between HTTP handling, authorization, validation, business logic, persistence, data integrity, testing, documentation, CI/CD, and infrastructure.
 
@@ -20,6 +20,8 @@ The system follows a layered backend architecture with clear separation between 
 * [Security](#security)
 * [Technology Stack](#technology-stack)
 * [Local Development](#local-development)
+* [Visual Evidence](#visual-evidence)
+
 
 ---
 
@@ -604,3 +606,81 @@ Merge
 ```
 
 </details>
+
+# 👁️ Visual Evidence
+
+The screenshots below provide visual evidence of the implemented API workflows.
+
+## 🔐 Authentication Screenshots
+
+### 01 — User Registration
+
+![User Registration](docs/screenshots/authentication/01-register-user.png)
+
+### 02 — Email Verification Queued
+
+![Email Verification Queued](docs/screenshots/authentication/02-email-verification-queue.png)
+
+### 03 — Verification Email
+
+![Verification Email](docs/screenshots/authentication/03-verification-email.png)
+
+### 04 — Verified Email
+
+![Verified Email](docs/screenshots/authentication/04-verified-email.png)
+
+### 05 — User Login
+
+![User Login](docs/screenshots/authentication/05-login-user.png)
+
+### 06 — Logout
+
+![Logout](docs/screenshots/authentication/06-logout.png)
+
+### 07 — Forgot Password
+
+![Forgot Password](docs/screenshots/authentication/07-forgot-password.png)
+
+### 08 — Password Reset Queued
+
+![Password Reset Queued](docs/screenshots/authentication/08-queued-password-reset.png)
+
+### 09 — Password Reset Email
+
+![Password Reset Email](docs/screenshots/authentication/09-password-reset-email.png)
+
+### 10 — Password Reset
+
+![Password Reset](docs/screenshots/authentication/10-reset-password.png)
+
+### 11 — Old Password Rejected
+
+![Old Password Rejected](docs/screenshots/authentication/11-failed-old-password.png)
+
+### 12 — New Password Accepted
+
+![New Password Accepted](docs/screenshots/authentication/12-new-password-success.png)
+
+## 🏨 Hotel Setup Screenshots
+
+Screenshots for room types and room management will be added here as the Hotel Setup module is completed.
+
+## 👤 Guest Screenshots
+
+Screenshots for guest management will be added here as the Guest module is completed.
+
+## 📅 Reservation Screenshots
+
+Screenshots for reservation creation, availability and reservation workflows will be added here as the Reservation module is completed.
+
+## 🔄 Operations Screenshots
+
+Screenshots for walk-in, check-in and check-out workflows will be added here as the Operations module is completed.
+
+## 💳 Billing Screenshots
+
+Screenshots for folios, charges, payments, refunds, invoices and receipts will be added here as the Billing module is completed.
+
+## 📊 Reporting Screenshots
+
+Screenshots for revenue, occupancy, reservation and payment reports will be added here as the Reporting module is completed.
