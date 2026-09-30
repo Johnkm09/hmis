@@ -613,10 +613,6 @@ The screenshots below provide visual evidence of the implemented API workflows.
 
 ## 🔐 Authentication Screenshots
 
-### 01 — User Registration
-
-## 🔐 Authentication Screenshots
-
 <table>
   <tr>
     <td align="center">
