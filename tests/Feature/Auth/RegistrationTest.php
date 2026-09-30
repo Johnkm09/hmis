@@ -1,4 +1,5 @@
 <?php
+
 use Spatie\Permission\Models\Role;
 
 test('new users can register', function () {
@@ -13,5 +14,5 @@ test('new users can register', function () {
     ]);
 
     $response
-        ->assertOk();
+        ->assertCreated();
 });

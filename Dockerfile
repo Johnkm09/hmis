@@ -23,26 +23,23 @@ RUN apt-get update && apt-get install -y \
 # Enable Apache rewrite
 RUN a2enmod rewrite
 
-# Install Composer
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Application directory
 WORKDIR /var/www/html
 
-# Copy project
-COPY . .
+# Copy only composer files for vendor installation
+COPY composer.json composer.lock ./
 
-# Install Laravel dependencies
 RUN composer install \
     --no-interaction \
     --prefer-dist \
-    --optimize-autoloader
+    --no-scripts
 
-# Laravel permissions
-RUN chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+# The application source is mounted by docker-compose,
+# so we do NOT COPY the project here.
 
-# Apache document root -> Laravel public
+# Apache document root
 RUN sed -ri \
     -e 's!/var/www/html!/var/www/html/public!g' \
     /etc/apache2/sites-available/000-default.conf \

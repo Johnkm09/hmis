@@ -28,39 +28,54 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('rooms', RoomController::class);
         Route::apiResource('guests', GuestController::class);
         Route::apiResource('reservations', ReservationController::class);
+
         Route::prefix('operations')->group(function () {
             Route::post('/walk-in', [OperationController::class, 'walkIn']);
             Route::post('/check-in', [OperationController::class, 'checkIn']);
             Route::post('/check-out', [OperationController::class, 'checkOut']);
         });
+
         Route::apiResource('services', ServiceController::class);
+
         Route::post('reservations/{reservation}/folio', [FolioController::class, 'store']);
         Route::get('reservations/{reservation}/folio', [FolioController::class, 'byReservation']);
+
         Route::get('folios/{folio}', [FolioController::class, 'show']);
         Route::post('folios/{folio}/close', [FolioController::class, 'close']);
+
         Route::get('folios/{folio}/charges', [FolioChargeController::class, 'index']);
         Route::post('folios/{folio}/charges', [FolioChargeController::class, 'store']);
+
         Route::get('folio-charges/{id}', [FolioChargeController::class, 'show']);
         Route::put('folio-charges/{id}', [FolioChargeController::class, 'update']);
+
         Route::get('folios/{folio}/payments', [PaymentController::class, 'index']);
         Route::post('folios/{folio}/payments', [PaymentController::class, 'store']);
+
         Route::get('payments/{id}', [PaymentController::class, 'show']);
         Route::patch('payments/{id}', [PaymentController::class, 'update']);
+
         Route::get('payments/{payment}/refunds', [RefundController::class, 'index']);
         Route::post('payments/{payment}/refunds', [RefundController::class, 'store']);
+
         Route::get('refunds/{id}', [RefundController::class, 'show']);
         Route::patch('refunds/{id}', [RefundController::class, 'update']);
+
         Route::get('invoices', [InvoiceController::class, 'index']);
         Route::post('invoices', [InvoiceController::class, 'store']);
         Route::get('invoices/{id}', [InvoiceController::class, 'show']);
         Route::patch('invoices/{id}', [InvoiceController::class, 'update']);
+
         Route::get('receipts', [ReceiptController::class, 'index']);
         Route::post('receipts', [ReceiptController::class, 'store']);
         Route::get('receipts/{id}', [ReceiptController::class, 'show']);
         Route::patch('receipts/{id}', [ReceiptController::class, 'update']);
+
         Route::post('mpesa/stk-push', [MpesaController::class, 'stkPush']);
         Route::post('mpesa/query/{payment}', [MpesaController::class, 'query']);
+
         Route::post('stripe/payment-intent', [StripeController::class, 'createPaymentIntent']);
+
         Route::prefix('reports')->group(function () {
             Route::get('/revenue', [ReportController::class, 'revenue']);
             Route::get('/occupancy', [ReportController::class, 'occupancy']);
@@ -68,6 +83,7 @@ Route::prefix('v1')->group(function () {
             Route::get('/payments', [ReportController::class, 'payments']);
         });
     });
+
     Route::post('stripe/webhook', [StripeController::class, 'webhook']);
     Route::post('mpesa/callback', [MpesaController::class, 'callback']);
 });

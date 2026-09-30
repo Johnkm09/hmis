@@ -2,16 +2,21 @@ services:
   app:
     build: .
     container_name: hmis-app
+
     ports:
       - "8000:80"
+
     volumes:
       - .:/var/www/html
+      - vendor_data:/var/www/html/vendor
+
     depends_on:
       - mysql
       - redis
+
     environment:
       APP_ENV: local
-      APP_DEBUG: true
+      APP_DEBUG: false
       DB_HOST: mysql
       DB_PORT: 3306
       DB_USERNAME: hmis
@@ -24,13 +29,16 @@ services:
     image: mysql:8.0
     container_name: hmis-mysql
     restart: unless-stopped
+
     ports:
       - "3307:3306"
+
     environment:
       MYSQL_DATABASE: hotelms_db
       MYSQL_USER: hmis
       MYSQL_PASSWORD: secret
       MYSQL_ROOT_PASSWORD: root
+
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -38,8 +46,10 @@ services:
     image: redis:7-alpine
     container_name: hmis-redis
     restart: unless-stopped
+
     ports:
       - "6379:6379"
 
 volumes:
   mysql_data:
+  vendor_data:

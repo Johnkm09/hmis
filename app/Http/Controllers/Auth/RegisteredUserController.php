@@ -24,7 +24,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['string', 'in:super_admin,manager,receptionist'],
         ]);
@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->string('password')),
         ]);
-        
+
         $user->assignRole('user');
         Auth::login($user);
         event(new Registered($user));
@@ -45,6 +45,6 @@ class RegisteredUserController extends Controller
             'user' => new UserResource($user),
             'token' => $token,
             'token_type' => 'Bearer'
-        ], 'User Registered Successfully.');
+        ], 'User Registered Successfully.', 201);
     }
 }
