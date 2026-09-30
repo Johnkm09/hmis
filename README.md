@@ -612,7 +612,7 @@ Merge
 The screenshots below provide visual evidence of the implemented API workflows.
 
 <details>
-<summary><strong>## 🔐 Authentication Screenshots</strong></summary>
+<summary><strong>🔐 Authentication Screenshots</strong></summary>
 <table>
   <tr>
     <td align="center">
