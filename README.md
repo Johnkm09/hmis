@@ -615,51 +615,93 @@ The screenshots below provide visual evidence of the implemented API workflows.
 
 ### 01 — User Registration
 
-![User Registration](docs/screenshots/authentication/01-register-user.png)
+## 🔐 Authentication Screenshots
 
-### 02 — Email Verification Queued
+<table>
+  <tr>
+    <td align="center">
+      <strong>01 — User Registration</strong><br><br>
+      <a href="docs/screenshots/authentication/01-register-user.png">
+        <img src="docs/screenshots/authentication/01-register-user.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — Email Verification Queued</strong><br><br>
+      <a href="docs/screenshots/authentication/02-email-verification-queue.png">
+        <img src="docs/screenshots/authentication/02-email-verification-queue.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>03 — Verification Email</strong><br><br>
+      <a href="docs/screenshots/authentication/03-verification-email.png">
+        <img src="docs/screenshots/authentication/03-verification-email.png" width="250">
+      </a>
+    </td>
+  </tr>
 
-![Email Verification Queued](docs/screenshots/authentication/02-email-verification-queue.png)
+  <tr>
+    <td align="center">
+      <strong>04 — Verified Email</strong><br><br>
+      <a href="docs/screenshots/authentication/04-verified-email.png">
+        <img src="docs/screenshots/authentication/04-verified-email.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>05 — User Login</strong><br><br>
+      <a href="docs/screenshots/authentication/05-login-user.png">
+        <img src="docs/screenshots/authentication/05-login-user.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>06 — Logout</strong><br><br>
+      <a href="docs/screenshots/authentication/06-logout.png">
+        <img src="docs/screenshots/authentication/06-logout.png" width="250">
+      </a>
+    </td>
+  </tr>
 
-### 03 — Verification Email
+  <tr>
+    <td align="center">
+      <strong>07 — Forgot Password</strong><br><br>
+      <a href="docs/screenshots/authentication/07-forgot-password.png">
+        <img src="docs/screenshots/authentication/07-forgot-password.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>08 — Password Reset Queued</strong><br><br>
+      <a href="docs/screenshots/authentication/08-queued-password-reset.png">
+        <img src="docs/screenshots/authentication/08-queued-password-reset.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>09 — Password Reset Email</strong><br><br>
+      <a href="docs/screenshots/authentication/09-password-reset-email.png">
+        <img src="docs/screenshots/authentication/09-password-reset-email.png" width="250">
+      </a>
+    </td>
+  </tr>
 
-![Verification Email](docs/screenshots/authentication/03-verification-email.png)
-
-### 04 — Verified Email
-
-![Verified Email](docs/screenshots/authentication/04-verified-email.png)
-
-### 05 — User Login
-
-![User Login](docs/screenshots/authentication/05-login-user.png)
-
-### 06 — Logout
-
-![Logout](docs/screenshots/authentication/06-logout.png)
-
-### 07 — Forgot Password
-
-![Forgot Password](docs/screenshots/authentication/07-forgot-password.png)
-
-### 08 — Password Reset Queued
-
-![Password Reset Queued](docs/screenshots/authentication/08-queued-password-reset.png)
-
-### 09 — Password Reset Email
-
-![Password Reset Email](docs/screenshots/authentication/09-password-reset-email.png)
-
-### 10 — Password Reset
-
-![Password Reset](docs/screenshots/authentication/10-reset-password.png)
-
-### 11 — Old Password Rejected
-
-![Old Password Rejected](docs/screenshots/authentication/11-failed-old-password.png)
-
-### 12 — New Password Accepted
-
-![New Password Accepted](docs/screenshots/authentication/12-new-password-success.png)
+  <tr>
+    <td align="center">
+      <strong>10 — Password Reset</strong><br><br>
+      <a href="docs/screenshots/authentication/10-reset-password.png">
+        <img src="docs/screenshots/authentication/10-reset-password.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>11 — Old Password Rejected</strong><br><br>
+      <a href="docs/screenshots/authentication/11-failed-old-password.png">
+        <img src="docs/screenshots/authentication/11-failed-old-password.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>12 — New Password Accepted</strong><br><br>
+      <a href="docs/screenshots/authentication/12-new-password-success.png">
+        <img src="docs/screenshots/authentication/12-new-password-success.png" width="250">
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## 🏨 Hotel Setup Screenshots
 
