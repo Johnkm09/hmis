@@ -699,26 +699,45 @@ The screenshots below provide visual evidence of the implemented API workflows.
   </tr>
 </table>
 </details>
-## 🏨 Hotel Setup Screenshots
+
+<details>
+<summary><strong>🏨 Hotel Setup Screenshots</strong></summary>
 
 Screenshots for room types and room management will be added here as the Hotel Setup module is completed.
 
-## 👤 Guest Screenshots
+</details>
+
+<details>
+<summary><strong>👤 Guest Screenshots</strong></summary>
 
 Screenshots for guest management will be added here as the Guest module is completed.
 
-## 📅 Reservation Screenshots
+</details>
+
+<details>
+<summary><strong>📅 Reservation Screenshots</strong></summary>
 
 Screenshots for reservation creation, availability and reservation workflows will be added here as the Reservation module is completed.
 
-## 🔄 Operations Screenshots
+</details>
+
+<details>
+<summary><strong>🔄 Operations Screenshots</strong></summary>
 
 Screenshots for walk-in, check-in and check-out workflows will be added here as the Operations module is completed.
 
-## 💳 Billing Screenshots
+</details>
+
+<details>
+<summary><strong>💳 Billing Screenshots</strong></summary>
 
 Screenshots for folios, charges, payments, refunds, invoices and receipts will be added here as the Billing module is completed.
 
-## 📊 Reporting Screenshots
+</details>
+
+<details>
+<summary><strong>📊 Reporting Screenshots</strong></summary>
 
 Screenshots for revenue, occupancy, reservation and payment reports will be added here as the Reporting module is completed.
+
+</details>
