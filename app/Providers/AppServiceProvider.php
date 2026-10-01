@@ -26,6 +26,8 @@ use App\Repositories\Payment\InvoiceRepository;
 use App\Repositories\Payment\InvoiceRepositoryInterface;
 use App\Repositories\Payment\ReceiptRepository;
 use App\Repositories\Payment\ReceiptRepositoryInterface;
+use App\Repositories\RoomTypeImage\RoomTypeImageRepository;
+use App\Repositories\RoomTypeImage\RoomTypeImageInterface;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\ServiceProvider;
 
@@ -48,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RefundRepositoryInterface::class, RefundRepository::class);
         $this->app->bind(InvoiceRepositoryInterface::class, InvoiceRepository::class);
         $this->app->bind(ReceiptRepositoryInterface::class, ReceiptRepository::class);
+        $this->app->bind(RoomTypeImageInterface::class, RoomTypeImageRepository::class);
     }
 
     /**

@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\V1\Payment\ReceiptController;
 use App\Http\Controllers\Api\V1\Payment\MpesaController;
 use App\Http\Controllers\Api\V1\Payment\StripeController;
 use App\Http\Controllers\Api\V1\Reports\ReportController;
+use App\Http\Controllers\Api\V1\RoomType\RoomTypeImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::prefix('v1')->group(function () {
         });
 
         Route::apiResource('room-types', RoomTypeController::class);
+        Route::get('room-types/{roomType}/images', [RoomTypeImageController::class, 'index']);
+        Route::post('room-types/{roomType}/images', [RoomTypeImageController::class, 'store']);
+        Route::patch('room-type-images/{roomTypeImage}/primary', [RoomTypeImageController::class, 'setPrimary']);
+        Route::delete('room-type-images/{roomTypeImage}', [RoomTypeImageController::class, 'destroy']);
         Route::apiResource('rooms', RoomController::class);
         Route::apiResource('guests', GuestController::class);
         Route::apiResource('reservations', ReservationController::class);

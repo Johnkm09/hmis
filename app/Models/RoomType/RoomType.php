@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Room\Room;
+use App\Models\RoomType\RoomTypeImage;
 
 class RoomType extends Model
 {
@@ -34,5 +35,10 @@ class RoomType extends Model
     public function rooms()
     {
         return $this->hasMany(Room::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(RoomTypeImage::class);
     }
 }
