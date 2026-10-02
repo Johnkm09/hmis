@@ -516,24 +516,36 @@ test('manager can view reservations report', function () {
     Reservation::factory()->create([
         'guest_id' => $guest->id,
         'room_id' => $room->id,
+        'check_in' => '2026-09-05',
+        'check_out' => '2026-09-07',
+        'created_at' => '2026-09-05 10:00:00',
         'status' => 'pending',
     ]);
 
     Reservation::factory()->create([
         'guest_id' => $guest->id,
         'room_id' => $room->id,
+        'check_in' => '2026-09-10',
+        'check_out' => '2026-09-12',
+        'created_at' => '2026-09-10 10:00:00',
         'status' => 'confirmed',
     ]);
 
     Reservation::factory()->create([
         'guest_id' => $guest->id,
         'room_id' => $room->id,
+        'check_in' => '2026-09-15',
+        'check_out' => '2026-09-17',
+        'created_at' => '2026-09-15 10:00:00',
         'status' => 'checked_in',
     ]);
 
     Reservation::factory()->create([
         'guest_id' => $guest->id,
         'room_id' => $room->id,
+        'check_in' => '2026-09-20',
+        'check_out' => '2026-09-22',
+        'created_at' => '2026-09-20 10:00:00',
         'status' => 'checked_out',
     ]);
 
