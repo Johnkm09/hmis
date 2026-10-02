@@ -703,7 +703,123 @@ The screenshots below provide visual evidence of the implemented API workflows.
 <details>
 <summary><strong>🏨 Hotel Setup Screenshots</strong></summary>
 
-Screenshots for room types and room management will be added here as the Hotel Setup module is completed.
+### Room Types
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>01 — Create Room Type</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Room Types (1)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-1.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-1.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Room Types (2)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-2.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-2.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>02 — List Room Types (3)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-3.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-3.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Room Types (4)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-4.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-4.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>03 — Show Room Type</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>04 — Update Room Type</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>05 — Delete Room Type</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Create Room Type API/05-delete-room-type.png">
+        <img src="docs/screenshots/hotel-setup/Create Room Type API/05-delete-room-type.png" width="250">
+      </a>
+    </td>
+  </tr>
+</table>
+
+### Room Type Images
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>06 — List Room Type Images</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/06-list-room-type-images.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/06-list-room-type-images.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>07 — Upload Room Type Image</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/07-upload-room-type-image.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/07-upload-room-type-image.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>08 — List Images After Upload</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/08-list-room-type-images-after-upload.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/08-list-room-type-images-after-upload.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>09 — Upload Second Image</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/09-upload-second-room-type-image.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/09-upload-second-room-type-image.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>10 — Set Primary Image</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/10-set-primary-room-type-image.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/10-set-primary-room-type-image.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>11 — Verify Primary Image Switch</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/11-list-room-type-images-after-primary-switch.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/11-list-room-type-images-after-primary-switch.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>12 — Delete Room Type Image</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/12-delete-room-type-image.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/12-delete-room-type-image.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>13 — Verify Automatic Primary Promotion</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Room Type Images/13-list-room-type-images-after-delete.png">
+        <img src="docs/screenshots/hotel-setup/Room Type Images/13-list-room-type-images-after-delete.png" width="250">
+      </a>
+    </td>
+  </tr>
+</table>
 
 </details>
 
