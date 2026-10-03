@@ -17,6 +17,7 @@ return new class extends Migration
                 ->constrained('room_types')
                 ->cascadeOnDelete();
             $table->string('path');
+            $table->string('hash');
             $table->boolean('is_primary')->default(false);
             $table->timestamps();
         });

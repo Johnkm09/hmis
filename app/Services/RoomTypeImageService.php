@@ -8,6 +8,7 @@ use App\Repositories\RoomTypeImage\RoomTypeImageInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class RoomTypeImageService
 {
@@ -28,12 +29,23 @@ class RoomTypeImageService
         return DB::transaction(function () use ($roomType, $file) {
             $imageCount = $roomType->images()->count();
 
-            if ($imageCount >= 5) {
-                throw new \RuntimeException(
-                    'A room type can have a maximum of 5 images.'
-                );
+            if ($imageCount >= 8) {
+                throw ValidationException::withMessages([
+                    'images' => ['This image has already been uploaded.'],
+                ]);
             }
 
+            $hash = hash_file('sha256', $file->getRealPath());
+
+            $duplicate = $roomType->images()
+                ->where('hash', $hash)
+                ->exists();
+
+            if ($duplicate) {
+                throw ValidationException::withMessages([
+                    'images' => ['This image has already been uploaded.'],
+                ]);
+            }
             $isPrimary = $imageCount === 0;
 
             $path = $file->store(
@@ -44,6 +56,7 @@ class RoomTypeImageService
             return $this->roomTypeImageRepository->create([
                 'room_type_id' => $roomType->id,
                 'path' => $path,
+                'hash' => $hash,
                 'is_primary' => $isPrimary,
             ]);
         });

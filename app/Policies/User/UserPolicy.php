@@ -34,6 +34,19 @@ class UserPolicy
         return false;
     }
 
+    public function assignRole(User $user, User $model): bool
+    {
+        if ($user->hasRole('super_admin')) {
+            return true;
+        }
+
+        if ($user->hasRole('manager')) {
+            return $model->hasRole('receptionist') || $model->hasRole('user');
+        }
+
+        return false;
+    }
+
     public function delete(User $user, User $model): bool
     {
         return false;
