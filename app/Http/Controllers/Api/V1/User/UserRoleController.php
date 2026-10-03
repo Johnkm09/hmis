@@ -19,7 +19,7 @@ class UserRoleController extends Controller
         $newRole = $request->validated('role');
 
         if (
-            $request()->user()->hasRole('manager') &&
+            $request->user()->hasRole('manager') &&
             $newRole === 'super_admin'
         ) {
             abort(403, 'Managers cannot assign the super_admin role.');
