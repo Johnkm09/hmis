@@ -806,7 +806,50 @@ The screenshots below provide visual evidence of the implemented API workflows.
     </td>
   </tr>
 </table>
+### Rooms
 
+<table>
+  <tr>
+    <td align="center">
+      <strong>01 — Create Room</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/01-create-room.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/01-create-room.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Rooms (1)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Rooms (2)</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/02-list-rooms-2.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/02-list-rooms-2.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>03 — Show Room</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/03-show-room.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/03-show-room.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>04 — Update Room</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/04-update-room.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/04-update-room.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>05 — Delete Room</strong><br><br>
+      <a href="docs/screenshots/hotel-setup/Rooms/05-delete-room.png">
+        <img src="docs/screenshots/hotel-setup/Rooms/05-delete-room.png" width="250">
+      </a>
+    </td>
+  </tr>
+</table>
 </details>
 
 
