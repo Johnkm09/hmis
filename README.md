@@ -896,11 +896,84 @@ The screenshots below provide visual evidence of the implemented API workflows.
 </details>
 
 <details>
+
 <summary><strong>📅 Reservation Screenshots</strong></summary>
 
-Screenshots for reservation creation, availability and reservation workflows will be added here as the Reservation module is completed.
+### Reservations
+
+<table>
+  <tr>
+    <td align="center">
+      <strong>01 — Create Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/01-create-reservation-1.png">
+        <img src="docs/screenshots/reservations/01-create-reservation-1.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>01 — Create Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/01-create-reservation-2.png">
+        <img src="docs/screenshots/reservations/01-create-reservation-2.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>02 — List Reservations</strong><br><br>
+      <a href="docs/screenshots/reservations/02-list-reservations-1.png">
+        <img src="docs/screenshots/reservations/02-list-reservations-1.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>02 — List Reservations</strong><br><br>
+      <a href="docs/screenshots/reservations/02-list-reservations-2.png">
+        <img src="docs/screenshots/reservations/02-list-reservations-2.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>03 — Show Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/03-show-reservation-1.png">
+        <img src="docs/screenshots/reservations/03-show-reservation-1.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>03 — Show Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/03-show-reservation-2.png">
+        <img src="docs/screenshots/reservations/03-show-reservation-2.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>04 — Update Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/04-update-reservation-1.png">
+        <img src="docs/screenshots/reservations/04-update-reservation-1.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>04 — Update Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/04-update-reservation-2.png">
+        <img src="docs/screenshots/reservations/04-update-reservation-2.png" width="250">
+      </a>
+    </td>
+    <td align="center">
+      <strong>04 — Update Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/04-update-reservation-3.png">
+        <img src="docs/screenshots/reservations/04-update-reservation-3.png" width="250">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>05 — Delete Reservation</strong><br><br>
+      <a href="docs/screenshots/reservations/05-delete-reservation.png">
+        <img src="docs/screenshots/reservations/05-delete-reservation.png" width="250">
+      </a>
+    </td>
+  </tr>
+</table>
 
 </details>
+
 
 <details>
 <summary><strong>🔄 Operations Screenshots</strong></summary>
