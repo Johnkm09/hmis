@@ -855,40 +855,40 @@ The screenshots below provide visual evidence of the implemented API workflows.
 
 <details>
 <summary><strong>👤 Guest Screenshots</strong></summary>
-### Guests
 
+### Guests
 <table>
   <tr>
     <td align="center">
       <strong>01 — Create Guest</strong><br><br>
-      <a href="docs/screenshots/Guests/01-create-guest.png">
-        <img src="docs/screenshots/Guests/01-create-guest.png" width="250">
+      <a href="docs/screenshots/guests/01-create-guest.png">
+        <img src="docs/screenshots/guests/01-create-guest.png" width="250">
       </a>
     </td>
     <td align="center">
       <strong>02 — List Guests</strong><br><br>
-      <a href="docs/screenshots/Guests/02-list-guests.png">
-        <img src="docs/screenshots/Guests/02-list-guests.png" width="250">
+      <a href="docs/screenshots/guests/02-list-guests.png">
+        <img src="docs/screenshots/guests/02-list-guests.png" width="250">
       </a>
     </td>
     <td align="center">
       <strong>03 — Show Guest</strong><br><br>
-      <a href="docs/screenshots/Guests/03-show-guest.png">
-        <img src="docs/screenshots/Guests/03-show-guest.png" width="250">
+      <a href="docs/screenshots/guests/03-show-guest.png">
+        <img src="docs/screenshots/guests/03-show-guest.png" width="250">
       </a>
     </td>
   </tr>
   <tr>
     <td align="center">
       <strong>04 — Update Guest</strong><br><br>
-      <a href="docs/screenshots/Guests/04-update-guest.png">
-        <img src="docs/screenshots/Guests/04-update-guest.png" width="250">
+      <a href="docs/screenshots/guests/04-update-guest.png">
+        <img src="docs/screenshots/guests/04-update-guest.png" width="250">
       </a>
     </td>
     <td align="center">
       <strong>05 — Delete Guest</strong><br><br>
-      <a href="docs/screenshots/Guests/05-delete-guest.png">
-        <img src="docs/screenshots/Guests/05-delete-guest.png" width="250">
+      <a href="docs/screenshots/guests/05-delete-guest.png">
+        <img src="docs/screenshots/guests/05-delete-guest.png" width="250">
       </a>
     </td>
   </tr>
