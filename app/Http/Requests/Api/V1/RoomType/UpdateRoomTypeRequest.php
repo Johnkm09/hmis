@@ -31,7 +31,8 @@ class UpdateRoomTypeRequest extends FormRequest
                 Rule::unique('room_types', 'name')->ignore($this->route('room_type'))
             ],
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'images' => 'sometimes|array|max:8',
+            'images.*' => 'image|mimes:jpg,jpeg,png|max:2048',
             'is_active' => 'nullable|boolean',
             'max_occupancy' => 'sometimes|integer|min:1'
         ];

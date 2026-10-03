@@ -31,9 +31,11 @@ function fakeRoomTypeImage(string $name = 'room.png')
         'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
     );
 
+    $uniqueContent = $png . hash('sha256', $name, true);
+
     return UploadedFile::fake()->createWithContent(
         $name,
-        $png
+        $uniqueContent
     );
 }
 
@@ -116,7 +118,7 @@ test('additional room type images are not primary', function () {
     expect($secondImage)->not->toBeNull();
 });
 
-test('room type cannot have more than five images', function () {
+test('room type cannot have more than eight images', function () {
 
     actingAsRoomTypeImageUser('manager');
 
@@ -124,7 +126,7 @@ test('room type cannot have more than five images', function () {
 
     $roomType = RoomType::factory()->create();
 
-    foreach (range(1, 5) as $number) {
+    foreach (range(1, 8) as $number) {
         $this->post(
             "/api/v1/room-types/{$roomType->id}/images",
             [
@@ -133,17 +135,19 @@ test('room type cannot have more than five images', function () {
         )->assertStatus(201);
     }
 
-    $response = $this->post(
+    $response = $this->postJson(
         "/api/v1/room-types/{$roomType->id}/images",
         [
-            'image' => fakeRoomTypeImage('sixth.png'),
+            'image' => fakeRoomTypeImage('ninth.png'),
         ]
     );
 
-    $response->assertStatus(500);
+    $response
+        ->assertStatus(422)
+        ->assertJsonValidationErrors(['images']);
 
     expect(RoomTypeImage::where('room_type_id', $roomType->id)->count())
-        ->toBe(5);
+        ->toBe(8);
 });
 
 test('authorized user can set another image as primary', function () {
@@ -269,6 +273,7 @@ test('authorized user can list room type images', function () {
 
     $roomType->images()->create([
         'path' => "room-types/{$roomType->id}/room.png",
+        'hash' => hash('sha256', 'room-image'),
         'is_primary' => true,
     ]);
 
@@ -277,7 +282,16 @@ test('authorized user can list room type images', function () {
     );
 
     $response->assertStatus(200)
-        ->assertJsonPath('data.0.id', $roomType->images()->first()->id)
-        ->assertJsonPath('data.0.room_type_id', $roomType->id)
-        ->assertJsonPath('data.0.is_primary', true);
+        ->assertJsonPath(
+            'data.0.id',
+            $roomType->images()->first()->id
+        )
+        ->assertJsonPath(
+            'data.0.room_type_id',
+            $roomType->id
+        )
+        ->assertJsonPath(
+            'data.0.is_primary',
+            true
+        );
 });

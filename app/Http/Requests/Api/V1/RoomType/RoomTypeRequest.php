@@ -25,7 +25,8 @@ class RoomTypeRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:room_types,name',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'images' => 'required|array|min:5|max:8',
+            'images.*' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'is_active' => 'nullable|boolean',
             'max_occupancy' => 'required|integer|min:1'
         ];

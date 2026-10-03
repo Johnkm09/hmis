@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\V1\Payment\MpesaController;
 use App\Http\Controllers\Api\V1\Payment\StripeController;
 use App\Http\Controllers\Api\V1\Reports\ReportController;
 use App\Http\Controllers\Api\V1\RoomType\RoomTypeImageController;
+use App\Http\Controllers\Api\V1\User\UserRoleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +88,8 @@ Route::prefix('v1')->group(function () {
             Route::get('/reservations', [ReportController::class, 'reservations']);
             Route::get('/payments', [ReportController::class, 'payments']);
         });
+
+        Route::patch('users/{user}/role', [UserRoleController::class, 'update']);
     });
 
     Route::post('stripe/webhook', [StripeController::class, 'webhook']);

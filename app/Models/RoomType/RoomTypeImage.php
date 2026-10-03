@@ -13,6 +13,7 @@ class RoomTypeImage extends Model
     protected $fillable = [
         'room_type_id',
         'path',
+        'hash',
         'is_primary',
     ];
 

@@ -7,13 +7,20 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class RoomTypeResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'max_occupancy' => $this->max_occupancy,
+            'is_active' => $this->is_active,
+            'images' => RoomTypeImageResource::collection(
+                $this->whenLoaded('images')
+            ),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
     }
 }

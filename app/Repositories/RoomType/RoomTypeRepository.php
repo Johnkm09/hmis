@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories\RoomType;
+
 use App\Models\RoomType\RoomType;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -12,6 +13,7 @@ class RoomTypeRepository implements RoomTypeInterface
     public function getAll()
     {
         return QueryBuilder::for(RoomType::class)
+            ->with('images')
             ->allowedFilters([
                 AllowedFilter::partial('name'),
             ])
@@ -46,7 +48,7 @@ class RoomTypeRepository implements RoomTypeInterface
     }
 
     //Delete a room type
-    public function delete(int $id):void
+    public function delete(int $id): void
     {
         $roomtype = RoomType::findOrFail($id);
         $roomtype->delete();
