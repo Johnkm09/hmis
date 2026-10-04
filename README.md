@@ -978,10 +978,89 @@ The screenshots below provide visual evidence of the implemented API workflows.
 <details>
 <summary><strong>🔄 Operations Screenshots</strong></summary>
 
-Screenshots for walk-in, check-in and check-out workflows will be added here as the Operations module is completed.
+### 🚶 Walk-In Guest — Complete Lifecycle
+
+#### Guest Arrival & Automatic Setup
+
+<table>
+<tr>
+<td><strong>Create Walk-In Guest</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/01-create-walk-in-guest.png" width="250"></td>
+<td><strong>Auto-Created Reservation — Guest Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/02-auto-reservation-guest-details-1.png" width="250"></td>
+<td><strong>Auto-Created Reservation — Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/02-auto-reservation-guest-details-2.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Auto-Created Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/03-auto-folio-details.png" width="250"></td>
+<td><strong>Room Occupied</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/04-room-occupied.png" width="250"></td>
+<td><strong>Automatic Accommodation Charge</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/05-auto-accommodation-charge.png" width="250"></td>
+</tr>
+</table>
+
+#### In-Stay Charges & Extension
+
+<table>
+<tr>
+<td><strong>Add Airport Transfer Charge</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/06-add-airport-transfer-charge.png" width="250"></td>
+<td><strong>Folio Charges Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/07-folio-charges-summary-1.png" width="250"></td>
+<td><strong>Folio Charges Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/07-folio-charges-summary-2.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Extend Guest Stay</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/08-extend-stay-1.png" width="250"></td>
+<td><strong>Extended Stay Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/08-extend-stay-2.png" width="250"></td>
+<td><strong>Updated Folio Charges</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/09-verify-updated-folio-charges.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Folio Financial Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/10-folio-financial-summary.png" width="250"></td>
+</tr>
+</table>
+
+#### Billing & Payment Settlement
+
+<table>
+<tr>
+<td><strong>First Partial Payment — Stripe</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/11-first-partial-payment-stripe.png" width="250"></td>
+<td><strong>Verify First Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/12-verify-first-payment.png" width="250"></td>
+<td><strong>Second Partial Payment — M-Pesa</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/13-second-partial-payment-mpesa.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Verify Second Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/14-verify-second-payment.png" width="250"></td>
+<td><strong>Overpayment Protection</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/15-overpayment-protection.png" width="250"></td>
+<td><strong>Final Payment — M-Pesa</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/16-final-payment-mpesa.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Verify Final Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/17-verify-final-payment.png" width="250"></td>
+<td><strong>Payment Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/18-payment-summary-1.png" width="250"></td>
+<td><strong>Payment Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/18-payment-summary-2.png" width="250"></td>
+</tr>
+</table>
+
+#### Checkout
+
+<table>
+<tr>
+<td><strong>Close Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/19-close-folio.png" width="250"></td>
+<td><strong>Verify Closed Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/20-verify-closed-folio.png" width="250"></td>
+<td><strong>Checkout Guest</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/21-checkout-guest.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Room Available After Checkout</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/22-room-available-after-checkout.png" width="250"></td>
+</tr>
+</table>
+
+### 🌐 Direct Reservation — Complete Lifecycle
+
+<table>
+<tr>
+<td><strong>Create Direct Reservation</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/01-create-direct-reservation-1.png" width="250"></td>
+<td><strong>Reservation Details</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/01-create-direct-reservation-2.png" width="250"></td>
+<td><strong>Room Reserved</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/02-verify-room-reserved.png" width="250"></td>
+</tr>
+<tr>
+<td><strong>Check-In Direct Reservation</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/03-check-in-direct-reservation.png" width="250"></td>
+<td><strong>Room Occupied</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/04-room-occupied.png" width="250"></td>
+</tr>
+</table>
 
 </details>
-
 <details>
 <summary><strong>💳 Billing Screenshots</strong></summary>
 
