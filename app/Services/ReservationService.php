@@ -76,6 +76,10 @@ class ReservationService
         $data['nightly_rate'] = $nightlyRate;
         $data['total_amount'] = $totalAmount;
 
+        $room->update([
+            'status' => 'reserved',
+        ]);
+
         return $this->reservationRepository->create($data);
     }
 
