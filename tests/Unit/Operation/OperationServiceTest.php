@@ -1,11 +1,16 @@
 <?php
 
 use App\Models\Contract\Operation;
+use App\Models\Folio\Folio;
 use App\Models\Guest\Guest;
 use App\Models\Reservation\Reservation;
 use App\Models\Room\Room;
 use App\Repositories\Contracts\OperationInterface;
+use App\Repositories\Folio\FolioRepositoryInterface;
+use App\Repositories\Folio\FolioChargeRepositoryInterface;
 use App\Repositories\Room\RoomRepositoryInterface;
+use App\Repositories\Reservation\ReservationInterface;
+use App\Services\FolioService;
 use App\Services\GuestService;
 use App\Services\OperationService;
 use App\Services\ReservationService;
@@ -19,10 +24,20 @@ beforeEach(function () {
     $this->reservationService = Mockery::mock(ReservationService::class);
     $this->roomRepository = Mockery::mock(RoomRepositoryInterface::class);
     $this->operationRepository = Mockery::mock(OperationInterface::class);
+    $this->folioRepository = Mockery::mock(FolioRepositoryInterface::class);
+    $this->folioChargeRepository = Mockery::mock(FolioChargeRepositoryInterface::class);
+    $this->reservationRepository = Mockery::mock(ReservationInterface::class);
+
+    $this->folioService = new FolioService(
+        $this->folioRepository,
+        $this->folioChargeRepository,
+        $this->reservationRepository
+    );
 
     $this->service = new OperationService(
         $this->guestService,
         $this->reservationService,
+        $this->folioService,
         $this->roomRepository,
         $this->operationRepository
     );
@@ -43,6 +58,10 @@ test('service can check in a pending reservation', function () {
         'id' => 1,
         'room_id' => 10,
         'status' => 'pending',
+        'check_in' => '2026-09-13',
+        'check_out' => '2026-09-15',
+        'nightly_rate' => 150,
+        'total_amount' => 300,
     ]);
 
     $room = Room::factory()->make([
@@ -50,8 +69,15 @@ test('service can check in a pending reservation', function () {
         'status' => 'reserved',
     ]);
 
+    $folio = new Folio([
+        'reservation_id' => 1,
+        'status' => 'open',
+        'opened_at' => now(),
+    ]);
+    $folio->id = 1;
+
     $operation = Operation::factory()->make([
-        'reservation_id' => $reservation->id,
+        'reservation_id' => 1,
         'type' => 'check_in',
         'performed_by' => 5,
     ]);
@@ -76,6 +102,41 @@ test('service can check in a pending reservation', function () {
         ])
         ->andReturn($room);
 
+    $this->folioRepository
+        ->shouldReceive('findByReservation')
+        ->once()
+        ->with(1)
+        ->andReturn(null);
+
+    $this->folioRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) {
+            return $data['reservation_id'] === 1
+                && $data['status'] === 'open'
+                && $data['opened_at'] instanceof \Illuminate\Support\Carbon;
+        }))
+        ->andReturn($folio);
+
+    $this->reservationRepository
+        ->shouldReceive('findById')
+        ->once()
+        ->with(1)
+        ->andReturn($reservation);
+
+    $this->folioChargeRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) use ($folio, $reservation) {
+            return $data['folio_id'] === $folio->id
+                && $data['service_id'] === null
+                && $data['type'] === 'accommodation'
+                && $data['description'] === 'Room accommodation'
+                && $data['quantity'] == 2
+                && $data['unit_price'] == $reservation->nightly_rate
+                && $data['amount'] == $reservation->total_amount;
+        }));
+
     $this->operationRepository
         ->shouldReceive('create')
         ->once()
@@ -95,7 +156,6 @@ test('service can check in a pending reservation', function () {
 
     expect($result)->toBe($operation);
 });
-
 
 test('service rejects check in when reservation is not pending', function () {
     $reservation = Reservation::factory()->make([
@@ -121,12 +181,20 @@ test('service rejects check in when reservation is not pending', function () {
         ->with(10)
         ->andReturn($room);
 
+    $this->folioRepository
+        ->shouldNotReceive('findByReservation');
+
+    $this->folioRepository
+        ->shouldNotReceive('create');
+
+    $this->folioChargeRepository
+        ->shouldNotReceive('create');
+
     expect(fn() => $this->service->checkIn(
         reservationId: 1,
         performedBy: 5
     ))->toThrow(ValidationException::class);
 });
-
 
 test('service rejects check in when room is not reserved', function () {
     $reservation = Reservation::factory()->make([
@@ -152,12 +220,20 @@ test('service rejects check in when room is not reserved', function () {
         ->with(10)
         ->andReturn($room);
 
+    $this->folioRepository
+        ->shouldNotReceive('findByReservation');
+
+    $this->folioRepository
+        ->shouldNotReceive('create');
+
+    $this->folioChargeRepository
+        ->shouldNotReceive('create');
+
     expect(fn() => $this->service->checkIn(
         reservationId: 1,
         performedBy: 5
     ))->toThrow(ValidationException::class);
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -181,7 +257,18 @@ test('service can complete a walk in for a new guest', function () {
         'guest_id' => 1,
         'room_id' => 10,
         'status' => 'pending',
+        'check_in' => '2026-09-13',
+        'check_out' => '2026-09-15',
+        'nightly_rate' => 150,
+        'total_amount' => 300,
     ]);
+
+    $folio = new Folio([
+        'reservation_id' => 20,
+        'status' => 'open',
+        'opened_at' => now(),
+    ]);
+    $folio->id = 1;
 
     $operation = Operation::factory()->make([
         'id' => 30,
@@ -239,6 +326,41 @@ test('service can complete a walk in for a new guest', function () {
         ])
         ->andReturn($room);
 
+    $this->folioRepository
+        ->shouldReceive('findByReservation')
+        ->once()
+        ->with(20)
+        ->andReturn(null);
+
+    $this->folioRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) {
+            return $data['reservation_id'] === 20
+                && $data['status'] === 'open'
+                && $data['opened_at'] instanceof \Illuminate\Support\Carbon;
+        }))
+        ->andReturn($folio);
+
+    $this->reservationRepository
+        ->shouldReceive('findById')
+        ->once()
+        ->with(20)
+        ->andReturn($reservation);
+
+    $this->folioChargeRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) use ($folio, $reservation) {
+            return $data['folio_id'] === $folio->id
+                && $data['service_id'] === null
+                && $data['type'] === 'accommodation'
+                && $data['description'] === 'Room accommodation'
+                && $data['quantity'] == 2
+                && $data['unit_price'] == $reservation->nightly_rate
+                && $data['amount'] == $reservation->total_amount;
+        }));
+
     $this->operationRepository
         ->shouldReceive('create')
         ->once()
@@ -263,7 +385,6 @@ test('service can complete a walk in for a new guest', function () {
     expect($result)->toBe($operation);
 });
 
-
 test('service reuses an existing guest during walk in', function () {
     $guest = Guest::factory()->make([
         'id' => 1,
@@ -280,7 +401,18 @@ test('service reuses an existing guest during walk in', function () {
         'guest_id' => 1,
         'room_id' => 10,
         'status' => 'pending',
+        'check_in' => '2026-09-13',
+        'check_out' => '2026-09-15',
+        'nightly_rate' => 150,
+        'total_amount' => 300,
     ]);
+
+    $folio = new Folio([
+        'reservation_id' => 20,
+        'status' => 'open',
+        'opened_at' => now(),
+    ]);
+    $folio->id = 1;
 
     $operation = Operation::factory()->make([
         'reservation_id' => 20,
@@ -327,6 +459,41 @@ test('service reuses an existing guest during walk in', function () {
         ])
         ->andReturn($room);
 
+    $this->folioRepository
+        ->shouldReceive('findByReservation')
+        ->once()
+        ->with(20)
+        ->andReturn(null);
+
+    $this->folioRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) {
+            return $data['reservation_id'] === 20
+                && $data['status'] === 'open'
+                && $data['opened_at'] instanceof \Illuminate\Support\Carbon;
+        }))
+        ->andReturn($folio);
+
+    $this->reservationRepository
+        ->shouldReceive('findById')
+        ->once()
+        ->with(20)
+        ->andReturn($reservation);
+
+    $this->folioChargeRepository
+        ->shouldReceive('create')
+        ->once()
+        ->with(Mockery::on(function ($data) use ($folio, $reservation) {
+            return $data['folio_id'] === $folio->id
+                && $data['service_id'] === null
+                && $data['type'] === 'accommodation'
+                && $data['description'] === 'Room accommodation'
+                && $data['quantity'] == 2
+                && $data['unit_price'] == $reservation->nightly_rate
+                && $data['amount'] == $reservation->total_amount;
+        }));
+
     $this->operationRepository
         ->shouldReceive('create')
         ->once()
@@ -343,7 +510,6 @@ test('service reuses an existing guest during walk in', function () {
 
     expect($result)->toBe($operation);
 });
-
 
 test('service rejects walk in when room is not available', function () {
     $room = Room::factory()->make([
@@ -374,6 +540,15 @@ test('service rejects walk in when room is not available', function () {
     $this->reservationService
         ->shouldNotReceive('createWithoutTransaction');
 
+    $this->folioRepository
+        ->shouldNotReceive('findByReservation');
+
+    $this->folioRepository
+        ->shouldNotReceive('create');
+
+    $this->folioChargeRepository
+        ->shouldNotReceive('create');
+
     expect(fn() => $this->service->walkIn(
         guestData: [
             'first_name' => 'John',
@@ -390,7 +565,6 @@ test('service rejects walk in when room is not available', function () {
         performedBy: 5
     ))->toThrow(ValidationException::class);
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -455,7 +629,6 @@ test('service can check out a checked in reservation', function () {
     expect($result)->toBe($operation);
 });
 
-
 test('service rejects check out when reservation is not checked in', function () {
     $reservation = Reservation::factory()->make([
         'id' => 1,
@@ -485,7 +658,6 @@ test('service rejects check out when reservation is not checked in', function ()
         performedBy: 5
     ))->toThrow(ValidationException::class);
 });
-
 
 test('service rejects check out when room is not occupied', function () {
     $reservation = Reservation::factory()->make([

@@ -12,6 +12,7 @@ class OperationService
     public function __construct(
         protected GuestService $guestService,
         protected ReservationService $reservationService,
+        protected FolioService $folioService,
         protected RoomRepositoryInterface $roomRepository,
         protected OperationInterface $operationRepository
     ) {}
@@ -54,6 +55,14 @@ class OperationService
 
             $this->roomRepository->update($room->id, [
                 'status' => 'occupied',
+            ]);
+
+            // Automatically open a folio for the active stay.
+            $this->folioService->create([
+                'reservation_id' => $reservation->id,
+                'status' => 'open',
+                'opened_at' => now(),
+                'charged_by' => $performedBy,
             ]);
 
             return $this->operationRepository->create([
@@ -119,6 +128,14 @@ class OperationService
 
             $this->roomRepository->update($roomId, [
                 'status' => 'occupied',
+            ]);
+
+            // Automatically open a folio for the active stay.
+            $this->folioService->create([
+                'reservation_id' => $reservation->id,
+                'status' => 'open',
+                'opened_at' => now(),
+                'charged_by' => $performedBy,
             ]);
 
             return $this->operationRepository->create([
