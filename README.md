@@ -609,468 +609,303 @@ Merge
 
 # 👁️ Visual Evidence
 
-The screenshots below provide visual evidence of the implemented API workflows.
+The screenshots below provide visual evidence of the implemented API workflows, asynchronous processing, business rules, transactional workflows and end-to-end hotel operations.
 
 <details>
-<summary><strong>🔐 Authentication Screenshots</strong></summary>
+
+<summary><strong>🔐 Authentication & Async Processing</strong></summary>
+
 <table>
-  <tr>
-    <td align="center">
-      <strong>01 — User Registration</strong><br><br>
-      <a href="docs/screenshots/authentication/01-register-user.png">
-        <img src="docs/screenshots/authentication/01-register-user.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — Email Verification Queued</strong><br><br>
-      <a href="docs/screenshots/authentication/02-email-verification-queue.png">
-        <img src="docs/screenshots/authentication/02-email-verification-queue.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>03 — Verification Email</strong><br><br>
-      <a href="docs/screenshots/authentication/03-verification-email.png">
-        <img src="docs/screenshots/authentication/03-verification-email.png" width="250">
-      </a>
-    </td>
-  </tr>
+<tr>
+<td align="center">
+<strong>01 — User Registration</strong><br><br>
+<a href="docs/screenshots/authentication/01-register-user.png">
+<img src="docs/screenshots/authentication/01-register-user.png" width="250">
+</a>
+</td>
 
-  <tr>
-    <td align="center">
-      <strong>04 — Verified Email</strong><br><br>
-      <a href="docs/screenshots/authentication/04-verified-email.png">
-        <img src="docs/screenshots/authentication/04-verified-email.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>05 — User Login</strong><br><br>
-      <a href="docs/screenshots/authentication/05-login-user.png">
-        <img src="docs/screenshots/authentication/05-login-user.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>06 — Logout</strong><br><br>
-      <a href="docs/screenshots/authentication/06-logout.png">
-        <img src="docs/screenshots/authentication/06-logout.png" width="250">
-      </a>
-    </td>
-  </tr>
+<td align="center">
+<strong>02 — Email Verification Queued</strong><br><br>
+<a href="docs/screenshots/authentication/02-email-verification-queue.png">
+<img src="docs/screenshots/authentication/02-email-verification-queue.png" width="250">
+</a>
+</td>
 
-  <tr>
-    <td align="center">
-      <strong>07 — Forgot Password</strong><br><br>
-      <a href="docs/screenshots/authentication/07-forgot-password.png">
-        <img src="docs/screenshots/authentication/07-forgot-password.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>08 — Password Reset Queued</strong><br><br>
-      <a href="docs/screenshots/authentication/08-queued-password-reset.png">
-        <img src="docs/screenshots/authentication/08-queued-password-reset.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>09 — Password Reset Email</strong><br><br>
-      <a href="docs/screenshots/authentication/09-password-reset-email.png">
-        <img src="docs/screenshots/authentication/09-password-reset-email.png" width="250">
-      </a>
-    </td>
-  </tr>
+<td align="center">
+<strong>03 — Verification Email</strong><br><br>
+<a href="docs/screenshots/authentication/03-verification-email.png">
+<img src="docs/screenshots/authentication/03-verification-email.png" width="250">
+</a>
+</td>
+</tr>
 
-  <tr>
-    <td align="center">
-      <strong>10 — Password Reset</strong><br><br>
-      <a href="docs/screenshots/authentication/10-reset-password.png">
-        <img src="docs/screenshots/authentication/10-reset-password.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>11 — Old Password Rejected</strong><br><br>
-      <a href="docs/screenshots/authentication/11-failed-old-password.png">
-        <img src="docs/screenshots/authentication/11-failed-old-password.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>12 — New Password Accepted</strong><br><br>
-      <a href="docs/screenshots/authentication/12-new-password-success.png">
-        <img src="docs/screenshots/authentication/12-new-password-success.png" width="250">
-      </a>
-    </td>
-  </tr>
+<tr>
+<td align="center">
+<strong>04 — Verified Email</strong><br><br>
+<a href="docs/screenshots/authentication/04-verified-email.png">
+<img src="docs/screenshots/authentication/04-verified-email.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>05 — User Login</strong><br><br>
+<a href="docs/screenshots/authentication/05-login-user.png">
+<img src="docs/screenshots/authentication/05-login-user.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>06 — Logout</strong><br><br>
+<a href="docs/screenshots/authentication/06-logout.png">
+<img src="docs/screenshots/authentication/06-logout.png" width="250">
+</a>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<strong>07 — Password Reset Request</strong><br><br>
+<a href="docs/screenshots/authentication/07-forgot-password.png">
+<img src="docs/screenshots/authentication/07-forgot-password.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>08 — Password Reset Queued</strong><br><br>
+<a href="docs/screenshots/authentication/08-queued-password-reset.png">
+<img src="docs/screenshots/authentication/08-queued-password-reset.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>09 — Password Reset Email</strong><br><br>
+<a href="docs/screenshots/authentication/09-password-reset-email.png">
+<img src="docs/screenshots/authentication/09-password-reset-email.png" width="250">
+</a>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<strong>10 — Password Reset</strong><br><br>
+<a href="docs/screenshots/authentication/10-reset-password.png">
+<img src="docs/screenshots/authentication/10-reset-password.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>11 — Old Password Rejected</strong><br><br>
+<a href="docs/screenshots/authentication/11-failed-old-password.png">
+<img src="docs/screenshots/authentication/11-failed-old-password.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>12 — New Password Accepted</strong><br><br>
+<a href="docs/screenshots/authentication/12-new-password-success.png">
+<img src="docs/screenshots/authentication/12-new-password-success.png" width="250">
+</a>
+</td>
+</tr>
 </table>
+
 </details>
 
 <details>
 
-<summary><strong>🏨 Hotel Setup Screenshots</strong></summary>
+<summary><strong>🏨 Hotel Setup & Resource Management</strong></summary>
 
 ### Room Types
 
 <table>
-  <tr>
-    <td align="center">
-      <strong>01 — Create Room Type</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>01 — Create Room Type (2)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type-2.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>01 — Create Room Type (3)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type-3.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type-3.png" width="250">
-      </a>
-    </td>
-  </tr>
+<tr>
+<td align="center">
+<strong>Create Room Type</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png">
+<img src="docs/screenshots/hotel-setup/Create Room Type API/01-create-room-type.png" width="250">
+</a>
+</td>
 
-  <tr>
-    <td align="center">
-      <strong>02 — List Room Types (1)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-1.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Room Types (2)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-2.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Room Types (3)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-3.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/02-list-room-types-3.png" width="250">
-      </a>
-    </td>
-  </tr>
+<td align="center">
+<strong>Room Type With Image</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-with-image-3.png">
+<img src="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-with-image-3.png" width="250">
+</a>
+</td>
 
-  <tr>
-    <td align="center">
-      <strong>03 — Show Room Type (1)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type-1.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>03 — Show Room Type (2)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type-2.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/03-show-room-type-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>04 — Update Room Type</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-1.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-1.png" width="250">
-      </a>
-    </td>
-  </tr>
-
-  <tr>
-    <td align="center">
-      <strong>04 — Update Room Type (2)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-2.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>04 — Update Room Type With Image</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-with-image-3.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/04-update-room-type-with-image-3.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>05 — Delete Room Type</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/05-delete-room-type.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/05-delete-room-type.png" width="250">
-      </a>
-    </td>
-  </tr>
-
-  <tr>
-    <td align="center">
-      <strong>06 — Set Primary Image</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/08-set-primary-room-type-image.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/08-set-primary-room-type-image.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>07 — Verify Primary Image</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Create Room Type API/09-verify-primary-room-type-image.png">
-        <img src="docs/screenshots/hotel-setup/Create Room Type API/09-verify-primary-room-type-image.png" width="250">
-      </a>
-    </td>
-  </tr>
+<td align="center">
+<strong>Primary Image</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Create Room Type API/09-verify-primary-room-type-image.png">
+<img src="docs/screenshots/hotel-setup/Create Room Type API/09-verify-primary-room-type-image.png" width="250">
+</a>
+</td>
+</tr>
 </table>
 
 ### Rooms
-<table>
-  <tr>
-    <td align="center">
-      <strong>01 — Create Room</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/01-create-room.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/01-create-room.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Rooms (1)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Rooms (2)</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/02-list-rooms-2.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/02-list-rooms-2.png" width="250">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>03 — Show Room</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/03-show-room.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/03-show-room.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>04 — Update Room</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/04-update-room.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/04-update-room.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>05 — Delete Room</strong><br><br>
-      <a href="docs/screenshots/hotel-setup/Rooms/05-delete-room.png">
-        <img src="docs/screenshots/hotel-setup/Rooms/05-delete-room.png" width="250">
-      </a>
-    </td>
-  </tr>
-</table>
-</details>
-
-
-<details>
-<summary><strong>👤 Guest Screenshots</strong></summary>
-
-### Guests
-<table>
-  <tr>
-    <td align="center">
-      <strong>01 — Create Guest</strong><br><br>
-      <a href="docs/screenshots/guests/01-create-guest.png">
-        <img src="docs/screenshots/guests/01-create-guest.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Guests</strong><br><br>
-      <a href="docs/screenshots/guests/02-list-guests.png">
-        <img src="docs/screenshots/guests/02-list-guests.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>03 — Show Guest</strong><br><br>
-      <a href="docs/screenshots/guests/03-show-guest.png">
-        <img src="docs/screenshots/guests/03-show-guest.png" width="250">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>04 — Update Guest</strong><br><br>
-      <a href="docs/screenshots/guests/04-update-guest.png">
-        <img src="docs/screenshots/guests/04-update-guest.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>05 — Delete Guest</strong><br><br>
-      <a href="docs/screenshots/guests/05-delete-guest.png">
-        <img src="docs/screenshots/guests/05-delete-guest.png" width="250">
-      </a>
-    </td>
-  </tr>
-</table>
-</details>
-
-<details>
-
-<summary><strong>📅 Reservation Screenshots</strong></summary>
-
-### Reservations
 
 <table>
-  <tr>
-    <td align="center">
-      <strong>01 — Create Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/01-create-reservation-1.png">
-        <img src="docs/screenshots/reservations/01-create-reservation-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>01 — Create Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/01-create-reservation-2.png">
-        <img src="docs/screenshots/reservations/01-create-reservation-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>02 — List Reservations</strong><br><br>
-      <a href="docs/screenshots/reservations/02-list-reservations-1.png">
-        <img src="docs/screenshots/reservations/02-list-reservations-1.png" width="250">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>02 — List Reservations</strong><br><br>
-      <a href="docs/screenshots/reservations/02-list-reservations-2.png">
-        <img src="docs/screenshots/reservations/02-list-reservations-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>03 — Show Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/03-show-reservation-1.png">
-        <img src="docs/screenshots/reservations/03-show-reservation-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>03 — Show Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/03-show-reservation-2.png">
-        <img src="docs/screenshots/reservations/03-show-reservation-2.png" width="250">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>04 — Update Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/04-update-reservation-1.png">
-        <img src="docs/screenshots/reservations/04-update-reservation-1.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>04 — Update Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/04-update-reservation-2.png">
-        <img src="docs/screenshots/reservations/04-update-reservation-2.png" width="250">
-      </a>
-    </td>
-    <td align="center">
-      <strong>04 — Update Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/04-update-reservation-3.png">
-        <img src="docs/screenshots/reservations/04-update-reservation-3.png" width="250">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>05 — Delete Reservation</strong><br><br>
-      <a href="docs/screenshots/reservations/05-delete-reservation.png">
-        <img src="docs/screenshots/reservations/05-delete-reservation.png" width="250">
-      </a>
-    </td>
-  </tr>
+<tr>
+<td align="center">
+<strong>Create Room</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Rooms/01-create-room.png">
+<img src="docs/screenshots/hotel-setup/Rooms/01-create-room.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>List Rooms</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png">
+<img src="docs/screenshots/hotel-setup/Rooms/02-list-rooms-1.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>Update Room</strong><br><br>
+<a href="docs/screenshots/hotel-setup/Rooms/04-update-room.png">
+<img src="docs/screenshots/hotel-setup/Rooms/04-update-room.png" width="250">
+</a>
+</td>
+</tr>
 </table>
 
 </details>
 
+<details>
+
+<summary><strong>👤 Guest Management & Validation</strong></summary>
+
+<table>
+<tr>
+<td align="center">
+<strong>Create Guest</strong><br><br>
+<a href="docs/screenshots/guests/01-create-guest.png">
+<img src="docs/screenshots/guests/01-create-guest.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>List Guests</strong><br><br>
+<a href="docs/screenshots/guests/02-list-guests.png">
+<img src="docs/screenshots/guests/02-list-guests.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>Update Guest</strong><br><br>
+<a href="docs/screenshots/guests/04-update-guest.png">
+<img src="docs/screenshots/guests/04-update-guest.png" width="250">
+</a>
+</td>
+</tr>
+</table>
+
+</details>
 
 <details>
-<summary><strong>🔄 Operations Screenshots</strong></summary>
 
-### 🚶 Walk-In Guest — Complete Lifecycle
+<summary><strong>📅 Reservations & Room Availability</strong></summary>
 
-#### Guest Arrival & Automatic Setup
+<table>
+<tr>
+<td align="center">
+<strong>Create Reservation</strong><br><br>
+<a href="docs/screenshots/reservations/01-create-reservation-1.png">
+<img src="docs/screenshots/reservations/01-create-reservation-1.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>Reservation Details</strong><br><br>
+<a href="docs/screenshots/reservations/03-show-reservation-1.png">
+<img src="docs/screenshots/reservations/03-show-reservation-1.png" width="250">
+</a>
+</td>
+
+<td align="center">
+<strong>Update Reservation</strong><br><br>
+<a href="docs/screenshots/reservations/04-update-reservation-1.png">
+<img src="docs/screenshots/reservations/04-update-reservation-1.png" width="250">
+</a>
+</td>
+</tr>
+</table>
+
+</details>
+
+<details>
+
+<summary><strong>🔄 Operations & Transactional Workflows</strong></summary>
+
+### 🚶 Walk-In Guest — End-to-End Operational Workflow
+
+#### Guest Lifecycle & Automated Setup
 
 <table>
 <tr>
 <td><strong>Create Walk-In Guest</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/01-create-walk-in-guest.png" width="250"></td>
-<td><strong>Auto-Created Reservation — Guest Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/02-auto-reservation-guest-details-1.png" width="250"></td>
-<td><strong>Auto-Created Reservation — Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/02-auto-reservation-guest-details-2.png" width="250"></td>
-</tr>
-<tr>
+<td><strong>Auto-Created Reservation</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/02-auto-reservation-guest-details-1.png" width="250"></td>
 <td><strong>Auto-Created Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/03-auto-folio-details.png" width="250"></td>
+</tr>
+
+<tr>
 <td><strong>Room Occupied</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/04-room-occupied.png" width="250"></td>
 <td><strong>Automatic Accommodation Charge</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/05-auto-accommodation-charge.png" width="250"></td>
+<td><strong>Folio Charges</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/07-folio-charges-summary-1.png" width="250"></td>
 </tr>
 </table>
 
-#### In-Stay Charges & Extension
+#### In-Stay Charges & Stay Extension
 
 <table>
 <tr>
-<td><strong>Add Airport Transfer Charge</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/06-add-airport-transfer-charge.png" width="250"></td>
-<td><strong>Folio Charges Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/07-folio-charges-summary-1.png" width="250"></td>
-<td><strong>Folio Charges Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/07-folio-charges-summary-2.png" width="250"></td>
-</tr>
-<tr>
-<td><strong>Extend Guest Stay</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/08-extend-stay-1.png" width="250"></td>
-<td><strong>Extended Stay Details</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/08-extend-stay-2.png" width="250"></td>
+<td><strong>Add Service Charge</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/06-add-airport-transfer-charge.png" width="250"></td>
+<td><strong>Extend Stay</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/08-extend-stay-1.png" width="250"></td>
 <td><strong>Updated Folio Charges</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/09-verify-updated-folio-charges.png" width="250"></td>
 </tr>
+
 <tr>
 <td><strong>Folio Financial Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/10-folio-financial-summary.png" width="250"></td>
 </tr>
 </table>
 
-#### Billing & Payment Settlement
+#### Multi-Gateway Payments & Settlement
 
 <table>
 <tr>
-<td><strong>First Partial Payment — Stripe</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/11-first-partial-payment-stripe.png" width="250"></td>
-<td><strong>Verify First Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/12-verify-first-payment.png" width="250"></td>
-<td><strong>Second Partial Payment — M-Pesa</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/13-second-partial-payment-mpesa.png" width="250"></td>
-</tr>
-<tr>
-<td><strong>Verify Second Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/14-verify-second-payment.png" width="250"></td>
+<td><strong>Stripe Partial Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/11-first-partial-payment-stripe.png" width="250"></td>
+<td><strong>M-Pesa Partial Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/13-second-partial-payment-mpesa.png" width="250"></td>
 <td><strong>Overpayment Protection</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/15-overpayment-protection.png" width="250"></td>
-<td><strong>Final Payment — M-Pesa</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/16-final-payment-mpesa.png" width="250"></td>
 </tr>
+
 <tr>
-<td><strong>Verify Final Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/17-verify-final-payment.png" width="250"></td>
+<td><strong>Final Payment</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/16-final-payment-mpesa.png" width="250"></td>
 <td><strong>Payment Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/18-payment-summary-1.png" width="250"></td>
-<td><strong>Payment Summary</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/18-payment-summary-2.png" width="250"></td>
 </tr>
 </table>
 
-#### Checkout
+#### Folio Closure & Checkout
 
 <table>
 <tr>
 <td><strong>Close Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/19-close-folio.png" width="250"></td>
-<td><strong>Verify Closed Folio</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/20-verify-closed-folio.png" width="250"></td>
 <td><strong>Checkout Guest</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/21-checkout-guest.png" width="250"></td>
-</tr>
-<tr>
-<td><strong>Room Available After Checkout</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/22-room-available-after-checkout.png" width="250"></td>
+<td><strong>Room Available</strong><br><img src="docs/screenshots/operations/Walk-In%20Guest/22-room-available-after-checkout.png" width="250"></td>
 </tr>
 </table>
 
-### 🌐 Direct Reservation — Complete Lifecycle
+### 🌐 Direct Reservation — Reservation-to-Check-In Workflow
 
 <table>
 <tr>
-<td><strong>Create Direct Reservation</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/01-create-direct-reservation-1.png" width="250"></td>
-<td><strong>Reservation Details</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/01-create-direct-reservation-2.png" width="250"></td>
+<td><strong>Create Reservation</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/01-create-direct-reservation-1.png" width="250"></td>
 <td><strong>Room Reserved</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/02-verify-room-reserved.png" width="250"></td>
+<td><strong>Check-In</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/03-check-in-direct-reservation.png" width="250"></td>
 </tr>
+
 <tr>
-<td><strong>Check-In Direct Reservation</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/03-check-in-direct-reservation.png" width="250"></td>
 <td><strong>Room Occupied</strong><br><img src="docs/screenshots/operations/Direct%20Reservation/04-room-occupied.png" width="250"></td>
 </tr>
 </table>
-
-</details>
-<details>
-<summary><strong>💳 Billing Screenshots</strong></summary>
-
-Screenshots for folios, charges, payments, refunds, invoices and receipts will be added here as the Billing module is completed.
-
-</details>
-
-<details>
-<summary><strong>📊 Reporting Screenshots</strong></summary>
-
-Screenshots for revenue, occupancy, reservation and payment reports will be added here as the Reporting module is completed.
 
 </details>
