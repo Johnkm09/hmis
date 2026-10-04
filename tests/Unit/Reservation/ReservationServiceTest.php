@@ -136,6 +136,44 @@ test('service can create a reservation', function () {
     expect($result)->toBe($reservation);
 });
 
+test('service reserves the room when creating a reservation', function () {
+
+    $guest = Guest::factory()->create();
+
+    $room = Room::factory()->create([
+        'is_active' => true,
+        'status' => 'available',
+    ]);
+
+    $data = [
+        'guest_id' => $guest->id,
+        'room_id' => $room->id,
+        'check_in' => '2026-10-10',
+        'check_out' => '2026-10-12',
+        'number_of_guests' => 1,
+    ];
+
+    $reservation = Reservation::factory()->make([
+        ...$data,
+        'nightly_rate' => $room->price,
+        'total_amount' => ((float) $room->price * 2),
+        'status' => 'pending',
+    ]);
+
+    $this->repository
+        ->shouldReceive('hasOverlappingReservation')
+        ->once()
+        ->andReturnFalse();
+
+    $this->repository
+        ->shouldReceive('create')
+        ->once()
+        ->andReturn($reservation);
+
+    $this->service->create($data);
+
+    expect($room->fresh()->status)->toBe('reserved');
+});
 
 test('service calculates total amount using number of nights and room price', function () {
 
