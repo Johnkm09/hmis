@@ -40,6 +40,7 @@ class FolioController extends Controller
             'reservation_id' => $reservation->id,
             'status' => 'open',
             'opened_at' => now(),
+            'charged_by' => $request->user()->id,
         ]);
 
         return ApiResponse::success(
